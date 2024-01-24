@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PatienthanteringEL
+{
+    public class LakarBesok
+    {
+        public string BesokNr { get; set; }
+        public DateTime Datum { get; set; }
+        public string Syfte { get; set; }
+        public Patient Patient { get; set; }
+        public VardPersonal AnsvarigLakare { get; set; }
+        public LakarBesok(string besokNr, DateTime datum, string syfte, Patient patient, VardPersonal ansvarigLäkare)
+        {
+            this.BesokNr = besokNr;
+            this.Datum = datum;
+            this.Syfte = syfte;
+            this.Patient = patient;
+            this.AnsvarigLakare = ansvarigLäkare;
+        }
+    }
+}
