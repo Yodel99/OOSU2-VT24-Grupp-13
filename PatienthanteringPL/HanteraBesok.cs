@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
-    public partial class Form1 : Form
+    public partial class HanteraBesok : Form
     {
-        public Form1()
+        public HanteraBesok()
         {
             InitializeComponent();
         }
