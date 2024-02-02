@@ -49,6 +49,10 @@
       <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
       <Name>PatienthanteringDL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
