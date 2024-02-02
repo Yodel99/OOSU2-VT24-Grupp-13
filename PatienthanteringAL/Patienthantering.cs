@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -39,6 +40,49 @@ namespace PatienthanteringAL
                 }
             }
             return sjukSkjotare;
+        }
+        public IList<LakarBesok>HamtaBesok()
+        {
+            List<LakarBesok> lakarBesok = new List<LakarBesok>();
+            
+            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
+            {
+                
+                    lakarBesok.Add(lakarBesok1);
+                
+            }
+            return lakarBesok;
+
+        }
+        public Patient HamtaPatient(string patientnummer)
+        {
+            List<Patient> patienter = new List<Patient>();
+
+            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
+            {
+                if (patient.PatientNr == patientnummer)
+                {
+                    return patient;
+                }
+                
+            }
+            return null;
+        }
+        public VardPersonal HamtaLakare(string anstallningsnummer)
+        {
+            foreach (VardPersonal personal in unitOfWork.VardPersonalRepository.Find(m => m.AnstallningsNr != null))
+            {
+                if (personal.AnstallningsNr == anstallningsnummer)
+                {
+                    return personal;
+                }
+            }
+            return null;
+        }
+        
+        public void LaggTillBesok(LakarBesok besok)
+        {
+            unitOfWork.LakarBesokRepository.Add(besok);
         }
     }
 }

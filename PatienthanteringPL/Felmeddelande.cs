@@ -10,25 +10,16 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
-    public partial class HanteraBesok : Form
+    public partial class Felmeddelande : Form
     {
-        public HanteraBesok()
+        public Felmeddelande()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NyttBesok nyttBesok = new NyttBesok();
             this.Close();
-            nyttBesok.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            RedigeraBesok redigeraBesok= new RedigeraBesok();
-            this.Close();
-            redigeraBesok.Show();
         }
     }
 }

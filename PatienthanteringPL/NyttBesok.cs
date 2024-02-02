@@ -54,5 +54,52 @@ namespace PatienthanteringPL
             IList<VardPersonal> sjukSkotare = patienthantering.ListaSjukSkotare();
             RefreshDatagridViewSjukskotare(sjukSkotare);
         }
+        private void SkapaBesok()
+        {
+            string aNummerLakare;
+            string patientNummer;
+            string syfte;
+            DateTime datum;
+            string besokNummer;
+
+            aNummerLakare = textBoxANummerLakare.Text;
+            patientNummer = textBoxPatientNummer.Text;
+            syfte = textBoxSyfte.Text;
+            datum = dateTimePickerBesok.Value;
+            besokNummer = textBoxBesokNummer.Text;
+
+            VardPersonal lakare = HamtaLakare(aNummerLakare);
+            Patient patient = HamtaPatient(patientNummer);
+            if (lakare == null)
+            {
+                Felmeddelande felmeddelande = new Felmeddelande();
+                felmeddelande.Show();
+            }
+            else if (patient == null)
+            {
+                Felmeddelande felmeddelande = new Felmeddelande();
+                felmeddelande.Show();
+            }
+            
+            LakarBesok lakarBesok = new LakarBesok(besokNummer, datum, syfte, patient, lakare);
+            
+            patienthantering.LaggTillBesok(lakarBesok);
+        }
+        private Patient HamtaPatient(string patientNummer)
+        {
+            return patienthantering.HamtaPatient(patientNummer);
+        }
+        private VardPersonal HamtaLakare(string anstallningsNummer)
+        {
+            return patienthantering.HamtaLakare(anstallningsNummer);
+        }
+
+        private void buttonLaggTillBesok_Click(object sender, EventArgs e)
+        {
+            SkapaBesok();
+            HanteraBesok hanteraBesok = new HanteraBesok();
+            hanteraBesok.Show();
+            this.Close();
+        }
     }
 }
