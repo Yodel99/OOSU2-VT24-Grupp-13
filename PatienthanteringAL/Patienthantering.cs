@@ -41,7 +41,7 @@ namespace PatienthanteringAL
             }
             return sjukSkjotare;
         }
-        public IList<LakarBesok>HamtaBesok()
+        public IList<LakarBesok>ListaBesok()
         {
             List<LakarBesok> lakarBesok = new List<LakarBesok>();
             
@@ -83,6 +83,20 @@ namespace PatienthanteringAL
         public void LaggTillBesok(LakarBesok besok)
         {
             unitOfWork.LakarBesokRepository.Add(besok);
+        }
+        public void TaBortBesok(string besokNr)
+        {
+       
+            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
+            {
+                if (lakarBesok1.BesokNr == besokNr)
+                {
+                    unitOfWork.LakarBesokRepository.Remove(lakarBesok1);
+                    break;
+                }
+
+            }
+            
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatienthanteringAL;
+using System.Diagnostics;
 
 namespace PatienthanteringPL
 {
@@ -18,12 +19,38 @@ namespace PatienthanteringPL
         public RedigeraBesok()
         {
             InitializeComponent();
-            HamtaBesok();
+            ListaBesok();
         }
-        private void HamtaBesok()
+        private void ListaBesok()
         {
-            IList<LakarBesok> lakarBesok = patienthantering.HamtaBesok();
-            dataGridViewBefintligaBesok.DataSource= lakarBesok;
+            IList<LakarBesok> lakarBesok = patienthantering.ListaBesok();
+            RefreshDatagridViewBesok(lakarBesok);
+        }
+        private void RefreshDatagridViewBesok(IList<LakarBesok> lakarBesok)
+        {
+            List<object> lakarBesok1 = new List<object>();
+
+            foreach (LakarBesok besok in lakarBesok)
+            {
+                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.BesokNr, PatientNummer = besok.PatientNr, AnställningsNr = besok.AnstallningsID });
+            }
+
+            dataGridViewBefintligaBesok.DataSource = lakarBesok1;
+        }
+        
+
+        private void buttonTaBort_Click(object sender, EventArgs e)
+        {
+            string besokNr = textBoxBesokNr.Text;
+            patienthantering.TaBortBesok(besokNr);
+            HanteraBesok hanteraBesok = new HanteraBesok();
+            hanteraBesok.Show();
+            this.Close();
+        }
+
+        private void buttonRedigeraTid_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

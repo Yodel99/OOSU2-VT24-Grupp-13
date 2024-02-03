@@ -13,6 +13,8 @@ namespace PatienthanteringEL
         public string Syfte { get; set; }
         public Patient Patient { get; set; }
         public VardPersonal AnsvarigLakare { get; set; }
+        public string AnstallningsID => AnsvarigLakare?.AnstallningsNr;
+        public string PatientNr => Patient.PatientNr;
         public LakarBesok(string besokNr, DateTime datum, string syfte, Patient patient, VardPersonal ansvarigLäkare)
         {
             this.BesokNr = besokNr;
