@@ -34,6 +34,7 @@
             this.textBoxBesokNr = new System.Windows.Forms.TextBox();
             this.buttonRedigeraTid = new System.Windows.Forms.Button();
             this.buttonTaBort = new System.Windows.Forms.Button();
+            this.buttonTillbaka = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBefintligaBesok)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,23 @@
             this.buttonTaBort.UseVisualStyleBackColor = true;
             this.buttonTaBort.Click += new System.EventHandler(this.buttonTaBort_Click);
             // 
+            // buttonTillbaka
+            // 
+            this.buttonTillbaka.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTillbaka.Location = new System.Drawing.Point(358, 344);
+            this.buttonTillbaka.Name = "buttonTillbaka";
+            this.buttonTillbaka.Size = new System.Drawing.Size(137, 51);
+            this.buttonTillbaka.TabIndex = 6;
+            this.buttonTillbaka.Text = "Tillbaka";
+            this.buttonTillbaka.UseVisualStyleBackColor = true;
+            this.buttonTillbaka.Click += new System.EventHandler(this.buttonTillbaka_Click);
+            // 
             // RedigeraBesok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 450);
+            this.Controls.Add(this.buttonTillbaka);
             this.Controls.Add(this.buttonTaBort);
             this.Controls.Add(this.buttonRedigeraTid);
             this.Controls.Add(this.textBoxBesokNr);
@@ -122,5 +135,6 @@
         private System.Windows.Forms.TextBox textBoxBesokNr;
         private System.Windows.Forms.Button buttonRedigeraTid;
         private System.Windows.Forms.Button buttonTaBort;
+        private System.Windows.Forms.Button buttonTillbaka;
     }
 }

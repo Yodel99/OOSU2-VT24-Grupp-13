@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndraTidBesok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AndraTidBesok.Designer.cs">
+      <DependentUpon>AndraTidBesok.cs</DependentUpon>
+    </Compile>
     <Compile Include="Felmeddelande.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="RedigeraBesok.Designer.cs">
       <DependentUpon>RedigeraBesok.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AndraTidBesok.resx">
+      <DependentUpon>AndraTidBesok.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Felmeddelande.resx">
       <DependentUpon>Felmeddelande.cs</DependentUpon>
     </EmbeddedResource>

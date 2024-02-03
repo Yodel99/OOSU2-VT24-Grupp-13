@@ -30,5 +30,12 @@ namespace PatienthanteringPL
             this.Close();
             redigeraBesok.Show();
         }
+
+        private void buttonHuvudMeny_Click(object sender, EventArgs e)
+        {
+            Huvudmeny huvudmeny = new Huvudmeny();
+            huvudmeny.Show();
+            this.Close();
+        }
     }
 }

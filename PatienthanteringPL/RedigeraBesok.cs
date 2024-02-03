@@ -47,10 +47,23 @@ namespace PatienthanteringPL
             hanteraBesok.Show();
             this.Close();
         }
+        
 
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
+            string besokNr = textBoxBesokNr.Text;
+            LakarBesok lakarBesok = patienthantering.HamtaBesok(besokNr);
+            AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
+            andraTidBesok.Show(); 
+            this.Close();
 
+        }
+
+        private void buttonTillbaka_Click(object sender, EventArgs e)
+        {
+            HanteraBesok hanterabesok = new HanteraBesok();
+            hanterabesok.Show();
+            this.Close();
         }
     }
 }

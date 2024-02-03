@@ -56,7 +56,6 @@ namespace PatienthanteringAL
         }
         public Patient HamtaPatient(string patientnummer)
         {
-            List<Patient> patienter = new List<Patient>();
 
             foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
             {
@@ -65,6 +64,18 @@ namespace PatienthanteringAL
                     return patient;
                 }
                 
+            }
+            return null;
+        }
+        public LakarBesok HamtaBesok(string besokNr)
+        {
+            foreach (LakarBesok besok in unitOfWork.LakarBesokRepository.Find(m => m.PatientNr != null))
+            {
+                if (besok.BesokNr == besokNr)
+                {
+                    return besok;
+                }
+
             }
             return null;
         }
@@ -97,6 +108,11 @@ namespace PatienthanteringAL
 
             }
             
+        }
+        public void AndraDatum(LakarBesok lakarBesok)
+        {
+            TaBortBesok(lakarBesok.BesokNr);
+            LaggTillBesok(lakarBesok);
         }
     }
 }

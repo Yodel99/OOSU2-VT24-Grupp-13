@@ -56,6 +56,9 @@ namespace PatienthanteringPL
         }
         private void SkapaBesok()
         {
+            dateTimePickerBesok.Format = DateTimePickerFormat.Custom;
+            dateTimePickerBesok.CustomFormat = "yyyy-MM-dd HH:mm";
+            dateTimePickerBesok.ShowUpDown = true;
             string aNummerLakare;
             string patientNummer;
             string syfte;
@@ -99,6 +102,13 @@ namespace PatienthanteringPL
             SkapaBesok();
             HanteraBesok hanteraBesok = new HanteraBesok();
             hanteraBesok.Show();
+            this.Close();
+        }
+
+        private void buttonTillbaka_Click(object sender, EventArgs e)
+        {
+            HanteraBesok hanterabesok = new HanteraBesok();
+            hanterabesok.Show();
             this.Close();
         }
     }
