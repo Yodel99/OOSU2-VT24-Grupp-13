@@ -30,17 +30,17 @@ namespace PatienthanteringPL
 
             dateTimePickerAndraDatum.ShowUpDown = true;
         }
-        private void AndraBesok()
+        private void AndraBesok(LakarBesok lakarBesok)
         {
             
             LakarBesokObjekt.Datum = dateTimePickerAndraDatum.Value;
-            patienthantering.AndraDatum(LakarBesokObjekt);
+            patienthantering.AndraDatum(lakarBesok);
             
         }
 
         private void buttonAndraDatum_Click(object sender, EventArgs e)
         {
-            AndraBesok();
+            AndraBesok(LakarBesokObjekt);
             KvittensBokning kvittensBokning = new KvittensBokning(LakarBesokObjekt);
             kvittensBokning.Show();
             this.Close();
