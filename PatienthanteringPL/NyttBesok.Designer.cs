@@ -87,7 +87,7 @@
             // labelBesokNummer
             // 
             this.labelBesokNummer.AutoSize = true;
-            this.labelBesokNummer.Location = new System.Drawing.Point(25, 231);
+            this.labelBesokNummer.Location = new System.Drawing.Point(12, 231);
             this.labelBesokNummer.Name = "labelBesokNummer";
             this.labelBesokNummer.Size = new System.Drawing.Size(76, 13);
             this.labelBesokNummer.TabIndex = 4;
@@ -105,7 +105,7 @@
             // labelSyfte
             // 
             this.labelSyfte.AutoSize = true;
-            this.labelSyfte.Location = new System.Drawing.Point(425, 231);
+            this.labelSyfte.Location = new System.Drawing.Point(451, 231);
             this.labelSyfte.Name = "labelSyfte";
             this.labelSyfte.Size = new System.Drawing.Size(31, 13);
             this.labelSyfte.TabIndex = 6;
@@ -133,7 +133,7 @@
             // 
             this.dateTimePickerBesok.Location = new System.Drawing.Point(582, 247);
             this.dateTimePickerBesok.Name = "dateTimePickerBesok";
-            this.dateTimePickerBesok.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerBesok.Size = new System.Drawing.Size(134, 20);
             this.dateTimePickerBesok.TabIndex = 9;
             // 
             // textBoxBesokNummer
@@ -147,7 +147,7 @@
             // 
             this.textBoxANummerLakare.Location = new System.Drawing.Point(156, 247);
             this.textBoxANummerLakare.Name = "textBoxANummerLakare";
-            this.textBoxANummerLakare.Size = new System.Drawing.Size(100, 20);
+            this.textBoxANummerLakare.Size = new System.Drawing.Size(133, 20);
             this.textBoxANummerLakare.TabIndex = 11;
             // 
             // textBoxPatientNummer
@@ -159,7 +159,7 @@
             // 
             // textBoxSyfte
             // 
-            this.textBoxSyfte.Location = new System.Drawing.Point(428, 247);
+            this.textBoxSyfte.Location = new System.Drawing.Point(454, 247);
             this.textBoxSyfte.Name = "textBoxSyfte";
             this.textBoxSyfte.Size = new System.Drawing.Size(100, 20);
             this.textBoxSyfte.TabIndex = 13;

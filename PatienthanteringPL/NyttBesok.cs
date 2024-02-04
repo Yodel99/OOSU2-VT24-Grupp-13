@@ -20,6 +20,7 @@ namespace PatienthanteringPL
             InitializeComponent();
             ListaPatienter();
             ListaSjukSkotare();
+            ModifieraDatePicker();
         }
         private void RefreshDatagridViewPatient(IList<Patient> patientlista)
         {
@@ -43,6 +44,14 @@ namespace PatienthanteringPL
 
             dataGridViewSjukSkotare.DataSource = sjukSkotareLista;
         }
+        private void ModifieraDatePicker()
+        {
+            dateTimePickerBesok.Format = DateTimePickerFormat.Custom;
+            dateTimePickerBesok.CustomFormat = "yyyy-MM-dd HH:mm";
+
+
+            dateTimePickerBesok.ShowUpDown = true;
+        }
         private void ListaPatienter()
         {
             IList<Patient> patienter = patienthantering.ListaPatienter();
@@ -56,9 +65,7 @@ namespace PatienthanteringPL
         }
         private void SkapaBesok()
         {
-            dateTimePickerBesok.Format = DateTimePickerFormat.Custom;
-            dateTimePickerBesok.CustomFormat = "yyyy-MM-dd HH:mm";
-            dateTimePickerBesok.ShowUpDown = true;
+            
             string aNummerLakare;
             string patientNummer;
             string syfte;

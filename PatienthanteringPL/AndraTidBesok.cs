@@ -20,14 +20,19 @@ namespace PatienthanteringPL
         {
             InitializeComponent();
             LakarBesokObjekt = lakarBesok;
+            ModifieraDatePicker();
         }
-        private void AndraBesok()
+        private void ModifieraDatePicker()
         {
             dateTimePickerAndraDatum.Format = DateTimePickerFormat.Custom;
             dateTimePickerAndraDatum.CustomFormat = "yyyy-MM-dd HH:mm";
 
-            
+
             dateTimePickerAndraDatum.ShowUpDown = true;
+        }
+        private void AndraBesok()
+        {
+            
             LakarBesokObjekt.Datum = dateTimePickerAndraDatum.Value;
             patienthantering.AndraDatum(LakarBesokObjekt);
             
