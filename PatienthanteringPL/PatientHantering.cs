@@ -16,5 +16,13 @@ namespace PatienthanteringPL
         {
             InitializeComponent();
         }
+
+        private void uppdateraPatient_Click(object sender, EventArgs e)
+        {
+            UppdateraPatient uppdateraPatient = new UppdateraPatient();
+
+            this.Hide();
+            uppdateraPatient.Show();
+        }
     }
 }
