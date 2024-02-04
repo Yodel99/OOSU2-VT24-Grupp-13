@@ -43,6 +43,7 @@ namespace PatienthanteringPL
         {
             string besokNr = textBoxBesokNr.Text;
             patienthantering.TaBortBesok(besokNr);
+            MessageBox.Show("Bokning Borttagen");
             HanteraBesok hanteraBesok = new HanteraBesok();
             hanteraBesok.Show();
             this.Close();

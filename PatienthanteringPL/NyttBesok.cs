@@ -94,6 +94,7 @@ namespace PatienthanteringPL
             LakarBesok lakarBesok = new LakarBesok(besokNummer, datum, syfte, patient, lakare);
             
             patienthantering.LaggTillBesok(lakarBesok);
+            VisaKvittens(lakarBesok);
         }
         private Patient HamtaPatient(string patientNummer)
         {
@@ -103,13 +104,17 @@ namespace PatienthanteringPL
         {
             return patienthantering.HamtaLakare(anstallningsNummer);
         }
+        private void VisaKvittens(LakarBesok lakarBesok)
+        {
+            KvittensBokning kvittensBokning = new KvittensBokning(lakarBesok);
+            kvittensBokning.Show();
+            this.Close();
+        }
 
         private void buttonLaggTillBesok_Click(object sender, EventArgs e)
         {
             SkapaBesok();
-            HanteraBesok hanteraBesok = new HanteraBesok();
-            hanteraBesok.Show();
-            this.Close();
+            
         }
 
         private void buttonTillbaka_Click(object sender, EventArgs e)

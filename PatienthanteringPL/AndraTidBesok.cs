@@ -41,9 +41,10 @@ namespace PatienthanteringPL
         private void buttonAndraDatum_Click(object sender, EventArgs e)
         {
             AndraBesok();
-            HanteraBesok hanteraBesok = new HanteraBesok();
-            hanteraBesok.Show();
+            KvittensBokning kvittensBokning = new KvittensBokning(LakarBesokObjekt);
+            kvittensBokning.Show();
             this.Close();
+
         }
 
         private void buttonTillbaka_Click(object sender, EventArgs e)

@@ -70,6 +70,12 @@
     <Compile Include="Huvudmeny.Designer.cs">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
     </Compile>
+    <Compile Include="KvittensBokning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KvittensBokning.Designer.cs">
+      <DependentUpon>KvittensBokning.cs</DependentUpon>
+    </Compile>
     <Compile Include="NyttBesok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Huvudmeny.resx">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KvittensBokning.resx">
+      <DependentUpon>KvittensBokning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NyttBesok.resx">
       <DependentUpon>NyttBesok.cs</DependentUpon>
