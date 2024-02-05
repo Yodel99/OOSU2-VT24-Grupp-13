@@ -12,7 +12,6 @@ namespace PatienthanteringEL
         public string LakemedelsNamn { get; set; }
         public string Dosering { get; set; }
         public DateTime Utskrivningsdatum { get; set; }
-
         public string Anledning { get; set; }
 
         public Lakemedelsrecept(Patient patient, string lakemedelsNamn, string dosering, DateTime utskrivningsdatum, string anledning)
