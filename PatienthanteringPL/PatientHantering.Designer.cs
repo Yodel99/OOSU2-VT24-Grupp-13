@@ -40,16 +40,20 @@
             this.registreraPatient.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.registreraPatient.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registreraPatient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.registreraPatient.Location = new System.Drawing.Point(264, 156);
+            this.registreraPatient.Margin = new System.Windows.Forms.Padding(4);
             this.registreraPatient.Location = new System.Drawing.Point(396, 244);
             this.registreraPatient.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registreraPatient.Location = new System.Drawing.Point(297, 195);
             this.registreraPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.registreraPatient.Name = "registreraPatient";
+            this.registreraPatient.Size = new System.Drawing.Size(335, 71);
             this.registreraPatient.Size = new System.Drawing.Size(502, 112);
             this.registreraPatient.Size = new System.Drawing.Size(376, 89);
             this.registreraPatient.TabIndex = 2;
             this.registreraPatient.Text = "Registrera patient";
             this.registreraPatient.UseVisualStyleBackColor = false;
+            
             this.registreraPatient.Click += new System.EventHandler(this.registreraPatient_Click);
             // 
             // uppdateraPatient
@@ -57,11 +61,14 @@
             this.uppdateraPatient.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.uppdateraPatient.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uppdateraPatient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.uppdateraPatient.Location = new System.Drawing.Point(264, 247);
+            this.uppdateraPatient.Margin = new System.Windows.Forms.Padding(4);
             this.uppdateraPatient.Location = new System.Drawing.Point(396, 387);
             this.uppdateraPatient.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uppdateraPatient.Location = new System.Drawing.Point(297, 309);
             this.uppdateraPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uppdateraPatient.Name = "uppdateraPatient";
+            this.uppdateraPatient.Size = new System.Drawing.Size(335, 71);
             this.uppdateraPatient.Size = new System.Drawing.Size(502, 112);
             this.uppdateraPatient.Size = new System.Drawing.Size(376, 89);
             this.uppdateraPatient.TabIndex = 3;
@@ -74,11 +81,14 @@
             this.registreraDiagnos.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.registreraDiagnos.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registreraDiagnos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.registreraDiagnos.Location = new System.Drawing.Point(264, 342);
+            this.registreraDiagnos.Margin = new System.Windows.Forms.Padding(4);
             this.registreraDiagnos.Location = new System.Drawing.Point(396, 535);
             this.registreraDiagnos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registreraDiagnos.Location = new System.Drawing.Point(297, 428);
             this.registreraDiagnos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.registreraDiagnos.Name = "registreraDiagnos";
+            this.registreraDiagnos.Size = new System.Drawing.Size(335, 71);
             this.registreraDiagnos.Size = new System.Drawing.Size(502, 112);
             this.registreraDiagnos.Size = new System.Drawing.Size(376, 89);
             this.registreraDiagnos.TabIndex = 4;
@@ -90,11 +100,14 @@
             // 
             this.huvudMeny1.AutoSize = true;
             this.huvudMeny1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.huvudMeny1.Location = new System.Drawing.Point(184, 69);
+            this.huvudMeny1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.huvudMeny1.Location = new System.Drawing.Point(276, 108);
             this.huvudMeny1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.huvudMeny1.Location = new System.Drawing.Point(207, 86);
             this.huvudMeny1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.huvudMeny1.Name = "huvudMeny1";
+            this.huvudMeny1.Size = new System.Drawing.Size(450, 51);
             this.huvudMeny1.Size = new System.Drawing.Size(717, 79);
             this.huvudMeny1.Size = new System.Drawing.Size(546, 61);
             this.huvudMeny1.TabIndex = 5;
@@ -105,9 +118,12 @@
             this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(264, 434);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Location = new System.Drawing.Point(396, 679);
             this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(335, 71);
             this.button1.Size = new System.Drawing.Size(502, 112);
             this.button1.TabIndex = 6;
             this.button1.Text = "Registrera behandling";
@@ -126,10 +142,12 @@
             // 
             // PatientHantering
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ClientSize = new System.Drawing.Size(872, 554);
             this.ClientSize = new System.Drawing.Size(1308, 865);
             this.Controls.Add(this.button1);
             this.ClientSize = new System.Drawing.Size(981, 692);
@@ -138,6 +156,7 @@
             this.Controls.Add(this.registreraDiagnos);
             this.Controls.Add(this.uppdateraPatient);
             this.Controls.Add(this.registreraPatient);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PatientHantering";
