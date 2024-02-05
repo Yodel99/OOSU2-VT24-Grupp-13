@@ -12,6 +12,8 @@ namespace PatienthanteringAL
 {
     public class Patienthantering
     {
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
@@ -22,13 +24,11 @@ namespace PatienthanteringAL
                     return anvandare;
                 }
             }
-
             return null;
         }       
 
         public IList<Patient> HamtaPatienter()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork(); 
+        {         
             List<Patient> patienter = new List<Patient>(); 
             foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null)) 
             { 
@@ -51,19 +51,7 @@ namespace PatienthanteringAL
             unitOfWork.DiagnosRepository.Add(diagnos);
             return diagnos;
            
-        }
-
-        public IList<Patient> HamtaPatienter()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            List<Patient> patienter = new List<Patient>();
-
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
-            {
-                patienter.Add(patient);
-            }
-            return patienter;
-        }
+        }       
 
         public void LaggTillDiagnosTillKund(Patient selectedpatient, Diagnos diagnos)
         {
@@ -108,20 +96,8 @@ namespace PatienthanteringAL
             return lakemedelsrecepts;
 
         }
-        public Patienthantering() { }
-
-        public IList<Patient> HamtaPatienter()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            List<Patient> patienter = new List<Patient>();   
-            
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
-            {
-                    patienter.Add(patient);
-            }
-            return patienter;                                      
-        }
-
+        
+   
         public void UppdateraPatientInfo(string valdPatientID, string valdAttribut, string valdInput)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
@@ -154,24 +130,8 @@ namespace PatienthanteringAL
                     patient.TelNr = valdInput;
                 }
             }
-        }
-
-        private UnitOfWork unitOfWork = new UnitOfWork();
-
-        public IList<Patient> ListaPatienter()
-        {
-
-            
-            List<Patient> patienter = new List<Patient>();
-
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
-            {
-                patienter.Add(patient);
-            }
-            return patienter;
-
-            
-        }
+        }       
+     
         public IList<VardPersonal> ListaSjukSkotare()
         {
             List<VardPersonal> sjukSkjotare = new List<VardPersonal>();
@@ -184,15 +144,15 @@ namespace PatienthanteringAL
             }
             return sjukSkjotare;
         }
-        public IList<LakarBesok>ListaBesok()
+        public IList<LakarBesok> ListaBesok()
         {
             List<LakarBesok> lakarBesok = new List<LakarBesok>();
-            
+
             foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
             {
-                
-                    lakarBesok.Add(lakarBesok1);
-                
+
+                lakarBesok.Add(lakarBesok1);
+
             }
             return lakarBesok;
 

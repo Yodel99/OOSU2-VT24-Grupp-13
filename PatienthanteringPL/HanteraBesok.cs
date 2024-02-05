@@ -15,9 +15,8 @@ namespace PatienthanteringPL
     {
 
         public Anvandare AktivAnvandare { get; }
-        public HanteraBesok(Anvandare aktivanvandare)
-        {
-            AktivAnvandare = aktivanvandare;
+        public HanteraBesok()
+        {          
             InitializeComponent();
         }
 

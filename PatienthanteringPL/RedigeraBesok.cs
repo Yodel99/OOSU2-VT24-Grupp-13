@@ -16,6 +16,7 @@ namespace PatienthanteringPL
     public partial class RedigeraBesok : Form
     {
         Patienthantering patienthantering = new Patienthantering();
+
         public RedigeraBesok()
         {
             InitializeComponent();

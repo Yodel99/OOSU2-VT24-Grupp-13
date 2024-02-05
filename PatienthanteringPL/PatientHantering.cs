@@ -16,9 +16,8 @@ namespace PatienthanteringPL
 
        public Anvandare AktivAnvandare { get; }
 
-        public PatientHantering(Anvandare aktivanvandare)
-        {
-            AktivAnvandare = aktivanvandare;
+        public PatientHantering()
+        {           
             InitializeComponent();           
         }
 
@@ -50,6 +49,14 @@ namespace PatienthanteringPL
 
             this.Hide();
             uppdateraPatient.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Huvudmeny huvudmeny = new Huvudmeny();
+
+            this.Hide();
+            huvudmeny.Show();
         }
     }
 }

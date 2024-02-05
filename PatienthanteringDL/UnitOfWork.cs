@@ -99,9 +99,9 @@ namespace PatienthanteringDL
             #endregion
 
             #region Hårdkodade Patienter
-            PatientRepository.Add(new Patient("19670512-4312", "Jonte", "Holmgren", "jonte123@hotmail.com", "P-1", "Shommelomme vägen 1", "0700123456"));
-            PatientRepository.Add(new Patient("19990823-4362", "Jakob", "Issa", "jakesnake@hotmail.com", "P-2", "Falkberget 2", "0702345323"));
-            PatientRepository.Add(new Patient("20050916-1612", "Eric", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563"));
+            PatientRepository.Add(new Patient("19670512-4312", "Jojje", "Holmgren", "jonte123@hotmail.com", "P-1", "Shommelomme vägen 1", "0700123456"));
+            PatientRepository.Add(new Patient("19990823-4362", "Jakob", "Ia", "jakesnake@hotmail.com", "P-2", "Falkberget 2", "0702345323"));
+            PatientRepository.Add(new Patient("20050916-1612", "Erik", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563"));
             #endregion
 
             #region Hårkodade Recept

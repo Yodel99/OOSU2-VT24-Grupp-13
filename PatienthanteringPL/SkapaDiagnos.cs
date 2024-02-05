@@ -14,8 +14,6 @@ namespace PatienthanteringPL
 {
     public partial class SkapaDiagnos : Form
     {
-        private string diagnosBeskrivning;
-        private string behandling;
         private Patient selectedpatient { get; }
         
         public SkapaDiagnos(Patient SelectedPatient)
