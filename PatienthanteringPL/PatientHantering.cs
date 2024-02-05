@@ -17,6 +17,13 @@ namespace PatienthanteringPL
             InitializeComponent();
         }
 
+        private void registreraPatient_Click(object sender, EventArgs e)
+        {
+            RegistreraPatient registreraPatient = new RegistreraPatient(); 
+            this.Hide(); 
+            registreraPatient.Show();
+        }
+
         private void registreraDiagnos_Click(object sender, EventArgs e)
         {
             ReggaDiagnos reggaDiagnos = new ReggaDiagnos();

@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistreraPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistreraPatient.Designer.cs">
+      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReggaDiagnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistreraPatient.resx">
+      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReggaDiagnos.resx">
       <DependentUpon>ReggaDiagnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +200,10 @@
     <ProjectReference Include="..\PatienthanteringAL\PatienthanteringAL.csproj">
       <Project>{673b83ca-82ec-4725-8814-eebdb2597f5f}</Project>
       <Name>PatienthanteringAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
       <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
