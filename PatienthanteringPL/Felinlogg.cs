@@ -1,5 +1,4 @@
-﻿using PatienthanteringEL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,19 +10,18 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
-    public partial class HanteraBesok : Form
+    public partial class Felinlogg : Form
     {
-
-        public Anvandare AktivAnvandare { get; }
-        public HanteraBesok(Anvandare aktivanvandare)
+        public Felinlogg()
         {
-            AktivAnvandare = aktivanvandare;
             InitializeComponent();
         }
 
-        private void HanteraBesok_Load(object sender, EventArgs e)
+        private void FörsökIgenbutton1_Click(object sender, EventArgs e)
         {
-
+            LoggaIn loggain = new LoggaIn();
+            this.Hide();
+            loggain.Show();
         }
     }
 }

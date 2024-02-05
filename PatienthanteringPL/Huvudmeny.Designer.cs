@@ -38,9 +38,10 @@
             this.hanteraPatient.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.hanteraPatient.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hanteraPatient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.hanteraPatient.Location = new System.Drawing.Point(190, 261);
+            this.hanteraPatient.Location = new System.Drawing.Point(253, 321);
+            this.hanteraPatient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hanteraPatient.Name = "hanteraPatient";
-            this.hanteraPatient.Size = new System.Drawing.Size(251, 58);
+            this.hanteraPatient.Size = new System.Drawing.Size(335, 71);
             this.hanteraPatient.TabIndex = 0;
             this.hanteraPatient.Text = "Besök";
             this.hanteraPatient.UseVisualStyleBackColor = false;
@@ -51,9 +52,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(190, 186);
+            this.button1.Location = new System.Drawing.Point(253, 229);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 58);
+            this.button1.Size = new System.Drawing.Size(335, 71);
             this.button1.TabIndex = 1;
             this.button1.Text = "Patienter";
             this.button1.UseVisualStyleBackColor = false;
@@ -63,21 +65,24 @@
             // 
             this.huvudMeny1.AutoSize = true;
             this.huvudMeny1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.huvudMeny1.Location = new System.Drawing.Point(219, 80);
+            this.huvudMeny1.Location = new System.Drawing.Point(292, 98);
+            this.huvudMeny1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.huvudMeny1.Name = "huvudMeny1";
-            this.huvudMeny1.Size = new System.Drawing.Size(197, 40);
+            this.huvudMeny1.Size = new System.Drawing.Size(249, 51);
             this.huvudMeny1.TabIndex = 2;
             this.huvudMeny1.Text = "Huvudmeny";
+            
             // 
             // Huvudmeny
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(655, 450);
+            this.ClientSize = new System.Drawing.Size(873, 554);
             this.Controls.Add(this.huvudMeny1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.hanteraPatient);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Huvudmeny";
             this.Text = "Huvudmeny - Patienthantering";
             this.ResumeLayout(false);

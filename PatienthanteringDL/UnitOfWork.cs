@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
@@ -9,6 +10,8 @@ namespace PatienthanteringDL
 {
     public class UnitOfWork
     {
+        
+
         public Repository<Anvandare> AnvandareRepository
         {
             get; private set;
@@ -39,6 +42,18 @@ namespace PatienthanteringDL
             get; private set;
         }
 
+        
+
+        private static UnitOfWork instans = null;
+        public static UnitOfWork GetInstance()
+        {
+            if (instans == null)
+            {
+                instans = new UnitOfWork();
+            }
+            return instans;
+        }
+
         /// <summary>
         ///  Create a new instance.
         /// </summary>
@@ -58,7 +73,7 @@ namespace PatienthanteringDL
                 Fill();
             }
         }
-
+        
         /// <summary>
         ///  Save the changes made. Does nothing in this case.
         /// </summary>
@@ -73,6 +88,8 @@ namespace PatienthanteringDL
             VardPersonalRepository.Add(new VardPersonal("20010303-5783", "Bengt", "Bengtsson", "hej123@live.se", "A-3", "Sjuksköterska"));
             VardPersonalRepository.Add(new VardPersonal("20010303-5783", "Agneta", "Svensson", "bollhaha@live.com", "A-4", "Sjuksköterska"));
             #endregion
+
+            
 
             #region Hårdkodade Användare
             AnvandareRepository.Add(new Anvandare("lakare1", "lakare1", VardPersonalRepository.FirstOrDefault(m => m.AnstallningsNr == "A-1")));
@@ -100,5 +117,8 @@ namespace PatienthanteringDL
             #endregion
 
         }
+
+        
+
     }
 }

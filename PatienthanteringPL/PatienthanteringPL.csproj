@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Felinlogg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Felinlogg.Designer.cs">
+      <DependentUpon>Felinlogg.cs</DependentUpon>
+    </Compile>
     <Compile Include="HanteraBesok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +79,12 @@
     <Compile Include="Huvudmeny.Designer.cs">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggaIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoggaIn.Designer.cs">
+      <DependentUpon>LoggaIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientHantering.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +93,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Felinlogg.resx">
+      <DependentUpon>Felinlogg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HanteraBesok.resx">
       <DependentUpon>HanteraBesok.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Huvudmeny.resx">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoggaIn.resx">
+      <DependentUpon>LoggaIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientHantering.resx">
       <DependentUpon>PatientHantering.cs</DependentUpon>
@@ -102,6 +135,26 @@
       <Project>{673b83ca-82ec-4725-8814-eebdb2597f5f}</Project>
       <Name>PatienthanteringAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
+      <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
+      <Name>PatienthanteringDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

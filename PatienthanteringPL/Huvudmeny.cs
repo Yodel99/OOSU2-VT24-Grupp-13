@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatienthanteringEL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,25 +13,27 @@ namespace PatienthanteringPL
 {
     public partial class Huvudmeny : Form
     {
-        public Huvudmeny()
-        {
+        public Anvandare AktivAnvandare { get; }
+        public Huvudmeny(Anvandare aktivanvandare)
+        {           
             InitializeComponent();
+            AktivAnvandare = aktivanvandare;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PatientHantering patientHantering = new PatientHantering();
-
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
             this.Hide();
             patientHantering.Show();
         }
 
         private void hanteraPatient_Click(object sender, EventArgs e)
         {
-            HanteraBesok hanteraBesok = new HanteraBesok();
-
+            HanteraBesok hanteraBesok = new HanteraBesok(AktivAnvandare);
             this.Hide();
             hanteraBesok.Show();
         }
+
+        
     }
 }
