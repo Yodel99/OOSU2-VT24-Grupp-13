@@ -58,6 +58,7 @@
             this.uppdateraPatient.TabIndex = 3;
             this.uppdateraPatient.Text = "Uppdatera patient";
             this.uppdateraPatient.UseVisualStyleBackColor = false;
+            this.uppdateraPatient.Click += new System.EventHandler(this.uppdateraPatient_Click);
             // 
             // registreraDiagnos
             // 
