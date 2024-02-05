@@ -87,8 +87,10 @@ namespace PatienthanteringDL
             PatientRepository.Add(new Patient("20050916-1612", "Eric", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563"));
             #endregion
 
-            #region Hårkodade Behandlingar
+            #region Hårkodade Recept
             BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-1"), "Ipren", "1 karta per dag", DateTime.Now, "Växtvärk"));
+            BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-1"), "Alvedon", "1 karta per dag", DateTime.Now, "Värk"));
+            BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-2"), "Strepsils", "1 karta per dag", DateTime.Now, "Halsvärk"));
             #endregion
 
             #region Hårdkodade Läkarbesök
