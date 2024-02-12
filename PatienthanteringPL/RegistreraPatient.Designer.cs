@@ -47,6 +47,7 @@
             this.telNmr = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.dataGridViewVisaPatienter = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisaPatienter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,12 +201,25 @@
             this.dataGridViewVisaPatienter.Size = new System.Drawing.Size(729, 580);
             this.dataGridViewVisaPatienter.TabIndex = 21;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(950, 732);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(292, 72);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Tillbaka";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RegistreraPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1273, 819);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewVisaPatienter);
             this.Controls.Add(this.telNmr);
             this.Controls.Add(this.textBox7);
@@ -249,5 +263,6 @@
         private System.Windows.Forms.Label telNmr;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.DataGridView dataGridViewVisaPatienter;
+        private System.Windows.Forms.Button button1;
     }
 }
