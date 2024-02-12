@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HamtaListaController.cs" />
     <Compile Include="Patienthantering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkapaDiagnosController.cs" />
+    <Compile Include="SkrivUtReceptController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
