@@ -38,34 +38,52 @@ namespace PatienthanteringPL
 
             dataGridViewBefintligaBesok.DataSource = lakarBesok1;
         }
-        
+
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
             string besokNr = textBoxBesokNr.Text.ToUpper();
+
+            if (string.IsNullOrWhiteSpace(besokNr))
+            {
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+
             LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
             if (lakarBesok == null)
             {
-                MessageBox.Show("Ogiltigt Besöknummer");
+                MessageBox.Show("Ingen bokning hittades med det angivna besöksnumret.");
             }
             else
             {
-                hanteraBesokController.TaBortBesok(besokNr);
-                MessageBox.Show("Bokning Borttagen");
-                HanteraBesok hanteraBesok = new HanteraBesok();
-                hanteraBesok.Show();
-                this.Close();
+                DialogResult result = MessageBox.Show("Är du säker på att du vill ta bort bokningen?", "Bekräfta borttagning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    hanteraBesokController.TaBortBesok(besokNr);
+                    MessageBox.Show("Bokning borttagen.");
+                    HanteraBesok hanteraBesok = new HanteraBesok();
+                    hanteraBesok.Show();
+                    this.Close();
+                }
             }
         }
-        
+
 
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
             string besokNr = textBoxBesokNr.Text.ToUpper();
-            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
-            if (lakarBesok==null)
+
+            if (string.IsNullOrWhiteSpace(besokNr))
             {
-                MessageBox.Show("Ogiltigt Besöknummer");
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+
+            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
+            if (lakarBesok == null)
+            {
+                MessageBox.Show("Inget besök hittades med det angivna besöksnumret.");
             }
             else
             {
@@ -73,8 +91,6 @@ namespace PatienthanteringPL
                 andraTidBesok.Show();
                 this.Close();
             }
-            
-
         }
 
         private void buttonTillbaka_Click(object sender, EventArgs e)
