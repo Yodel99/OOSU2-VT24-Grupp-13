@@ -12,7 +12,7 @@ namespace PatienthanteringAL
 {
     public class Patienthantering
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        UnitOfWork unitOfWork;
         public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
@@ -27,15 +27,7 @@ namespace PatienthanteringAL
             return null;
         }       
 
-        public IList<Patient> HamtaPatienter()
-        {         
-            List<Patient> patienter = new List<Patient>(); 
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null)) 
-            { 
-                patienter.Add(patient); 
-            }
-            return patienter;
-        }
+        
 
         public void RegistreraPatient(string personNmr, string fnamn,string enamn,string email, string patientNmr, string adress, string telNmr )
         {
@@ -130,92 +122,25 @@ namespace PatienthanteringAL
                     patient.TelNr = valdInput;
                 }
             }
-        }       
-     
-        public IList<VardPersonal> ListaSjukSkotare()
-        {
-            List<VardPersonal> sjukSkjotare = new List<VardPersonal>();
-            foreach (VardPersonal personal in unitOfWork.VardPersonalRepository.Find(m => m.AnstallningsNr != null))
-            {
-                if (personal.YrkesRoll== "Sjuksköterska")
-                {
-                    sjukSkjotare.Add(personal);
-                }
-            }
-            return sjukSkjotare;
         }
-        public IList<LakarBesok> ListaBesok()
+        public IList<Patient> HamtaPatienter()
         {
-            List<LakarBesok> lakarBesok = new List<LakarBesok>();
-
-            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
-            {
-
-                lakarBesok.Add(lakarBesok1);
-
-            }
-            return lakarBesok;
-
-        }
-        public Patient HamtaPatient(string patientnummer)
-        {
-
+            List<Patient> patienter = new List<Patient>();
             foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
             {
-                if (patient.PatientNr == patientnummer)
-                {
-                    return patient;
-                }
-                
+                patienter.Add(patient);
             }
-            return null;
+            return patienter;
         }
-        public LakarBesok HamtaBesok(string besokNr)
-        {
-            foreach (LakarBesok besok in unitOfWork.LakarBesokRepository.Find(m => m.PatientNr != null))
-            {
-                if (besok.BesokNr == besokNr)
-                {
-                    return besok;
-                }
 
-            }
-            return null;
-        }
-        public VardPersonal HamtaLakare(string anstallningsnummer)
-        {
-            foreach (VardPersonal personal in unitOfWork.VardPersonalRepository.Find(m => m.AnstallningsNr != null))
-            {
-                if (personal.AnstallningsNr == anstallningsnummer)
-                {
-                    return personal;
-                }
-            }
-            return null;
-        }
-        
-        public void LaggTillBesok(LakarBesok besok)
-        {
-            unitOfWork.LakarBesokRepository.Add(besok);
-        }
-        public void TaBortBesok(string besokNr)
-        {
-       
-            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
-            {
-                if (lakarBesok1.BesokNr == besokNr)
-                {
-                    unitOfWork.LakarBesokRepository.Remove(lakarBesok1);
-                    break;
-                }
 
-            }
-            
-        }
-        public void AndraDatum(LakarBesok lakarBesok)
-        {
-            TaBortBesok(lakarBesok.BesokNr);
-            LaggTillBesok(lakarBesok);
-        }
+
+
+
+
+
+
+
+
     }
 }

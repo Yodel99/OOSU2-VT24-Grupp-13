@@ -15,7 +15,7 @@ namespace PatienthanteringPL
 {
     public partial class RedigeraBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        HanteraBesokController hanteraBesokController = new HanteraBesokController();
 
         public RedigeraBesok()
         {
@@ -24,7 +24,7 @@ namespace PatienthanteringPL
         }
         private void ListaBesok()
         {
-            IList<LakarBesok> lakarBesok = patienthantering.ListaBesok();
+            IList<LakarBesok> lakarBesok = hanteraBesokController.ListaBesok();
             RefreshDatagridViewBesok(lakarBesok);
         }
         private void RefreshDatagridViewBesok(IList<LakarBesok> lakarBesok)
@@ -42,22 +42,38 @@ namespace PatienthanteringPL
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            patienthantering.TaBortBesok(besokNr);
-            MessageBox.Show("Bokning Borttagen");
-            HanteraBesok hanteraBesok = new HanteraBesok();
-            hanteraBesok.Show();
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
+            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
+            if (lakarBesok == null)
+            {
+                MessageBox.Show("Ogiltigt Besöknummer");
+            }
+            else
+            {
+                hanteraBesokController.TaBortBesok(besokNr);
+                MessageBox.Show("Bokning Borttagen");
+                HanteraBesok hanteraBesok = new HanteraBesok();
+                hanteraBesok.Show();
+                this.Close();
+            }
         }
         
 
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            LakarBesok lakarBesok = patienthantering.HamtaBesok(besokNr);
-            AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
-            andraTidBesok.Show(); 
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
+            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
+            if (lakarBesok==null)
+            {
+                MessageBox.Show("Ogiltigt Besöknummer");
+            }
+            else
+            {
+                AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
+                andraTidBesok.Show();
+                this.Close();
+            }
+            
 
         }
 
