@@ -32,6 +32,7 @@
             this.uppdateraPatient = new System.Windows.Forms.Button();
             this.registreraDiagnos = new System.Windows.Forms.Button();
             this.huvudMeny1 = new System.Windows.Forms.Label();
+            this.skrivUtLakemedel = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             this.registreraPatient.TabIndex = 2;
             this.registreraPatient.Text = "Registrera patient";
             this.registreraPatient.UseVisualStyleBackColor = false;
+            this.registreraPatient.Click += new System.EventHandler(this.registreraPatient_Click);
             // 
             // uppdateraPatient
             // 
@@ -58,6 +60,7 @@
             this.uppdateraPatient.TabIndex = 3;
             this.uppdateraPatient.Text = "Uppdatera patient";
             this.uppdateraPatient.UseVisualStyleBackColor = false;
+            this.uppdateraPatient.Click += new System.EventHandler(this.uppdateraPatient_Click);
             // 
             // registreraDiagnos
             // 
@@ -70,6 +73,7 @@
             this.registreraDiagnos.TabIndex = 4;
             this.registreraDiagnos.Text = "Registrera diagnos";
             this.registreraDiagnos.UseVisualStyleBackColor = false;
+            this.registreraDiagnos.Click += new System.EventHandler(this.registreraDiagnos_Click);
             // 
             // huvudMeny1
             // 
@@ -81,17 +85,31 @@
             this.huvudMeny1.TabIndex = 5;
             this.huvudMeny1.Text = "Hantering av patienter";
             // 
+            // skrivUtLakemedel
+            // 
+            this.skrivUtLakemedel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.skrivUtLakemedel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skrivUtLakemedel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.skrivUtLakemedel.Location = new System.Drawing.Point(198, 353);
+            this.skrivUtLakemedel.Name = "skrivUtLakemedel";
+            this.skrivUtLakemedel.Size = new System.Drawing.Size(251, 58);
+            this.skrivUtLakemedel.TabIndex = 6;
+            this.skrivUtLakemedel.Text = "Skriv ut läkemedel";
+            this.skrivUtLakemedel.UseVisualStyleBackColor = false;
+            this.skrivUtLakemedel.Click += new System.EventHandler(this.skrivUtLakemedel_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(198, 353);
+            this.button1.Location = new System.Drawing.Point(511, 393);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 58);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Registrera behandling";
+            this.button1.Size = new System.Drawing.Size(131, 45);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Tillbaka";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PatientHantering
             // 
@@ -100,6 +118,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(654, 450);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.skrivUtLakemedel);
             this.Controls.Add(this.huvudMeny1);
             this.Controls.Add(this.registreraDiagnos);
             this.Controls.Add(this.uppdateraPatient);
@@ -117,6 +136,7 @@
         private System.Windows.Forms.Button uppdateraPatient;
         private System.Windows.Forms.Button registreraDiagnos;
         private System.Windows.Forms.Label huvudMeny1;
+        private System.Windows.Forms.Button skrivUtLakemedel;
         private System.Windows.Forms.Button button1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatienthanteringEL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,16 @@ namespace PatienthanteringPL
 {
     public partial class HanteraBesok : Form
     {
+
+        public Anvandare AktivAnvandare { get; }
         public HanteraBesok()
-        {
+        {          
             InitializeComponent();
+        }
+
+        private void HanteraBesok_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)

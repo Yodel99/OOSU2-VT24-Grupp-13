@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
@@ -9,6 +10,8 @@ namespace PatienthanteringDL
 {
     public class UnitOfWork
     {
+        
+
         public Repository<Anvandare> AnvandareRepository
         {
             get; private set;
@@ -39,6 +42,18 @@ namespace PatienthanteringDL
             get; private set;
         }
 
+        
+
+        private static UnitOfWork instans = null;
+        public static UnitOfWork GetInstance()
+        {
+            if (instans == null)
+            {
+                instans = new UnitOfWork();
+            }
+            return instans;
+        }
+
         /// <summary>
         ///  Create a new instance.
         /// </summary>
@@ -58,7 +73,7 @@ namespace PatienthanteringDL
                 Fill();
             }
         }
-
+        
         /// <summary>
         ///  Save the changes made. Does nothing in this case.
         /// </summary>
@@ -74,6 +89,8 @@ namespace PatienthanteringDL
             VardPersonalRepository.Add(new VardPersonal("20010303-5783", "Agneta", "Svensson", "bollhaha@live.com", "A-4", "Sjuksköterska"));
             #endregion
 
+            
+
             #region Hårdkodade Användare
             AnvandareRepository.Add(new Anvandare("lakare1", "lakare1", VardPersonalRepository.FirstOrDefault(m => m.AnstallningsNr == "A-1")));
             AnvandareRepository.Add(new Anvandare("lakare2", "lakare2", VardPersonalRepository.FirstOrDefault(m => m.AnstallningsNr == "A-2")));
@@ -82,13 +99,15 @@ namespace PatienthanteringDL
             #endregion
 
             #region Hårdkodade Patienter
-            PatientRepository.Add(new Patient("19670512-4312", "Jonte", "Holmgren", "jonte123@hotmail.com", "P-1", "Shommelomme vägen 1", "0700123456"));
-            PatientRepository.Add(new Patient("19990823-4362", "Jakob", "Issa", "jakesnake@hotmail.com", "P-2", "Falkberget 2", "0702345323"));
-            PatientRepository.Add(new Patient("20050916-1612", "Eric", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563"));
+            PatientRepository.Add(new Patient("19670512-4312", "Jojje", "Holmgren", "jonte123@hotmail.com", "P-1", "Shommelomme vägen 1", "0700123456"));
+            PatientRepository.Add(new Patient("19990823-4362", "Jakob", "Ia", "jakesnake@hotmail.com", "P-2", "Falkberget 2", "0702345323"));
+            PatientRepository.Add(new Patient("20050916-1612", "Erik", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563"));
             #endregion
 
-            #region Hårkodade Behandlingar
+            #region Hårkodade Recept
             BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-1"), "Ipren", "1 karta per dag", DateTime.Now, "Växtvärk"));
+            BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-1"), "Alvedon", "1 karta per dag", DateTime.Now, "Värk"));
+            BehandlingRepository.Add(new Lakemedelsrecept(PatientRepository.FirstOrDefault(m => m.PatientNr == "P-2"), "Strepsils", "1 karta per dag", DateTime.Now, "Halsvärk"));
             #endregion
 
             #region Hårdkodade Läkarbesök
@@ -100,5 +119,8 @@ namespace PatienthanteringDL
             #endregion
 
         }
+
+        
+
     }
 }

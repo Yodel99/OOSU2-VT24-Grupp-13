@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Felinlogg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Felinlogg.Designer.cs">
+      <DependentUpon>Felinlogg.cs</DependentUpon>
+    </Compile>
     <Compile Include="AndraTidBesok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +91,12 @@
     <Compile Include="Huvudmeny.Designer.cs">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggaIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoggaIn.Designer.cs">
+      <DependentUpon>LoggaIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="KvittensBokning.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +117,45 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Felinlogg.resx">
+      <DependentUpon>Felinlogg.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="RegistreraPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistreraPatient.Designer.cs">
+      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReggaDiagnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReggaDiagnos.Designer.cs">
+      <DependentUpon>ReggaDiagnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkapaDiagnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkapaDiagnos.Designer.cs">
+      <DependentUpon>SkapaDiagnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkapaRecept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkapaRecept.Designer.cs">
+      <DependentUpon>SkapaRecept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValjPatientRecept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValjPatientRecept.Designer.cs">
+      <DependentUpon>ValjPatientRecept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UppdateraPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UppdateraPatient.Designer.cs">
+      <DependentUpon>UppdateraPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="RedigeraBesok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Huvudmeny.resx">
       <DependentUpon>Huvudmeny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoggaIn.resx">
+      <DependentUpon>LoggaIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KvittensBokning.resx">
       <DependentUpon>KvittensBokning.cs</DependentUpon>
@@ -126,6 +195,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistreraPatient.resx">
+      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReggaDiagnos.resx">
+      <DependentUpon>ReggaDiagnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkapaDiagnos.resx">
+      <DependentUpon>SkapaDiagnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkapaRecept.resx">
+      <DependentUpon>SkapaRecept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValjPatientRecept.resx">
+      <DependentUpon>ValjPatientRecept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UppdateraPatient.resx">
+      <DependentUpon>UppdateraPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RedigeraBesok.resx">
       <DependentUpon>RedigeraBesok.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,10 +234,46 @@
       <Project>{673b83ca-82ec-4725-8814-eebdb2597f5f}</Project>
       <Name>PatienthanteringAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
+      <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
+      <Name>PatienthanteringDL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
       <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
       <Name>PatienthanteringEL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
+      <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
+      <Name>PatienthanteringDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj">
+      <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
+      <Name>PatienthanteringEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

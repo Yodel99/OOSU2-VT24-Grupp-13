@@ -54,7 +54,7 @@ namespace PatienthanteringPL
         }
         private void ListaPatienter()
         {
-            IList<Patient> patienter = patienthantering.ListaPatienter();
+            IList<Patient> patienter = patienthantering.HamtaPatienter();
 
             RefreshDatagridViewPatient(patienter);
         }
