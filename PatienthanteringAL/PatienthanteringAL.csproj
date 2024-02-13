@@ -46,6 +46,10 @@
     <Compile Include="UppdateraPatientController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PatienthanteringDLef\PatienthanteringDLef.csproj">
+      <Project>{52d19f48-9000-41ba-96b3-a28a10b25354}</Project>
+      <Name>PatienthanteringDLef</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
       <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
       <Name>PatienthanteringDL</Name>
@@ -54,6 +58,9 @@
       <Project>{939817bb-53b3-4c4f-9d77-88324e7859cd}</Project>
       <Name>PatienthanteringEL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
