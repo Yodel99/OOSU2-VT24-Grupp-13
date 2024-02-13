@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,10 @@ namespace PatienthanteringEL
 {
     public class VardPersonal: Person
     {
+        private VardPersonal()
+        {
+        }
+        [Key]
         public string AnstallningsNr { get; set; }
 
         public string YrkesRoll { get; set; }

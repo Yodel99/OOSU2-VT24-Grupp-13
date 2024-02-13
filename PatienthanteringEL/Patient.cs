@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,10 @@ namespace PatienthanteringEL
 {
     public class Patient: Person
     {
+        private Patient()
+        {
+        }
+        [Key]
         public string PatientNr { get; set; }
         public string Adress { get; set; }
 

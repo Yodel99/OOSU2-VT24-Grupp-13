@@ -8,6 +8,9 @@ namespace PatienthanteringEL
 {
     public class Person
     {
+        public Person()
+        {
+        }
         public string PersonNr { get; set; }
         public string FNamn { get; set; }
         public string ENamn { get; set; }
