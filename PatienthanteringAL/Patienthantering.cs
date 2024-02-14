@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
 using PatienthanteringDL;
-using PatienthanteringEL;
+
 using PatienthanteringDLef;
 
 namespace PatienthanteringAL
