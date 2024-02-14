@@ -12,6 +12,7 @@ using PatienthanteringEL;
 
 namespace PatienthanteringPL
 {
+    //hehehe
     public partial class ReggaDiagnos : Form
     {
         private Patient SelectedPatient;

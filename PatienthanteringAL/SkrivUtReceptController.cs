@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PatienthanteringAL
 {
+    //hejejeje
     public class SkrivUtReceptController
     {
         public Lakemedelsrecept SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)

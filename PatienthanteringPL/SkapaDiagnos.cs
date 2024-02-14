@@ -12,6 +12,7 @@ using PatienthanteringEL;
 
 namespace PatienthanteringPL
 {
+    //hejejej
     public partial class SkapaDiagnos : Form
     {
         private Patient selectedpatient { get; }

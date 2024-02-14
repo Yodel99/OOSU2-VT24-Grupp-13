@@ -19,6 +19,7 @@ namespace PatienthanteringAL
                 patienter.Add(patient);
             }
             return patienter;
+            //kommmmm
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
+    //hehehehe
     public partial class SkapaRecept : Form
     {
         private Patient selectedpatient { get; }

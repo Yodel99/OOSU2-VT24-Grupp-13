@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PatienthanteringAL
 {
+    //Hejeje
     public class SkapaDiagnosController
     {
         public Diagnos SkapaDiagnos(Patient selectedpatient, string behandling, string diagnosbeskrivning)
