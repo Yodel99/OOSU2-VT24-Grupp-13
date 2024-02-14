@@ -10,7 +10,7 @@ namespace PatienthanteringEL
 {
     public class VardPersonal: Person
     {
-        private VardPersonal()
+        public VardPersonal()
         {
         }
         [Key]

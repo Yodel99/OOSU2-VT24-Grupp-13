@@ -14,11 +14,15 @@ namespace PatienthanteringAL
 {
     public class Patienthantering
     {
+
         UnitOfWork unitOfWork = new UnitOfWork();
         public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
-            new PatienthanteringContext();
+            using (var db = new PatienthanteringContext())
+            {
+                db.Datafyllning();
+            }
 
             UnitOfWork unitOfWork = new UnitOfWork();
             foreach (Anvandare anvandare in unitOfWork.AnvandareRepository.Find(a => a.InloggID.Equals(inloggID)))

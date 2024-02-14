@@ -11,7 +11,7 @@ namespace PatienthanteringEL
 {
     public class Patient: Person
     {
-        private Patient()
+        public Patient()
         {
         }
         [Key]

@@ -9,7 +9,7 @@ namespace PatienthanteringEL
 {
     public class Lakemedelsrecept
     {
-        private Lakemedelsrecept()
+        public Lakemedelsrecept()
         {
         }
         public  int LakemedelsreceptId { get; set; }
