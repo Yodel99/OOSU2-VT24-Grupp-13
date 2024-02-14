@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
 
+
 namespace PatienthanteringDL
 {
     public class UnitOfWork
@@ -41,9 +42,7 @@ namespace PatienthanteringDL
         {
             get; private set;
         }
-
-        
-
+                    
         private static UnitOfWork instans = null;
         public static UnitOfWork GetInstance()
         {
