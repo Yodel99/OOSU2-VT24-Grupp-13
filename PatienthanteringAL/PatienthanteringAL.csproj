@@ -139,6 +139,10 @@
     <Compile Include="UppdateraPatientController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PatienthanteringDLef\PatienthanteringDLef.csproj">
+      <Project>{52d19f48-9000-41ba-96b3-a28a10b25354}</Project>
+      <Name>PatienthanteringDLef</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
       <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>
       <Name>PatienthanteringDL</Name>
@@ -150,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.0.19235.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
