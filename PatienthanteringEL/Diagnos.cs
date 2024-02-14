@@ -9,6 +9,9 @@ namespace PatienthanteringEL
 {
     public class Diagnos
     {
+        private Diagnos()
+        {
+        }
         public int DiagnosID { get; set; }
         public Patient Patient { get; set; }
         public string Diagnosbeskrivning { get; set; }

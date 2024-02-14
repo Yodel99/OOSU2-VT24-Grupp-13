@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
-using PatienthanteringDL;
+using PatienthanteringDLef;
 
 using PatienthanteringDLef;
 
@@ -14,11 +14,10 @@ namespace PatienthanteringAL
 {
     public class Patienthantering
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        UnitOfWork unitOfWork = new UnitOfWork();
         public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
-
             new PatienthanteringContext();
 
             UnitOfWork unitOfWork = new UnitOfWork();
@@ -32,15 +31,7 @@ namespace PatienthanteringAL
             return null;
         }       
 
-        public IList<Patient> HamtaPatienter()
-        {         
-            List<Patient> patienter = new List<Patient>(); 
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null)) 
-            { 
-                patienter.Add(patient); 
-            }
-            return patienter;
-        }
+        
 
         public void RegistreraPatient(string personNmr, string fnamn,string enamn,string email, string patientNmr, string adress, string telNmr )
         {
@@ -102,91 +93,58 @@ namespace PatienthanteringAL
 
         }
         
-     
-        public IList<VardPersonal> ListaSjukSkotare()
+   
+        public void UppdateraPatientInfo(string valdPatientID, string valdAttribut, string valdInput)
         {
-            List<VardPersonal> sjukSkjotare = new List<VardPersonal>();
-            foreach (VardPersonal personal in unitOfWork.VardPersonalRepository.Find(m => m.AnstallningsNr != null))
+            UnitOfWork unitOfWork = new UnitOfWork();
+
+            foreach (Patient patient in unitOfWork.PatientRepository.Find(p => p.PatientNr.ToLower().Equals(valdPatientID)))
             {
-                if (personal.YrkesRoll== "Sjuksköterska")
+
+                if (valdAttribut.Equals("personnr"))
                 {
-                    sjukSkjotare.Add(personal);
+                    patient.PersonNr = valdInput;
+                }
+                else if (valdAttribut.Equals("fnamn"))
+                {
+                    patient.FNamn = valdInput;
+                }
+                else if (valdAttribut.Equals("enamn"))
+                {
+                    patient.ENamn = valdInput;
+                }
+                else if (valdAttribut.Equals("email"))
+                {
+                    patient.Email = valdInput;
+                }
+                else if (valdAttribut.Equals("adress"))
+                {
+                    patient.Adress = valdInput;
+                }
+                else if (valdAttribut.Equals("telnr"))
+                {
+                    patient.TelNr = valdInput;
                 }
             }
-            return sjukSkjotare;
         }
-        public IList<LakarBesok> ListaBesok()
+        public IList<Patient> HamtaPatienter()
         {
-            List<LakarBesok> lakarBesok = new List<LakarBesok>();
-
-            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
-            {
-
-                lakarBesok.Add(lakarBesok1);
-
-            }
-            return lakarBesok;
-
-        }
-        public Patient HamtaPatient(string patientnummer)
-        {
-
+            List<Patient> patienter = new List<Patient>();
             foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
             {
-                if (patient.PatientNr == patientnummer)
-                {
-                    return patient;
-                }
-                
+                patienter.Add(patient);
             }
-            return null;
+            return patienter;
         }
-        public LakarBesok HamtaBesok(string besokNr)
-        {
-            foreach (LakarBesok besok in unitOfWork.LakarBesokRepository.Find(m => m.PatientNr != null))
-            {
-                if (besok.BesokNr == besokNr)
-                {
-                    return besok;
-                }
 
-            }
-            return null;
-        }
-        public VardPersonal HamtaLakare(string anstallningsnummer)
-        {
-            foreach (VardPersonal personal in unitOfWork.VardPersonalRepository.Find(m => m.AnstallningsNr != null))
-            {
-                if (personal.AnstallningsNr == anstallningsnummer)
-                {
-                    return personal;
-                }
-            }
-            return null;
-        }
-        
-        public void LaggTillBesok(LakarBesok besok)
-        {
-            unitOfWork.LakarBesokRepository.Add(besok);
-        }
-        public void TaBortBesok(string besokNr)
-        {
-       
-            foreach (LakarBesok lakarBesok1 in unitOfWork.LakarBesokRepository.Find(m => m.BesokNr != null))
-            {
-                if (lakarBesok1.BesokNr == besokNr)
-                {
-                    unitOfWork.LakarBesokRepository.Remove(lakarBesok1);
-                    break;
-                }
 
-            }
-            
-        }
-        public void AndraDatum(LakarBesok lakarBesok)
-        {
-            TaBortBesok(lakarBesok.BesokNr);
-            LaggTillBesok(lakarBesok);
-        }
+
+
+
+
+
+
+
+
     }
 }

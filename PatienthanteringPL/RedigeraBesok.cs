@@ -15,7 +15,7 @@ namespace PatienthanteringPL
 {
     public partial class RedigeraBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        HanteraBesokController hanteraBesokController = new HanteraBesokController();
 
         public RedigeraBesok()
         {
@@ -24,7 +24,7 @@ namespace PatienthanteringPL
         }
         private void ListaBesok()
         {
-            IList<LakarBesok> lakarBesok = patienthantering.ListaBesok();
+            IList<LakarBesok> lakarBesok = hanteraBesokController.ListaBesok();
             RefreshDatagridViewBesok(lakarBesok);
         }
         private void RefreshDatagridViewBesok(IList<LakarBesok> lakarBesok)
@@ -38,27 +38,59 @@ namespace PatienthanteringPL
 
             dataGridViewBefintligaBesok.DataSource = lakarBesok1;
         }
-        
+
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            patienthantering.TaBortBesok(besokNr);
-            MessageBox.Show("Bokning Borttagen");
-            HanteraBesok hanteraBesok = new HanteraBesok();
-            hanteraBesok.Show();
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
+
+            if (string.IsNullOrWhiteSpace(besokNr))
+            {
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+
+            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
+            if (lakarBesok == null)
+            {
+                MessageBox.Show("Ingen bokning hittades med det angivna besöksnumret.");
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Är du säker på att du vill ta bort bokningen?", "Bekräfta borttagning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    hanteraBesokController.TaBortBesok(besokNr);
+                    MessageBox.Show("Bokning borttagen.");
+                    HanteraBesok hanteraBesok = new HanteraBesok();
+                    hanteraBesok.Show();
+                    this.Close();
+                }
+            }
         }
-        
+
 
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            LakarBesok lakarBesok = patienthantering.HamtaBesok(besokNr);
-            AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
-            andraTidBesok.Show(); 
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
 
+            if (string.IsNullOrWhiteSpace(besokNr))
+            {
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+
+            LakarBesok lakarBesok = hanteraBesokController.HamtaBesok(besokNr);
+            if (lakarBesok == null)
+            {
+                MessageBox.Show("Inget besök hittades med det angivna besöksnumret.");
+            }
+            else
+            {
+                AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
+                andraTidBesok.Show();
+                this.Close();
+            }
         }
 
         private void buttonTillbaka_Click(object sender, EventArgs e)

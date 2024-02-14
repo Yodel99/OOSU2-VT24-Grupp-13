@@ -14,7 +14,7 @@ namespace PatienthanteringPL
 {
     public partial class AndraTidBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        HanteraBesokController hanteraBesokController = new HanteraBesokController();
         LakarBesok LakarBesokObjekt { get; set; }
         public AndraTidBesok(LakarBesok lakarBesok)
         {
@@ -34,7 +34,7 @@ namespace PatienthanteringPL
         {
             
             LakarBesokObjekt.Datum = dateTimePickerAndraDatum.Value;
-            patienthantering.AndraDatum(lakarBesok);
+            hanteraBesokController.AndraDatum(lakarBesok);
             
         }
 
