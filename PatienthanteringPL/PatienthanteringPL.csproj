@@ -231,9 +231,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PatienthanteringAL\PatienthanteringAL.csproj">
-      <Project>{673b83ca-82ec-4725-8814-eebdb2597f5f}</Project>
-      <Name>PatienthanteringAL</Name>
+    <ProjectReference Include="..\PatienthanteringDLef\PatienthanteringDLef.csproj">
+      <Project>{52d19f48-9000-41ba-96b3-a28a10b25354}</Project>
+      <Name>PatienthanteringDLef</Name>
     </ProjectReference>
     <ProjectReference Include="..\PatienthanteringDL\PatienthanteringDL.csproj">
       <Project>{e7197676-6720-4aaf-bec9-36a58cb43447}</Project>

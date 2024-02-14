@@ -9,25 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatienthanteringAL;
 using PatienthanteringDL;
+using PatienthanteringDLef;
 using PatienthanteringEL;
+
 
 namespace PatienthanteringPL
 {
     public partial class LoggaIn : Form
     {
+        //hehehehehehehohohohoho
         public LoggaIn()
         {
             InitializeComponent();
+            LosenordtextBox2.UseSystemPasswordChar = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Patienthantering patienthantering = new Patienthantering();
+            LoggaInKontroller loggainkontroller = new LoggaInKontroller();            
+            
 
             string inloggID = InloggsIDtextBox1.Text;
             string losenord = LosenordtextBox2.Text;
+            
 
-            Anvandare inloggadAnvandare = patienthantering.GetAnvandare(inloggID, losenord);           
+            Anvandare inloggadAnvandare = loggainkontroller.GetAnvandare(inloggID, losenord);           
 
             if (inloggadAnvandare != null)
             {
@@ -37,13 +43,13 @@ namespace PatienthanteringPL
             }
             else
             {
-                Felinlogg felinlogg = new Felinlogg();
-                this.Hide();
-                felinlogg.Show();
+                MessageBox.Show("Felaktigt användarnamn eller lösenord. Försök igen.");
             }
 
 
 
         }
+
+        
     }
 }

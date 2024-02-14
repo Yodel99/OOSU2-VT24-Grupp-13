@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
+    //hehehehe
     public partial class SkapaRecept : Form
     {
         private Patient selectedpatient { get; }
@@ -38,19 +39,26 @@ namespace PatienthanteringPL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Patienthantering patienthantering = new Patienthantering();
-            string lakemedel = textBoxlakemedel.Text;
-            string dosering = textBoxdosering.Text;
-            string anledning = textBoxanledning.Text;
-            Lakemedelsrecept lakemedelsrecept = patienthantering.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);   
+            string lakemedel = textBoxlakemedel.Text.Trim();
+            string dosering = textBoxdosering.Text.Trim();
+            string anledning = textBoxanledning.Text.Trim();
+
+            if (string.IsNullOrEmpty(lakemedel) || string.IsNullOrEmpty(dosering) || string.IsNullOrEmpty(anledning))
+            {
+                MessageBox.Show("Fyll i alla fält innan du lägger till receptet.", "Tomma fält", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Avbryt metoden om något av fälten är tomt
+            }
+
+            SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
+            Lakemedelsrecept lakemedelsrecept = skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
             PatientHantering patientHantering = new PatientHantering();
             this.Close();
             patientHantering.Show();
         }
         private void VisaRecept()
         {
-            Patienthantering patienthantering = new Patienthantering();
-            IList<Lakemedelsrecept> lakemedelsrecept = patienthantering.HamtaRecept(selectedpatient);
+            SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
+            IList<Lakemedelsrecept> lakemedelsrecept = skrivUtReceptController.HamtaRecept(selectedpatient);
 
             List<object> receptDataList = new List<object>();
 
@@ -61,6 +69,13 @@ namespace PatienthanteringPL
             }
 
             dataGridViewVisaRecept.DataSource = receptDataList;
+        }
+
+        private void Tillbakabutton_Click(object sender, EventArgs e)
+        {
+            ValjPatientRecept valjPatientRecept = new ValjPatientRecept();
+            this.Close();
+            valjPatientRecept.Show();
         }
     }
 }

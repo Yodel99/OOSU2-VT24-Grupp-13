@@ -30,29 +30,44 @@
         {
             this.dataGridViewVisaPatienter = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.Tillbakabutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisaPatienter)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewVisaPatienter
             // 
             this.dataGridViewVisaPatienter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVisaPatienter.Location = new System.Drawing.Point(247, 25);
+            this.dataGridViewVisaPatienter.Location = new System.Drawing.Point(269, 25);
             this.dataGridViewVisaPatienter.Name = "dataGridViewVisaPatienter";
             this.dataGridViewVisaPatienter.RowHeadersWidth = 62;
             this.dataGridViewVisaPatienter.RowTemplate.Height = 28;
-            this.dataGridViewVisaPatienter.Size = new System.Drawing.Size(541, 394);
+            this.dataGridViewVisaPatienter.Size = new System.Drawing.Size(519, 394);
             this.dataGridViewVisaPatienter.TabIndex = 0;
             this.dataGridViewVisaPatienter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisaPatienter_CellClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(47, 86);
+            this.button1.Location = new System.Drawing.Point(34, 85);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 58);
+            this.button1.Size = new System.Drawing.Size(196, 62);
             this.button1.TabIndex = 1;
             this.button1.Text = "Skriv ut recept";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Tillbakabutton
+            // 
+            this.Tillbakabutton.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.Tillbakabutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tillbakabutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Tillbakabutton.Location = new System.Drawing.Point(13, 387);
+            this.Tillbakabutton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Tillbakabutton.Name = "Tillbakabutton";
+            this.Tillbakabutton.Size = new System.Drawing.Size(159, 49);
+            this.Tillbakabutton.TabIndex = 8;
+            this.Tillbakabutton.Text = "Tillbaka";
+            this.Tillbakabutton.UseVisualStyleBackColor = false;
+            this.Tillbakabutton.Click += new System.EventHandler(this.Tillbakabutton_Click);
             // 
             // ValjPatientRecept
             // 
@@ -60,6 +75,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Tillbakabutton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewVisaPatienter);
             this.Name = "ValjPatientRecept";
@@ -73,5 +89,6 @@
 
         private System.Windows.Forms.DataGridView dataGridViewVisaPatienter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Tillbakabutton;
     }
 }

@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using PatienthanteringEL;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace PatienthanteringDL
 {
@@ -41,9 +43,7 @@ namespace PatienthanteringDL
         {
             get; private set;
         }
-
-        
-
+                    
         private static UnitOfWork instans = null;
         public static UnitOfWork GetInstance()
         {
