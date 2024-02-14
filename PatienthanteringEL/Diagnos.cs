@@ -8,7 +8,7 @@ namespace PatienthanteringEL
 {
     public class Diagnos
     {
-        private Diagnos()
+        public Diagnos()
         {
         }
         public int DiagnosID { get; set; }

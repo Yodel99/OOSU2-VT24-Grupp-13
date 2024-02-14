@@ -9,7 +9,7 @@ namespace PatienthanteringEL
 {
     public class LakarBesok
     {
-        private LakarBesok()
+        public LakarBesok()
         {
         }
         [Key]

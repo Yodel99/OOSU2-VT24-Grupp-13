@@ -9,7 +9,7 @@ namespace PatienthanteringEL
 {
     public class Anvandare
     {
-        private Anvandare()
+        public Anvandare()
         {
         }
         [Key]
