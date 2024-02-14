@@ -12,6 +12,7 @@ using PatienthanteringEL;
 
 namespace PatienthanteringPL
 {
+    //hejejej
     public partial class SkapaDiagnos : Form
     {
         private Patient selectedpatient { get; }
@@ -20,8 +21,7 @@ namespace PatienthanteringPL
         {
             InitializeComponent();
             selectedpatient = SelectedPatient;
-            VisaDiagnoser();
-            
+            VisaDiagnoser();           
         }
 
         private void textBoxDiagnosBeskrivning_TextChanged(object sender, EventArgs e)
@@ -34,23 +34,29 @@ namespace PatienthanteringPL
             string behandlingsPlan = textBoxBehandlingsplan.Text;
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            Patienthantering patienthantering = new Patienthantering();
-            string behandling = textBoxBehandlingsplan.Text;
-            string diagnosBeskrivning = textBoxDiagnosBeskrivning.Text;
-            Diagnos diagnos = patienthantering.SkapaDiagnos(selectedpatient, behandling, diagnosBeskrivning);
-            patienthantering.LaggTillDiagnosTillKund(selectedpatient, diagnos);
+            string behandling = textBoxBehandlingsplan.Text.Trim();
+            string diagnosBeskrivning = textBoxDiagnosBeskrivning.Text.Trim();
+
+            if (string.IsNullOrEmpty(behandling) || string.IsNullOrEmpty(diagnosBeskrivning))
+            {
+                MessageBox.Show("Fyll i alla fält innan du lägger till diagnosen.", "Tomma fält", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Avbryt metoden om något av fälten är tomt
+            }
+
+            SkapaDiagnosController skapaDiagnosController = new SkapaDiagnosController();
+            Diagnos diagnos = skapaDiagnosController.SkapaDiagnos(selectedpatient, behandling, diagnosBeskrivning);
+            skapaDiagnosController.LaggTillDiagnosTillKund(selectedpatient, diagnos);
+
             PatientHantering patientHantering = new PatientHantering();
             this.Close();
             patientHantering.Show();
         }
         private void VisaDiagnoser()
         {
-            Patienthantering patienthantering = new Patienthantering();
-            IList<Diagnos> diagnoser = patienthantering.HamtaDiagnoser(selectedpatient);
+            SkapaDiagnosController skapaDiagnosController = new SkapaDiagnosController();
+            IList<Diagnos> diagnoser = skapaDiagnosController.HamtaDiagnoser(selectedpatient);
 
             List<object> DiagnosDataList = new List<object>();
 
@@ -61,6 +67,13 @@ namespace PatienthanteringPL
             }
 
             dataGridViewVisaDiagnos.DataSource = DiagnosDataList;
+        }
+
+        private void Tillbakabutton_Click(object sender, EventArgs e)
+        {
+            ReggaDiagnos reggaDiagnos = new ReggaDiagnos();
+            this.Close();
+            reggaDiagnos.Show();
         }
     }
 }

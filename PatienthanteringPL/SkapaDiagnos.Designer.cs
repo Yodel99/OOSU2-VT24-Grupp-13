@@ -34,6 +34,7 @@
             this.textBoxBehandlingsplan = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewVisaDiagnos = new System.Windows.Forms.DataGridView();
+            this.Tillbakabutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisaDiagnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,12 +85,26 @@
             // dataGridViewVisaDiagnos
             // 
             this.dataGridViewVisaDiagnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVisaDiagnos.Location = new System.Drawing.Point(461, 40);
+            this.dataGridViewVisaDiagnos.Location = new System.Drawing.Point(473, 12);
             this.dataGridViewVisaDiagnos.Name = "dataGridViewVisaDiagnos";
             this.dataGridViewVisaDiagnos.RowHeadersWidth = 62;
             this.dataGridViewVisaDiagnos.RowTemplate.Height = 28;
-            this.dataGridViewVisaDiagnos.Size = new System.Drawing.Size(315, 314);
+            this.dataGridViewVisaDiagnos.Size = new System.Drawing.Size(315, 358);
             this.dataGridViewVisaDiagnos.TabIndex = 5;
+            // 
+            // Tillbakabutton
+            // 
+            this.Tillbakabutton.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.Tillbakabutton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tillbakabutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Tillbakabutton.Location = new System.Drawing.Point(13, 391);
+            this.Tillbakabutton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Tillbakabutton.Name = "Tillbakabutton";
+            this.Tillbakabutton.Size = new System.Drawing.Size(156, 45);
+            this.Tillbakabutton.TabIndex = 9;
+            this.Tillbakabutton.Text = "Tillbaka";
+            this.Tillbakabutton.UseVisualStyleBackColor = false;
+            this.Tillbakabutton.Click += new System.EventHandler(this.Tillbakabutton_Click);
             // 
             // SkapaDiagnos
             // 
@@ -97,6 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Tillbakabutton);
             this.Controls.Add(this.dataGridViewVisaDiagnos);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxBehandlingsplan);
@@ -119,5 +135,6 @@
         private System.Windows.Forms.TextBox textBoxBehandlingsplan;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridViewVisaDiagnos;
+        private System.Windows.Forms.Button Tillbakabutton;
     }
 }

@@ -14,8 +14,7 @@ namespace PatienthanteringPL
 {
     public partial class NyttBesok : Form
     {
-
-        HanteraBesokController hanteraBesokController = new HanteraBesokController();
+        Patienthantering patienthantering = new Patienthantering();
         public NyttBesok()
         {
             InitializeComponent();
@@ -55,62 +54,55 @@ namespace PatienthanteringPL
         }
         private void ListaPatienter()
         {
-            
-            IList<Patient> patienter = hanteraBesokController.HamtaPatienter();
+            IList<Patient> patienter = patienthantering.HamtaPatienter();
 
             RefreshDatagridViewPatient(patienter);
         }
         private void ListaSjukSkotare()
         {
-            IList<VardPersonal> sjukSkotare = hanteraBesokController.ListaSjukSkotare();
+            IList<VardPersonal> sjukSkotare = patienthantering.ListaSjukSkotare();
             RefreshDatagridViewSjukskotare(sjukSkotare);
         }
         private void SkapaBesok()
         {
             
-            string aNummerLakare = textBoxANummerLakare.Text.ToUpper();
-            string patientNummer = textBoxPatientNummer.Text.ToUpper();
-            string syfte = textBoxSyfte.Text;
-            DateTime datum = dateTimePickerBesok.Value;
-            string besokNummer = textBoxBesokNummer.Text.ToUpper();
+            string aNummerLakare;
+            string patientNummer;
+            string syfte;
+            DateTime datum;
+            string besokNummer;
 
+            aNummerLakare = textBoxANummerLakare.Text;
+            patientNummer = textBoxPatientNummer.Text;
+            syfte = textBoxSyfte.Text;
+            datum = dateTimePickerBesok.Value;
+            besokNummer = textBoxBesokNummer.Text;
+
+            VardPersonal lakare = HamtaLakare(aNummerLakare);
+            Patient patient = HamtaPatient(patientNummer);
+            if (lakare == null)
+            {
+                Felmeddelande felmeddelande = new Felmeddelande();
+                felmeddelande.Show();
+            }
+            else if (patient == null)
+            {
+                Felmeddelande felmeddelande = new Felmeddelande();
+                felmeddelande.Show();
+            }
             
-            try
-            {
-                VardPersonal lakare = HamtaLakare(aNummerLakare);
-                Patient patient = HamtaPatient(patientNummer);
-
-                if (lakare == null || patient == null || !IsValidBesokNummer(besokNummer) || !IsValidLakare(lakare))
-                {
-                    MessageBox.Show("Felaktigt ifyllt fält, Var god att kontrollera");
-                    return;
-                }
-
-                LakarBesok lakarBesok = new LakarBesok(besokNummer, datum, syfte, patient, lakare);
-                hanteraBesokController.LaggTillBesok(lakarBesok);
-                VisaKvittens(lakarBesok);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ett fel uppstod: {ex.Message}");
-            }
+            LakarBesok lakarBesok = new LakarBesok(besokNummer, datum, syfte, patient, lakare);
+            
+            patienthantering.LaggTillBesok(lakarBesok);
+            VisaKvittens(lakarBesok);
         }
-        private bool IsValidBesokNummer(string besokNummer)
-        {
-            return besokNummer.StartsWith("B-");
-        }
-        private bool IsValidLakare(VardPersonal lakare)
-        {
-            return lakare.YrkesRoll == "Sjuksköterska";
-        }
-
         private Patient HamtaPatient(string patientNummer)
         {
-            return hanteraBesokController.HamtaPatient(patientNummer);
+            return patienthantering.HamtaPatient(patientNummer);
         }
         private VardPersonal HamtaLakare(string anstallningsNummer)
         {
-            return hanteraBesokController.HamtaLakare(anstallningsNummer);
+            return patienthantering.HamtaLakare(anstallningsNummer);
         }
         private void VisaKvittens(LakarBesok lakarBesok)
         {
