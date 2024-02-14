@@ -15,6 +15,7 @@ namespace PatienthanteringPL
     public partial class NyttBesok : Form
     {
         Patienthantering patienthantering = new Patienthantering();
+        ManageVisitController manageVisitController = new ManageVisitController();
         public NyttBesok()
         {
             InitializeComponent();
@@ -28,18 +29,18 @@ namespace PatienthanteringPL
 
             foreach (Patient patient in patientlista)
             {
-                patienter.Add(new { Förnamn = patient.FNamn, Efternamn = patient.ENamn, PatientNummer = patient.PatientNr});
+                patienter.Add(new { Förnamn = patient.FName, Efternamn = patient.EName, PatientNummer = patient.PatientNr});
             }
 
             dataGridViewPatienter.DataSource = patienter;
         }
-        private void RefreshDatagridViewSjukskotare(IList<VardPersonal> sjuksKotare)
+        private void RefreshDatagridViewSjukskotare(IList<NursingStaff> sjuksKotare)
         {
             List<object> sjukSkotareLista = new List<object>();
       
-            foreach (VardPersonal sjukSkotare1 in sjuksKotare)
+            foreach (NursingStaff sjukSkotare1 in sjuksKotare)
             {
-                sjukSkotareLista.Add(new { Förnamn = sjukSkotare1.FNamn, Efternamn = sjukSkotare1.ENamn, Anställningsnummer = sjukSkotare1.AnstallningsNr });
+                sjukSkotareLista.Add(new { Förnamn = sjukSkotare1.FName, Efternamn = sjukSkotare1.EName, Anställningsnummer = sjukSkotare1.StaffNr });
             }
 
             dataGridViewSjukSkotare.DataSource = sjukSkotareLista;
@@ -54,13 +55,13 @@ namespace PatienthanteringPL
         }
         private void ListaPatienter()
         {
-            IList<Patient> patienter = patienthantering.HamtaPatienter();
+            IList<Patient> patienter = manageVisitController.GetPatients();
 
             RefreshDatagridViewPatient(patienter);
         }
         private void ListaSjukSkotare()
         {
-            IList<VardPersonal> sjukSkotare = patienthantering.ListaSjukSkotare();
+            IList<NursingStaff> sjukSkotare = manageVisitController.ListNursingStaffs();
             RefreshDatagridViewSjukskotare(sjukSkotare);
         }
         private void SkapaBesok()
@@ -78,7 +79,7 @@ namespace PatienthanteringPL
             datum = dateTimePickerBesok.Value;
             besokNummer = textBoxBesokNummer.Text;
 
-            VardPersonal lakare = HamtaLakare(aNummerLakare);
+            NursingStaff lakare = HamtaLakare(aNummerLakare);
             Patient patient = HamtaPatient(patientNummer);
             if (lakare == null)
             {
@@ -91,20 +92,20 @@ namespace PatienthanteringPL
                 felmeddelande.Show();
             }
             
-            LakarBesok lakarBesok = new LakarBesok(besokNummer, datum, syfte, patient, lakare);
+            DoctorAppointment doctorAppointment = new DoctorAppointment(besokNummer, datum, syfte, patient, lakare);
             
-            patienthantering.LaggTillBesok(lakarBesok);
-            VisaKvittens(lakarBesok);
+            manageVisitController.AddVisit(doctorAppointment);
+            VisaKvittens(doctorAppointment);
         }
-        private Patient HamtaPatient(string patientNummer)
+        private Patient HamtaPatient(string patientNr)
         {
-            return patienthantering.HamtaPatient(patientNummer);
+            return manageVisitController.GetPatient(patientNr);
         }
-        private VardPersonal HamtaLakare(string anstallningsNummer)
+        private NursingStaff HamtaLakare(string staffNr)
         {
-            return patienthantering.HamtaLakare(anstallningsNummer);
+            return manageVisitController.GetDoctor(staffNr);
         }
-        private void VisaKvittens(LakarBesok lakarBesok)
+        private void VisaKvittens(DoctorAppointment lakarBesok)
         {
             KvittensBokning kvittensBokning = new KvittensBokning(lakarBesok);
             kvittensBokning.Show();

@@ -1,4 +1,4 @@
-﻿using PatienthanteringDL;
+﻿using PatienthanteringDLef;
 using PatienthanteringEL;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,6 @@ namespace PatienthanteringAL
                 patienter.Add(patient);
             }
             return patienter;
-            //kommmmm
         }
     }
 }

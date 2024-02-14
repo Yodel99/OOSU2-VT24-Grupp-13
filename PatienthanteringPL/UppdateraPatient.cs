@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatienthanteringAL;
-using PatienthanteringDL;
+using PatienthanteringDLef;
 using PatienthanteringEL;
 
 namespace PatienthanteringPL
@@ -24,8 +24,8 @@ namespace PatienthanteringPL
 
         private void VisaPatienter()
         {        
-            Patienthantering patienthantering = new Patienthantering();
-            IList<Patient> patienter = patienthantering.HamtaPatienter();
+            HamtaListaController hamtaListaController = new HamtaListaController();
+            IList<Patient> patienter = hamtaListaController.HamtaPatienter();
             dataGridViewVisaPatienter.DataSource = patienter;
         }
 

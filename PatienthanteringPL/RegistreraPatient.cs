@@ -14,6 +14,7 @@ namespace PatienthanteringPL
 {
     public partial class RegistreraPatient : Form
     {
+        HamtaListaController hamtaListaController = new HamtaListaController();
         public RegistreraPatient()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace PatienthanteringPL
         public void VisaPatienter()
         {
             Patienthantering patienthantering = new Patienthantering(); 
-            IList<Patient> patienter = patienthantering.HamtaPatienter(); 
+            IList<Patient> patienter = hamtaListaController.HamtaPatienter(); 
             dataGridViewVisaPatienter.DataSource = patienter;
         }
 

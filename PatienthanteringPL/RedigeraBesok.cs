@@ -16,7 +16,7 @@ namespace PatienthanteringPL
     public partial class RedigeraBesok : Form
     {
         Patienthantering patienthantering = new Patienthantering();
-
+        ManageVisitController manageVisitController = new ManageVisitController();
         public RedigeraBesok()
         {
             InitializeComponent();
@@ -24,16 +24,16 @@ namespace PatienthanteringPL
         }
         private void ListaBesok()
         {
-            IList<LakarBesok> lakarBesok = patienthantering.ListaBesok();
-            RefreshDatagridViewBesok(lakarBesok);
+            IList<DoctorAppointment> doctorAppointment = manageVisitController.ListVisits();
+            RefreshDatagridViewBesok(doctorAppointment);
         }
-        private void RefreshDatagridViewBesok(IList<LakarBesok> lakarBesok)
+        private void RefreshDatagridViewBesok(IList<DoctorAppointment> lakarBesok)
         {
             List<object> lakarBesok1 = new List<object>();
 
-            foreach (LakarBesok besok in lakarBesok)
+            foreach (DoctorAppointment besok in lakarBesok)
             {
-                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.BesokNr, PatientNummer = besok.PatientNr, AnställningsNr = besok.AnstallningsID });
+                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.VisitNr, PatientNummer = besok.PatientNr, AnställningsNr = besok.AnstallningsID });
             }
 
             dataGridViewBefintligaBesok.DataSource = lakarBesok1;
@@ -42,8 +42,8 @@ namespace PatienthanteringPL
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            patienthantering.TaBortBesok(besokNr);
+            string visitNr = textBoxBesokNr.Text;
+            manageVisitController.RemoveAppointment(visitNr);
             MessageBox.Show("Bokning Borttagen");
             HanteraBesok hanteraBesok = new HanteraBesok();
             hanteraBesok.Show();
@@ -54,7 +54,7 @@ namespace PatienthanteringPL
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
             string besokNr = textBoxBesokNr.Text;
-            LakarBesok lakarBesok = patienthantering.HamtaBesok(besokNr);
+            DoctorAppointment lakarBesok = manageVisitController.GetVisit(besokNr);
             AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
             andraTidBesok.Show(); 
             this.Close();

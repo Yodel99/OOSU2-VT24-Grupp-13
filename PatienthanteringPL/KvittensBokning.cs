@@ -13,27 +13,27 @@ namespace PatienthanteringPL
 {
     public partial class KvittensBokning : Form
     {
-        public LakarBesok LakarBesok { get; }
-        public KvittensBokning(LakarBesok lakarBesok)
+        public DoctorAppointment LakarBesok { get; }
+        public KvittensBokning(DoctorAppointment lakarBesok)
         {
             InitializeComponent();
             LakarBesok = lakarBesok;
             VisaKvittens(lakarBesok);
         }
-        private void VisaKvittens(LakarBesok lakarBesok)
+        private void VisaKvittens(DoctorAppointment lakarBesok)
         {
             RefreshDatagridViewBesok(lakarBesok);
         }
-        private void RefreshDatagridViewBesok(LakarBesok lakarBesok)
+        private void RefreshDatagridViewBesok(DoctorAppointment lakarBesok)
         {
-            List <LakarBesok> datagridveiew= new List<LakarBesok> ();
+            List <DoctorAppointment> datagridveiew= new List<DoctorAppointment> ();
             datagridveiew.Add (lakarBesok);
             List<object> lakarBesok1 = new List<object>();
                 
 
-            foreach (LakarBesok besok in datagridveiew)
+            foreach (DoctorAppointment besok in datagridveiew)
             {
-                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.BesokNr, PatientNummer = besok.PatientNr, Patient = besok.PatientFNamn, AnställningsNr = besok.AnstallningsID, Läkare = besok.LakareFnamn });
+                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.VisitNr, PatientNummer = besok.PatientNr, Patient = besok.PatientFNamn, AnställningsNr = besok.AnstallningsID, Läkare = besok.LakareFnamn });
             }
 
             dataGridViewKvittens.DataSource = lakarBesok1;

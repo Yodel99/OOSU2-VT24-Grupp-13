@@ -13,7 +13,7 @@ namespace PatienthanteringPL
 {
     public partial class Huvudmeny : Form
     {
-        public Anvandare AktivAnvandare { get; }
+        public User AktivAnvandare { get; }
         public Huvudmeny()
         {           
             InitializeComponent();           

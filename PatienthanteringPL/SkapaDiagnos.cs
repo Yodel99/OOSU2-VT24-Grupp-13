@@ -63,7 +63,7 @@ namespace PatienthanteringPL
             foreach (Diagnos diagnos in diagnoser)
             {
                 // Lägg till varje rad som ett anpassat objekt.
-                DiagnosDataList.Add(new { patientnr = selectedpatient.PatientNr, diagnosBeskrivning = diagnos.Diagnosbeskrivning, datum = diagnos.Datum.ToShortDateString() , behandling = diagnos.Behandling });
+                DiagnosDataList.Add(new { patientnr = selectedpatient.PatientNr, diagnosBeskrivning = diagnos.DiagnosDescription, datum = diagnos.Date.ToShortDateString() , behandling = diagnos.Treatment });
             }
 
             dataGridViewVisaDiagnos.DataSource = DiagnosDataList;

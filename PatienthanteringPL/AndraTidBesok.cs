@@ -15,11 +15,12 @@ namespace PatienthanteringPL
     public partial class AndraTidBesok : Form
     {
         Patienthantering patienthantering = new Patienthantering();
-        LakarBesok LakarBesokObjekt { get; set; }
-        public AndraTidBesok(LakarBesok lakarBesok)
+        ManageVisitController manageVisitController = new ManageVisitController();
+        DoctorAppointment LakarBesokObjekt { get; set; }
+        public AndraTidBesok(DoctorAppointment doctorAppointment)
         {
             InitializeComponent();
-            LakarBesokObjekt = lakarBesok;
+            LakarBesokObjekt = doctorAppointment;
             ModifieraDatePicker();
         }
         private void ModifieraDatePicker()
@@ -30,11 +31,11 @@ namespace PatienthanteringPL
 
             dateTimePickerAndraDatum.ShowUpDown = true;
         }
-        private void AndraBesok(LakarBesok lakarBesok)
+        private void AndraBesok(DoctorAppointment doctorAppointment)
         {
             
             LakarBesokObjekt.Datum = dateTimePickerAndraDatum.Value;
-            patienthantering.AndraDatum(lakarBesok);
+            manageVisitController.ChangeDate(doctorAppointment);
             
         }
 

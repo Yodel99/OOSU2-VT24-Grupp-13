@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using PatienthanteringDL;
+using PatienthanteringDLef;
 using PatienthanteringEL;
+
 
 namespace PatienthanteringAL
 {
@@ -22,15 +23,15 @@ namespace PatienthanteringAL
                 
                 if (valdAttribut.Equals("personnr"))
                 {
-                    patient.PersonNr = valdInput;
+                    patient.SSN = valdInput;
                 }
                 else if (valdAttribut.Equals("fnamn"))
                 {
-                    patient.FNamn = valdInput;
+                    patient.FName = valdInput;
                 }
                 else if (valdAttribut.Equals("enamn"))
                 {
-                    patient.ENamn = valdInput;
+                    patient.EName = valdInput;
                 }
                 else if (valdAttribut.Equals("email"))
                 {
@@ -38,7 +39,7 @@ namespace PatienthanteringAL
                 }
                 else if (valdAttribut.Equals("adress"))
                 {
-                    patient.Adress = valdInput;
+                    patient.Address = valdInput;
                 }
                 else if (valdAttribut.Equals("telnr"))
                 {

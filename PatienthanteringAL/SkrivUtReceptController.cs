@@ -1,4 +1,4 @@
-﻿using PatienthanteringDL;
+﻿using PatienthanteringDLef;
 using PatienthanteringEL;
 using System;
 using System.Collections.Generic;
@@ -8,23 +8,21 @@ using System.Threading.Tasks;
 
 namespace PatienthanteringAL
 {
-    //hejejeje
     public class SkrivUtReceptController
     {
-        public Lakemedelsrecept SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            Lakemedelsrecept lakemedelsrecept = new Lakemedelsrecept(selectedpatient, lakemedel, dosering, DateTime.Now, anledning);
-            unitOfWork.BehandlingRepository.Add(lakemedelsrecept);
+        UnitOfWork unitOfWork = new UnitOfWork();
+        public DrugPrescription SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)
+        {           
+            DrugPrescription lakemedelsrecept = new DrugPrescription(selectedpatient, lakemedel, dosering, DateTime.Now, anledning);
+            unitOfWork.DrugPrescriptionRepository.Add(lakemedelsrecept);
             return lakemedelsrecept;
         }
 
-        public IList<Lakemedelsrecept> HamtaRecept(Patient selectedpatient)
+        public IList<DrugPrescription> HamtaRecept(Patient selectedpatient)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            List<Lakemedelsrecept> lakemedelsrecepts = new List<Lakemedelsrecept>();
+            List<DrugPrescription> lakemedelsrecepts = new List<DrugPrescription>();
 
-            foreach (Lakemedelsrecept lakemedelsrecept in unitOfWork.BehandlingRepository.Find(m => m.Patient.PatientNr == selectedpatient.PatientNr))
+            foreach (DrugPrescription lakemedelsrecept in unitOfWork.DrugPrescriptionRepository.Find(m => m.Patient.PatientNr == selectedpatient.PatientNr))
             {
                 lakemedelsrecepts.Add(lakemedelsrecept);
             }

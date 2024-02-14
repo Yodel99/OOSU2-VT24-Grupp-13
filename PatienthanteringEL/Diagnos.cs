@@ -9,27 +9,24 @@ namespace PatienthanteringEL
 {
     public class Diagnos
     {
-
-        public Diagnos()
-        {
-        }
+        
         public int DiagnosID { get; set; }
 
         public Patient Patient { get; set; }
-        public string Diagnosbeskrivning { get; set; }
-        public DateTime Datum { get; set; }
-        public string Behandling { get; set; }
+        public string DiagnosDescription { get; set; }
+        public DateTime Date { get; set; }
+        public string Treatment { get; set; }
 
         public Diagnos()
         {
 
         }
-        public Diagnos(Patient patient, string diagnosbeskrivning, DateTime datum, string behandling)
+        public Diagnos(Patient patient, string diagnosDescription, DateTime date, string treatment)
         {
             this.Patient = patient;
-            this.Diagnosbeskrivning = diagnosbeskrivning;
-            this.Datum = datum;
-            this.Behandling = behandling;
+            this.DiagnosDescription = diagnosDescription;
+            this.Date = date;
+            this.Treatment = treatment;
         }
     }
 }

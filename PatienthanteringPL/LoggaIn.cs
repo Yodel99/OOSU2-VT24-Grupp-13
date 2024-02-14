@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatienthanteringAL;
-using PatienthanteringDL;
 using PatienthanteringDLef;
 using PatienthanteringEL;
 
@@ -26,14 +25,14 @@ namespace PatienthanteringPL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoggaInKontroller loggainkontroller = new LoggaInKontroller();            
+            LoggInController loggainkontroller = new LoggInController();            
             
 
             string inloggID = InloggsIDtextBox1.Text;
             string losenord = LosenordtextBox2.Text;
             
 
-            Anvandare inloggadAnvandare = loggainkontroller.GetAnvandare(inloggID, losenord);           
+            User inloggadAnvandare = loggainkontroller.GetUser(inloggID, losenord);           
 
             if (inloggadAnvandare != null)
             {

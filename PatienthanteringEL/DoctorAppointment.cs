@@ -7,31 +7,27 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PatienthanteringEL
 {
-    public class LakarBesok
+    public class DoctorAppointment
     {
 
-        public LakarBesok()
-        {
-        }
         [Key]
-
-        public string BesokNr { get; set; }
+        public string VisitNr { get; set; }
         public DateTime Datum { get; set; }
         public string Syfte { get; set; }
         public Patient Patient { get; set; }
-        public VardPersonal AnsvarigLakare { get; set; }
-        public string AnstallningsID => AnsvarigLakare?.AnstallningsNr;
+        public NursingStaff AnsvarigLakare { get; set; }
+        public string AnstallningsID => AnsvarigLakare?.StaffNr;
         public string PatientNr => Patient?.PatientNr;
-        public string PatientFNamn => Patient?.FNamn;
-        public string LakareFnamn => AnsvarigLakare?.FNamn;
+        public string PatientFNamn => Patient?.FName;
+        public string LakareFnamn => AnsvarigLakare?.FName;
 
-        public LakarBesok()
+        public DoctorAppointment()
         {
 
         }
-        public LakarBesok(string besokNr, DateTime datum, string syfte, Patient patient, VardPersonal ansvarigLäkare)
+        public DoctorAppointment(string besokNr, DateTime datum, string syfte, Patient patient, NursingStaff ansvarigLäkare)
         {
-            this.BesokNr = besokNr;
+            this.VisitNr = besokNr;
             this.Datum = datum;
             this.Syfte = syfte;
             this.Patient = patient;

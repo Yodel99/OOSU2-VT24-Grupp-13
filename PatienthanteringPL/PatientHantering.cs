@@ -14,7 +14,7 @@ namespace PatienthanteringPL
     public partial class PatientHantering : Form
     {
 
-       public Anvandare AktivAnvandare { get; }
+       public User AktivAnvandare { get; }
 
         public PatientHantering()
         {           

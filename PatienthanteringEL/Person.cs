@@ -9,20 +9,20 @@ namespace PatienthanteringEL
 {
     public class Person
     {
-        public string PersonNr { get; set; }
-        public string FNamn { get; set; }
-        public string ENamn { get; set; }
+        public string SSN { get; set; }
+        public string FName { get; set; }
+        public string EName { get; set; }
         public string Email { get; set; }
 
         public Person()
         {
 
         }
-        public Person(string personNr, string fNamn, string eNamn, string email)
+        public Person(string ssn, string fName, string eName, string email)
         {
-            this.PersonNr = personNr;
-            this.FNamn = fNamn;
-            this.ENamn = eNamn;
+            this.SSN = ssn;
+            this.FName = fName;
+            this.EName = eName;
             this.Email = email;
         }
     }

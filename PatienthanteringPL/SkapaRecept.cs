@@ -50,7 +50,7 @@ namespace PatienthanteringPL
             }
 
             SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
-            Lakemedelsrecept lakemedelsrecept = skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
+            DrugPrescription lakemedelsrecept = skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
             PatientHantering patientHantering = new PatientHantering();
             this.Close();
             patientHantering.Show();
@@ -58,14 +58,14 @@ namespace PatienthanteringPL
         private void VisaRecept()
         {
             SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
-            IList<Lakemedelsrecept> lakemedelsrecept = skrivUtReceptController.HamtaRecept(selectedpatient);
+            IList<DrugPrescription> lakemedelsrecept = skrivUtReceptController.HamtaRecept(selectedpatient);
 
             List<object> receptDataList = new List<object>();
 
-            foreach (Lakemedelsrecept lakemedelsrecept1 in lakemedelsrecept)
+            foreach (DrugPrescription lakemedelsrecept1 in lakemedelsrecept)
             {
                 // Lägg till varje rad som ett anpassat objekt.
-                receptDataList.Add(new { patientnr = selectedpatient.PatientNr, lakemedelsrecept = lakemedelsrecept1.LakemedelsNamn, dosering = lakemedelsrecept1.Dosering, datum = lakemedelsrecept1.Utskrivningsdatum.ToShortDateString(), anledning = lakemedelsrecept1.Anledning });
+                receptDataList.Add(new { patientnr = selectedpatient.PatientNr, lakemedelsrecept = lakemedelsrecept1.DrugName, dosering = lakemedelsrecept1.Dosage, datum = lakemedelsrecept1.IssueDate.ToShortDateString(), anledning = lakemedelsrecept1.Reason });
             }
 
             dataGridViewVisaRecept.DataSource = receptDataList;
