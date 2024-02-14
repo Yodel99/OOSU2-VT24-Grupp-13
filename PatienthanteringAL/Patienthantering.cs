@@ -46,13 +46,6 @@ namespace PatienthanteringAL
 
             return patienter;
         }
-
-        public void RegistreraPatient(string personNmr, string fnamn,string enamn,string email, string patientNmr, string adress, string telNmr )
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            Patient patient = new Patient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);
-            unitOfWork.PatientRepository.Add(patient);
-        }
         
         //public Diagnos SkapaDiagnos(Patient selectedpatient, string behandling, string diagnosbeskrivning)
         //{

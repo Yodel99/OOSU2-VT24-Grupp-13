@@ -27,10 +27,12 @@ namespace PatienthanteringPL
             dataGridViewVisaPatienter.DataSource = patienter;
         }
 
+        
         private void registrerapersonuppgifter1_Click(object sender, EventArgs e)
         {
             Patienthantering patienthantering = new Patienthantering();
             PatientHantering PatienthanteringWindow = new PatientHantering ();
+            RegistreraPatientController registreraPatientController = new RegistreraPatientController();
             string personNmr = textBox1.Text;
             string fnamn= textBox2.Text;
             string enamn = textBox3.Text;
@@ -38,10 +40,29 @@ namespace PatienthanteringPL
             string patientNmr = textBox5.Text;
             string adress = textBox6.Text;
             string telNmr= textBox7.Text;
-            patienthantering.RegistreraPatient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);
-            this.Hide();
-            PatienthanteringWindow.Show();
+            
+
+            if (!string.IsNullOrEmpty(personNmr) && !string.IsNullOrEmpty(fnamn) && !string.IsNullOrEmpty(enamn) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(patientNmr) && !string.IsNullOrEmpty(adress) && !string.IsNullOrEmpty(telNmr))
+            {
+                registreraPatientController.RegistreraPatient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);
+                this.Hide();
+                PatienthanteringWindow.Show();
+            }
+            else 
+            {
+                MessageBox.Show("Fel inmatning, försök igen!");
+
+            }
+
+            
         }
-       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PatientHantering patientHantering = new PatientHantering();
+
+            this.Hide();
+            patientHantering.Show();
+        }
     }
 }
