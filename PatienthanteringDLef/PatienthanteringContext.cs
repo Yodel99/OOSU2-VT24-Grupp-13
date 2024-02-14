@@ -12,21 +12,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 namespace PatienthanteringDLef
 {
     public class PatienthanteringContext : DbContext
-    {
-        public PatienthanteringContext()
-        {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
-        }
-
-        public DbSet<Patient> Patienter { get; set; }
-        public DbSet<VardPersonal> Vårdpersonal { get; set; }
-        public DbSet<Anvandare> Användare { get; set; }
-        public DbSet<LakarBesok> Läkarbesök { get; set; }
-        public DbSet<Lakemedelsrecept> Läkemedelsrecept { get; set; }
-        public DbSet<Diagnos> Diagnoser { get; set; }
-
-        
+    {     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=sqlutb2.hb.se,56077;Database=Patient;User ID=oosu2413;Password=GWL374;");
