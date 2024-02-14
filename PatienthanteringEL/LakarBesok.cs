@@ -9,10 +9,12 @@ namespace PatienthanteringEL
 {
     public class LakarBesok
     {
+
         public LakarBesok()
         {
         }
         [Key]
+
         public string BesokNr { get; set; }
         public DateTime Datum { get; set; }
         public string Syfte { get; set; }

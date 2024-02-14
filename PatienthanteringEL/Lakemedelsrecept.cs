@@ -9,10 +9,12 @@ namespace PatienthanteringEL
 {
     public class Lakemedelsrecept
     {
+
         public Lakemedelsrecept()
         {
         }
         public  int LakemedelsreceptId { get; set; }
+
         public Patient Patient { get; set; }
         public string LakemedelsNamn { get; set; }
         public string Dosering { get; set; }

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.InloggsIDtextBox1 = new System.Windows.Forms.TextBox();
-            this.LosenordtextBox2 = new System.Windows.Forms.TextBox();
             this.LoggaInbutton1 = new System.Windows.Forms.Button();
             this.InloggIDlabel1 = new System.Windows.Forms.Label();
             this.LösenOrdlabel2 = new System.Windows.Forms.Label();
             this.LoggaInlabel3 = new System.Windows.Forms.Label();
+            this.LosenordtextBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // InloggsIDtextBox1
@@ -42,13 +42,6 @@
             this.InloggsIDtextBox1.Name = "InloggsIDtextBox1";
             this.InloggsIDtextBox1.Size = new System.Drawing.Size(196, 22);
             this.InloggsIDtextBox1.TabIndex = 0;
-            // 
-            // LosenordtextBox2
-            // 
-            this.LosenordtextBox2.Location = new System.Drawing.Point(318, 252);
-            this.LosenordtextBox2.Name = "LosenordtextBox2";
-            this.LosenordtextBox2.Size = new System.Drawing.Size(196, 22);
-            this.LosenordtextBox2.TabIndex = 1;
             // 
             // LoggaInbutton1
             // 
@@ -93,6 +86,13 @@
             this.LoggaInlabel3.TabIndex = 5;
             this.LoggaInlabel3.Text = "Logga in i systemet";
             // 
+            // LosenordtextBox2
+            // 
+            this.LosenordtextBox2.Location = new System.Drawing.Point(318, 252);
+            this.LosenordtextBox2.Name = "LosenordtextBox2";
+            this.LosenordtextBox2.Size = new System.Drawing.Size(196, 22);
+            this.LosenordtextBox2.TabIndex = 1;
+            // 
             // LoggaIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -114,10 +114,10 @@
         #endregion
 
         private System.Windows.Forms.TextBox InloggsIDtextBox1;
-        private System.Windows.Forms.TextBox LosenordtextBox2;
         private System.Windows.Forms.Button LoggaInbutton1;
         private System.Windows.Forms.Label InloggIDlabel1;
         private System.Windows.Forms.Label LösenOrdlabel2;
         private System.Windows.Forms.Label LoggaInlabel3;
+        private System.Windows.Forms.TextBox LosenordtextBox2;
     }
 }

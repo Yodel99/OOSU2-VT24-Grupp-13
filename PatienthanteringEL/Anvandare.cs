@@ -9,10 +9,12 @@ namespace PatienthanteringEL
 {
     public class Anvandare
     {
+
         public Anvandare()
         {
         }
         [Key]
+
         public string InloggID { get; set; }
         public string Losenord { get; set; }
         public VardPersonal VardPersonal { get; set; }

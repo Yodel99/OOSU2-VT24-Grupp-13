@@ -9,10 +9,12 @@ namespace PatienthanteringEL
 {
     public class Patient: Person
     {
+
         public Patient()
         {
         }
         [Key]
+
         public string PatientNr { get; set; }
         public string Adress { get; set; }
         public string TelNr { get; set; }

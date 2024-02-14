@@ -9,10 +9,12 @@ namespace PatienthanteringEL
 {
     public class VardPersonal: Person
     {
+
         public VardPersonal()
         {
         }
         [Key]
+
         public string AnstallningsNr { get; set; }
         public string YrkesRoll { get; set; }
         public string Specialisering { get; set; }

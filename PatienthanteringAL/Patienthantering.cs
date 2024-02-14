@@ -9,6 +9,7 @@ using PatienthanteringEL;
 
 using PatienthanteringDLef;
 
+
 namespace PatienthanteringAL
 {
     public class Patienthantering
@@ -23,14 +24,15 @@ namespace PatienthanteringAL
                 db.Datafyllning();
             }
 
-            UnitOfWork unitOfWork = new UnitOfWork();
-            foreach (Anvandare anvandare in unitOfWork.AnvandareRepository.Find(a => a.InloggID.Equals(inloggID)))
-            {
-                if (losenord.Equals(anvandare.Losenord))
-                {
-                    return anvandare;
-                }
+
+        public IList<Patient> HamtaPatienter()
+        {         
+            List<Patient> patienter = new List<Patient>(); 
+            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null)) 
+            { 
+                patienter.Add(patient); 
             }
+
             return null;
         }
 
@@ -41,6 +43,7 @@ namespace PatienthanteringAL
             {
                 patienter.Add(patient);
             }
+
             return patienter;
         }
 
