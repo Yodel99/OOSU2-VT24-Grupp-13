@@ -5,8 +5,10 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using PatienthanteringDL;
 using PatienthanteringEL;
+using PatienthanteringDL;
+
+
 
 namespace PatienthanteringAL
 {
@@ -15,7 +17,7 @@ namespace PatienthanteringAL
         private UnitOfWork unitOfWork = new UnitOfWork();
         public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
-        {
+        {          
             UnitOfWork unitOfWork = new UnitOfWork();
             foreach (Anvandare anvandare in unitOfWork.AnvandareRepository.Find(a => a.InloggID.Equals(inloggID)))
             {
