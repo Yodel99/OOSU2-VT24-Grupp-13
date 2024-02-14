@@ -5,17 +5,24 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using PatienthanteringDL;
 using PatienthanteringEL;
+
+using PatienthanteringDLef;
 
 namespace PatienthanteringAL
 {
     public class Patienthantering
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+
+        UnitOfWork unitOfWork = new UnitOfWork();
         public Patienthantering() { }
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
+            using (var db = new PatienthanteringContext())
+            {
+                db.Datafyllning();
+            }
+
             UnitOfWork unitOfWork = new UnitOfWork();
             foreach (Anvandare anvandare in unitOfWork.AnvandareRepository.Find(a => a.InloggID.Equals(inloggID)))
             {
