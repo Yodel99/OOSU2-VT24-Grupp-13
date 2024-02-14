@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PatienthanteringEL
 {
@@ -13,6 +14,10 @@ namespace PatienthanteringEL
         public string ENamn { get; set; }
         public string Email { get; set; }
 
+        public Person()
+        {
+
+        }
         public Person(string personNr, string fNamn, string eNamn, string email)
         {
             this.PersonNr = personNr;
