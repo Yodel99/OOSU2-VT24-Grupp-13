@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PatienthanteringEL
 {
@@ -17,6 +18,10 @@ namespace PatienthanteringEL
         public DateTime Datum { get; set; }
         public string Behandling { get; set; }
 
+        public Diagnos()
+        {
+
+        }
         public Diagnos(Patient patient, string diagnosbeskrivning, DateTime datum, string behandling)
         {
             this.Patient = patient;

@@ -5,13 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
+
 
 namespace PatienthanteringDLef
 {
     public class PatienthanteringContext : DbContext
-    {
+    {     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder.UseSqlServer(@"Server=sqlutb2.hb.se,56077;Database=Patient;User ID=oosu2413;Password=GWL374;");
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Patienthantering;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
         }
