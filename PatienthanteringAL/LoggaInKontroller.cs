@@ -11,6 +11,7 @@ namespace PatienthanteringAL
 {
     public class LoggaInKontroller
     {
+        //hehehehhheh
         
         public Anvandare GetAnvandare(string inloggID, string losenord)
         {
