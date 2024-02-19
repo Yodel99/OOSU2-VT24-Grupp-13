@@ -12,17 +12,24 @@ using PatienthanteringDLef.DataSeed;
 namespace PatienthanteringAL
 {
     public class LoggInController
-    {      
+    {
+
+
         public User GetUser(string loggInID, string password)
-        {          
-            UnitOfWork unitOfWork = new UnitOfWork();
-            foreach (User user in unitOfWork.UserRepository.Find(a => a.LogginID.Equals(loggInID)))
-            {
-                if (password.Equals(user.Password))
-                {
-                    return user;
+        {
+            using (var patientMSContext = new PatientMSContext())
+            {               
+                User user = patientMSContext.Users.FirstOrDefault(a => a.LogginID.Equals(loggInID));
+                
+                if (user != null)
+                {                    
+                    if (password.Equals(user.Password))
+                    {
+                        return user;
+                    }
                 }
             }
+
             return null;
         }
 
