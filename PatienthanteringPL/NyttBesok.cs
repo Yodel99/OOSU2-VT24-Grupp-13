@@ -14,14 +14,14 @@ namespace PatienthanteringPL
 {
     public partial class NyttBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        
         ManageVisitController manageVisitController = new ManageVisitController();
         public NyttBesok()
         {
             InitializeComponent();
-            ListaPatienter();
-            ListaSjukSkotare();
-            ModifieraDatePicker();
+            ListPatients();
+            ListNurses();
+            ModifyDatePicker();
         }
         private void RefreshDatagridViewPatient(IList<Patient> patientlista)
         {
@@ -29,23 +29,23 @@ namespace PatienthanteringPL
 
             foreach (Patient patient in patientlista)
             {
-                patienter.Add(new { Förnamn = patient.FName, Efternamn = patient.EName, PatientNummer = patient.PatientNr});
+                patienter.Add(new { Förnamn = patient.FName, Efternamn = patient.EName, PatientNummer = patient.PatientNr });
             }
 
             dataGridViewPatienter.DataSource = patienter;
         }
-        private void RefreshDatagridViewSjukskotare(IList<NursingStaff> sjuksKotare)
+        private void RefreshDatagridViewSjukskotare(IList<NursingStaff> nursingStaff)
         {
-            List<object> sjukSkotareLista = new List<object>();
-      
-            foreach (NursingStaff sjukSkotare1 in sjuksKotare)
+            List<object> nursingStaffList = new List<object>();
+
+            foreach (NursingStaff nurse in nursingStaff)
             {
-                sjukSkotareLista.Add(new { Förnamn = sjukSkotare1.FName, Efternamn = sjukSkotare1.EName, Anställningsnummer = sjukSkotare1.StaffNr });
+                nursingStaffList.Add(new { Förnamn = nurse.FName, Efternamn = nurse.EName, Anställningsnummer =nurse.StaffNr });
             }
 
-            dataGridViewSjukSkotare.DataSource = sjukSkotareLista;
+            dataGridViewSjukSkotare.DataSource = nursingStaffList;
         }
-        private void ModifieraDatePicker()
+        private void ModifyDatePicker()
         {
             dateTimePickerBesok.Format = DateTimePickerFormat.Custom;
             dateTimePickerBesok.CustomFormat = "yyyy-MM-dd HH:mm";
@@ -53,49 +53,56 @@ namespace PatienthanteringPL
 
             dateTimePickerBesok.ShowUpDown = true;
         }
-        private void ListaPatienter()
+        private void ListPatients()
         {
             IList<Patient> patienter = manageVisitController.GetPatients();
 
             RefreshDatagridViewPatient(patienter);
         }
-        private void ListaSjukSkotare()
+        private void ListNurses()
         {
             IList<NursingStaff> sjukSkotare = manageVisitController.ListNursingStaffs();
             RefreshDatagridViewSjukskotare(sjukSkotare);
         }
-        private void SkapaBesok()
+        private void CreateVisit()
         {
             
-            string aNummerLakare;
-            string patientNummer;
-            string syfte;
-            DateTime datum;
-            string besokNummer;
+            string aNummerLakare = textBoxANummerLakare.Text.ToUpper();
+            string patientNummer = textBoxPatientNummer.Text.ToUpper();
+            string syfte = textBoxSyfte.Text;
+            DateTime datum = dateTimePickerBesok.Value;
+            string visitNr = textBoxBesokNummer.Text.ToUpper();
 
-            aNummerLakare = textBoxANummerLakare.Text;
-            patientNummer = textBoxPatientNummer.Text;
-            syfte = textBoxSyfte.Text;
-            datum = dateTimePickerBesok.Value;
-            besokNummer = textBoxBesokNummer.Text;
+            try
+            {
+                NursingStaff doctor = manageVisitController.GetDoctor(aNummerLakare);
+                Patient patient = manageVisitController.GetPatient(patientNummer);
+                DoctorAppointment doctorAppointmentCheck = manageVisitController.GetVisit(visitNr);
 
-            NursingStaff lakare = HamtaLakare(aNummerLakare);
-            Patient patient = HamtaPatient(patientNummer);
-            if (lakare == null)
-            {
-                Felmeddelande felmeddelande = new Felmeddelande();
-                felmeddelande.Show();
+                if (doctorAppointmentCheck!=null||doctor == null || patient == null || !IsValidBesokNummer(visitNr) || !IsValidLakare(doctor))
+                {
+                    MessageBox.Show("Felaktigt ifyllt fält, Var god att kontrollera");
+                    return;
+                }
+
+                DoctorAppointment doctorAppointment = new DoctorAppointment(visitNr, datum, syfte, patient, doctor);
+                manageVisitController.AddVisit(doctorAppointment);
+                VisaKvittens(doctorAppointment);
             }
-            else if (patient == null)
+            catch (Exception ex)
             {
-                Felmeddelande felmeddelande = new Felmeddelande();
-                felmeddelande.Show();
+                MessageBox.Show($"Ett fel uppstod: {ex.Message}");
             }
-            
-            DoctorAppointment doctorAppointment = new DoctorAppointment(besokNummer, datum, syfte, patient, lakare);
-            
-            manageVisitController.AddVisit(doctorAppointment);
-            VisaKvittens(doctorAppointment);
+        }
+
+        private bool IsValidBesokNummer(string visitNr)
+        {
+            return visitNr.StartsWith("B-");
+        }
+
+        private bool IsValidLakare(NursingStaff doctor)
+        {
+            return doctor.Profession == "Sjuksköterska";
         }
         private Patient HamtaPatient(string patientNr)
         {
@@ -114,7 +121,7 @@ namespace PatienthanteringPL
 
         private void buttonLaggTillBesok_Click(object sender, EventArgs e)
         {
-            SkapaBesok();
+            CreateVisit();
             
         }
 

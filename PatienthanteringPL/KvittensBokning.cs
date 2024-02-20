@@ -24,22 +24,28 @@ namespace PatienthanteringPL
         {
             RefreshDatagridViewBesok(lakarBesok);
         }
-        private void RefreshDatagridViewBesok(DoctorAppointment lakarBesok)
+        private void RefreshDatagridViewBesok(DoctorAppointment appointment)
         {
-            List <DoctorAppointment> datagridveiew= new List<DoctorAppointment> ();
-            datagridveiew.Add (lakarBesok);
-            List<object> lakarBesok1 = new List<object>();
-                
+            
+            List<DoctorAppointment> doctorAppointments = new List<DoctorAppointment>();
+            doctorAppointments.Add(appointment);
 
-            foreach (DoctorAppointment besok in datagridveiew)
+            // Skapa en lista med anpassade objekt som innehåller information från alla tre objekt
+            var dataSource = doctorAppointments.Select(appointments => new
             {
-                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.VisitNr, PatientNummer = besok.PatientNr, Patient = besok.PatientFNamn, AnställningsNr = besok.AnstallningsID, Läkare = besok.LakareFnamn });
-            }
+                Datum = appointments.Datum,
+                BesökNr = appointments.VisitNr,
+                PatientNummer = appointments.Patient.PatientNr,
+                Patient = appointments.PatientFNamn,
+                AnstallningsNr = appointments.AnsvarigLakare.StaffNr,
+                Läkare = appointments.AnsvarigLakare.FName
+            }).ToList();
 
-            dataGridViewKvittens.DataSource = lakarBesok1;
+            // Ställ in DataGridView för att använda vår anpassade datakälla
+            dataGridViewKvittens.DataSource = dataSource;
+
         }
-
-        private void button2_Click(object sender, EventArgs e)
+            private void button2_Click(object sender, EventArgs e)
         {
             HanteraBesok hanteraBesok = new HanteraBesok();
             hanteraBesok.Show();

@@ -1,8 +1,10 @@
-﻿using PatienthanteringDLef;
+﻿using Microsoft.EntityFrameworkCore;
+using PatienthanteringDLef;
 using PatienthanteringEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,93 +15,132 @@ namespace PatienthanteringAL
         private UnitOfWork unitOfWork = new UnitOfWork();
         public IList<Patient> GetPatients()
         {
-            List<Patient> patienter = new List<Patient>();
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
+            using (PatientMSContext db = new PatientMSContext())
             {
-                patienter.Add(patient);
+                return db.Patients.ToList();
             }
-            return patienter;
         }
         public IList<NursingStaff> ListNursingStaffs()
         {
-            List<NursingStaff> nursingStaffs = new List<NursingStaff>();
-            foreach (NursingStaff nursingStaff in unitOfWork.NursingStaffRepository.Find(m => m.StaffNr != null))
+            
+            using (PatientMSContext db = new PatientMSContext())
             {
-                if (nursingStaff.Profession == "Sjuksköterska")
+                var staff = db.NursingStaffs;
+                List<NursingStaff> doctors = new List<NursingStaff>();
+                foreach (var nursingStaff in staff)
                 {
-                    nursingStaffs.Add(nursingStaff);
+                    if (nursingStaff.Profession == "Sjuksköterska")
+                    {
+                        doctors.Add(nursingStaff);
+                    }
                 }
+                                     
+                return doctors;
             }
-            return nursingStaffs;
         }
         public NursingStaff GetDoctor(string staffNr)
         {
-            foreach (NursingStaff nursingStaff in unitOfWork.NursingStaffRepository.Find(m => m.StaffNr != null))
+            using (var patientMSContext = new PatientMSContext())
             {
-                if (nursingStaff.StaffNr == staffNr)
+                NursingStaff nursingStaff = patientMSContext.NursingStaffs.FirstOrDefault(a => a.StaffNr.Equals(staffNr));
+
+                if (nursingStaff != null)
                 {
                     return nursingStaff;
                 }
             }
+
             return null;
         }
         public Patient GetPatient(string patientNr)
         {
 
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
+            using (var patientMSContext = new PatientMSContext())
             {
-                if (patient.PatientNr == patientNr)
+                Patient patient = patientMSContext.Patients.FirstOrDefault(a => a.PatientNr.Equals(patientNr));
+
+                if (patient != null)
                 {
                     return patient;
                 }
             }
+
             return null;
         }
+    
         public void AddVisit(DoctorAppointment visit)
         {
-            unitOfWork.DoctorAppointmentRepository.Add(visit);
+            using (var db = new PatientMSContext())
+            {
+                var doctor = db.NursingStaffs.Find(visit.AnstallningsID);
+                var patient = db.Patients.Find(visit.PatientNr);
+                if (doctor != null)
+                {
+                    visit.AnsvarigLakare = doctor;
+                }
+                if (patient != null)
+                {
+                    visit.Patient = patient;
+                }
+
+                db.DoctorAppointments.Add(visit);
+                db.SaveChanges();
+            }
         }
         public IList<DoctorAppointment> ListVisits()
         {
-            List<DoctorAppointment> doctorAppointments = new List<DoctorAppointment>();
-
-            foreach (DoctorAppointment doctorAppointment in unitOfWork.DoctorAppointmentRepository.Find(m => m.VisitNr != null))
+            using (PatientMSContext db = new PatientMSContext())
             {
-                doctorAppointments.Add(doctorAppointment);
+                var appointments = db.DoctorAppointments
+                                     .Include(p => p.Patient)
+                                     .Include(d => d.AnsvarigLakare)
+                                     .ToList();
+
+                return appointments;
             }
-            return doctorAppointments;
 
         }
         public void RemoveAppointment(string besokNr)
         {
 
-            foreach (DoctorAppointment lakarBesok1 in unitOfWork.DoctorAppointmentRepository.Find(m => m.VisitNr != null))
+            using (var db = new PatientMSContext())
             {
-                if (lakarBesok1.VisitNr == besokNr)
-                {
-                    unitOfWork.DoctorAppointmentRepository.Remove(lakarBesok1);
-                    break;
-                }
-
+                var appointment = db.DoctorAppointments.Find(besokNr);
+                
+                db.DoctorAppointments.Remove(appointment);
+                db.SaveChanges();
             }
+            
 
         }
         public DoctorAppointment GetVisit(string visitNr)
         {
-            foreach (DoctorAppointment doctorAppointment in unitOfWork.DoctorAppointmentRepository.Find(m => m.PatientNr != null))
             {
-                if (doctorAppointment.VisitNr == visitNr)
+                using (var patientMSContext = new PatientMSContext())
                 {
-                    return doctorAppointment;
+                    DoctorAppointment doctorAppointment = patientMSContext.DoctorAppointments
+                        .Include(a => a.Patient)
+                        .Include(a => a.AnsvarigLakare)
+                        .SingleOrDefault(a => a.VisitNr.Equals(visitNr));
+
+                    if (doctorAppointment != null)
+                    {
+                        return doctorAppointment;
+                    }
                 }
 
+                return null;
             }
-            return null;
         }
-        public void ChangeDate(DoctorAppointment DoctorAppointment)
+        public void ChangeDate(DateTime newDate, DoctorAppointment doctorAppointment)
         {
-            RemoveAppointment(DoctorAppointment.VisitNr);
-            AddVisit(DoctorAppointment);
+            using (var db = new PatientMSContext())
+            {
+                var appointment = db.DoctorAppointments.SingleOrDefault(a => a.VisitNr == doctorAppointment.VisitNr);
+                appointment.Datum = newDate;
+                db.SaveChanges();
+            }
+            ;
         }
     }
 }

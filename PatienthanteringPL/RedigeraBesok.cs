@@ -42,23 +42,57 @@ namespace PatienthanteringPL
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
-            string visitNr = textBoxBesokNr.Text;
-            manageVisitController.RemoveAppointment(visitNr);
-            MessageBox.Show("Bokning Borttagen");
-            HanteraBesok hanteraBesok = new HanteraBesok();
-            hanteraBesok.Show();
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
+
+            if (string.IsNullOrWhiteSpace(besokNr))
+            {
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+
+            DoctorAppointment doctorAppointment = manageVisitController.GetVisit(besokNr);
+            if (doctorAppointment == null)
+            {
+                MessageBox.Show("Ingen bokning hittades med det angivna besöksnumret.");
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Är du säker på att du vill ta bort bokningen?", "Bekräfta borttagning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    manageVisitController.RemoveAppointment(besokNr);
+                    MessageBox.Show("Bokning borttagen.");
+                    HanteraBesok hanteraBesok = new HanteraBesok();
+                    hanteraBesok.Show();
+                    this.Close();
+                }
+            }
         }
         
 
         private void buttonRedigeraTid_Click(object sender, EventArgs e)
         {
-            string besokNr = textBoxBesokNr.Text;
-            DoctorAppointment lakarBesok = manageVisitController.GetVisit(besokNr);
-            AndraTidBesok andraTidBesok = new AndraTidBesok(lakarBesok);
-            andraTidBesok.Show(); 
-            this.Close();
+            string besokNr = textBoxBesokNr.Text.ToUpper();
 
+            
+            if (string.IsNullOrWhiteSpace(besokNr))
+            {
+                MessageBox.Show("Vänligen ange ett besöksnummer.");
+                return;
+            }
+            DoctorAppointment doctorAppointment = manageVisitController.GetVisit(besokNr);
+            if (doctorAppointment == null)
+            {
+                MessageBox.Show("Inget besök hittades med det angivna besöksnumret.");
+            }
+            else
+            {
+                
+                AndraTidBesok andraTidBesok = new AndraTidBesok(doctorAppointment);
+                andraTidBesok.Show();
+                this.Close();
+            }
+            
         }
 
         private void buttonTillbaka_Click(object sender, EventArgs e)
