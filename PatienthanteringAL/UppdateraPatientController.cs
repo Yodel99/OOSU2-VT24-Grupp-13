@@ -12,47 +12,45 @@ namespace PatienthanteringAL
 {
     public class UppdateraPatientController
     {
-        public bool UppdateraPatientInfo(string valdPatientID, string valdAttribut, string valdInput)
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
+        public bool UppdateraPatientInfo(string chosenPatientNr, string chosenAttribute, string chosenInput)
+        {            
+            PatientMSContext patientMSContext = new PatientMSContext();
 
             bool check = false;
 
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(p => p.PatientNr.ToLower().Equals(valdPatientID)))
+            Patient foundPatient = patientMSContext.Patients.FirstOrDefault(a => a.PatientNr.Equals(chosenPatientNr));
             {
                 
-                if (valdAttribut.Equals("personnr"))
+                if (chosenAttribute.Equals("personnr"))
                 {
-                    patient.SSN = valdInput;
+                    foundPatient.SSN = chosenInput;
                 }
-                else if (valdAttribut.Equals("fnamn"))
+                else if (chosenAttribute.Equals("fnamn"))
                 {
-                    patient.FName = valdInput;
+                    foundPatient.FName = chosenInput;
                 }
-                else if (valdAttribut.Equals("enamn"))
+                else if (chosenAttribute.Equals("enamn"))
                 {
-                    patient.EName = valdInput;
+                    foundPatient.EName = chosenInput;
                 }
-                else if (valdAttribut.Equals("email"))
+                else if (chosenAttribute.Equals("email"))
                 {
-                    patient.Email = valdInput;
+                    foundPatient.Email = chosenInput;
                 }
-                else if (valdAttribut.Equals("adress"))
+                else if (chosenAttribute.Equals("adress"))
                 {
-                    patient.Address = valdInput;
+                    foundPatient.Address = chosenInput;
                 }
-                else if (valdAttribut.Equals("telnr"))
+                else if (chosenAttribute.Equals("telnr"))
                 {
-                    patient.TelNr = valdInput;
+                    foundPatient.TelNr = chosenInput;
                 }
                 else
                 {
                     check = false;
-                    break;
                 }
                 return check;
-            }
-            return check;
+            }           
         }
     }
 }
