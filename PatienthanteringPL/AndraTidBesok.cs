@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatienthanteringAL;
+using PatienthanteringDLef;
 using PatienthanteringEL;
 
 namespace PatienthanteringPL
 {
     public partial class AndraTidBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        
         ManageVisitController manageVisitController = new ManageVisitController();
         DoctorAppointment LakarBesokObjekt { get; set; }
         public AndraTidBesok(DoctorAppointment doctorAppointment)
@@ -34,9 +35,10 @@ namespace PatienthanteringPL
         private void AndraBesok(DoctorAppointment doctorAppointment)
         {
             
-            LakarBesokObjekt.Datum = dateTimePickerAndraDatum.Value;
-            manageVisitController.ChangeDate(doctorAppointment);
+            doctorAppointment.Datum = dateTimePickerAndraDatum.Value;
+            manageVisitController.ChangeDate(doctorAppointment.Datum, doctorAppointment);
             
+
         }
 
         private void buttonAndraDatum_Click(object sender, EventArgs e)
