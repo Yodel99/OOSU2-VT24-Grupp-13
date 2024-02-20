@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using PatienthanteringAL;
 using PatienthanteringDLef;
 using PatienthanteringEL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace PatienthanteringPL
 {
@@ -47,50 +49,51 @@ namespace PatienthanteringPL
         private void uppdateraPatientInfo_Click(object sender, EventArgs e)
         {            
             UppdateraPatientController uppdateraPatientController = new UppdateraPatientController();            
-            UnitOfWork unitOfWork = new UnitOfWork();   
+            UnitOfWork unitOfWork = new UnitOfWork(); 
+            PatientMSContext patientMSContext = new PatientMSContext();
 
-            string valdPatient = textBoxPatientId.Text.ToLower();
-            string valdAttribut = textBoxAttribut.Text.ToLower();
-            string valdInput = textBoxInput.Text;
+            string chosenPatient = textBoxPatientId.Text.ToLower();
+            string chosenAttribute = textBoxAttribut.Text.ToLower();
+            string chosenInput = textBoxInput.Text;
             bool checkPatientNr = false;
             bool checkAttribut = false;
 
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr.ToLower() == valdPatient))
+            Patient foundPatient = patientMSContext.Patients.FirstOrDefault(m => m.PatientNr.ToLower() == chosenPatient);
             {
                 checkPatientNr = true;
             }
 
-            if (valdAttribut == "adress")
+            if (chosenAttribute == "address")
             {
                 checkAttribut = true;
             }
-            else if (valdAttribut == "email")
+            else if (chosenAttribute == "email")
             {
                 checkAttribut = true;
 
             }
-            else if (valdAttribut == "telnr")
+            else if (chosenAttribute == "telnr")
             {
                 checkAttribut = true;
             }
-            else if (valdAttribut == "fnamn")
+            else if (chosenAttribute == "fnamn")
             {
                 checkAttribut = true;
             }
-            else if (valdAttribut == "enamn")
+            else if (chosenAttribute == "lnamn")
             {
                 checkAttribut = true;
             }
-            else if (valdAttribut == "personnr")
+            else if (chosenAttribute == "ssn")
             {
                 checkAttribut = true;
             }
             
-            uppdateraPatientController.UppdateraPatientInfo(valdPatient, valdAttribut, valdInput);
+            uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
 
             if (checkPatientNr && checkAttribut == true)
             {
-                uppdateraPatientController.UppdateraPatientInfo(valdPatient, valdAttribut, valdInput);
+                uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
                 UppdateraPatient uppdateraPatient = new UppdateraPatient();
                 this.Hide();
                 uppdateraPatient.Show();
