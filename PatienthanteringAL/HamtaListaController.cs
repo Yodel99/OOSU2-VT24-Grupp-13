@@ -12,15 +12,19 @@ namespace PatienthanteringAL
     public class HamtaListaController
     {
         public IList<Patient> HamtaPatienter()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            List<Patient> patienter = new List<Patient>();
-            foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
+        {           
+            using (PatientMSContext db = new PatientMSContext())
             {
-                patienter.Add(patient);
+                var patientList = db.Patients.ToList();
+                List<Patient> patienter = new List<Patient>();
+                foreach (Patient patient1 in patientList)
+                {
+                    patienter.Add(patient1);
+                }
+                return patienter;
             }
-            return patienter;
         }
+
         public IList<Diagnos> HamtaDiagnoser(Patient selectedpatient)
         {
 
