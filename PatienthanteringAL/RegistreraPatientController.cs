@@ -12,7 +12,7 @@ namespace PatienthanteringAL
     {
         public void RegistreraPatient(string personNmr, string fnamn, string enamn, string email, string patientNmr, string adress, string telNmr)
         {            
-            Patient patient = new Patient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);
+            Patient patient = new Patient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);            
             using (var db = new PatientMSContext()) 
             {
                 db.Patients.Add(patient);

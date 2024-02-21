@@ -14,7 +14,7 @@ namespace PatienthanteringEL
         public string PatientNr { get; set; }
         public string Address { get; set; }
         public string TelNr { get; set; }
-        public List<Diagnos> Diagnoser { get; set; }
+
 
         public Patient()
         {
@@ -25,7 +25,6 @@ namespace PatienthanteringEL
             this.PatientNr = patientNr;
             this.Address = address;
             this.TelNr = telNr;
-            this.Diagnoser = new List<Diagnos>();
         }
        
 

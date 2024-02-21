@@ -10,24 +10,20 @@ namespace PatienthanteringAL
 {
     public class SkrivUtReceptController
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
-        public DrugPrescription SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)
-        {           
-            DrugPrescription lakemedelsrecept = new DrugPrescription(selectedpatient, lakemedel, dosering, DateTime.Now, anledning);
-            unitOfWork.DrugPrescriptionRepository.Add(lakemedelsrecept);
-            return lakemedelsrecept;
-        }
-
-        public IList<DrugPrescription> HamtaRecept(Patient selectedpatient)
+        public void SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)
         {
-            List<DrugPrescription> lakemedelsrecepts = new List<DrugPrescription>();
-
-            foreach (DrugPrescription lakemedelsrecept in unitOfWork.DrugPrescriptionRepository.Find(m => m.Patient.PatientNr == selectedpatient.PatientNr))
+            using (var db = new PatientMSContext())
             {
-                lakemedelsrecepts.Add(lakemedelsrecept);
-            }
-            return lakemedelsrecepts;
+                var patient = db.Patients.Find(selectedpatient.PatientNr);
 
+                DrugPrescription drugPrescription = new DrugPrescription(selectedpatient, lakemedel, dosering, DateTime.Now, anledning);
+                if (patient != null)
+                {
+                    drugPrescription.Patient = patient;
+                }
+                db.DrugPrescriptions.Add(drugPrescription);
+                db.SaveChanges();
+            }
         }
     }
 }

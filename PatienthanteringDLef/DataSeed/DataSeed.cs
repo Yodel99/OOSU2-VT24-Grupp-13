@@ -34,8 +34,8 @@ namespace PatienthanteringDLef.DataSeed
             Patient patient1  = new Patient("19670512-4312", "Jojje", "Holmgren", "jonte123@hotmail.com", "P-1", "Shommelomme vägen 1", "0700123456");
             Patient patient2 = new Patient("19990823-4362", "Jakob", "Ia", "jakesnake@hotmail.com", "P-2", "Falkberget 2", "0702345323");
             Patient patient3 = new Patient("20050916-1612", "Erik", "Svensson", "erco@hotmail.com", "P-3", "halmstadvägen 8", "0702594563");
-
-            context.Patients.Add(patient1);
+          
+            context.Patients.Add(patient1);           
             context.Patients.Add(patient2);
             context.Patients.Add(patient3);
             #endregion
@@ -51,9 +51,9 @@ namespace PatienthanteringDLef.DataSeed
             #endregion
 
             #region Hårdkodade Diagnoser
-            context.Diagnosis.Add(new Diagnos(patient1, "Brutet ben", DateTime.Now, "Rehab 1 gång i veckan"));
+            Diagnos diagnos1 = new Diagnos(patient1, "Brutet ben", DateTime.Now, "Rehab 1 gång i veckan");
+            context.Diagnosis.Add(diagnos1);
             #endregion
-
 
             context.SaveChanges();
         }
