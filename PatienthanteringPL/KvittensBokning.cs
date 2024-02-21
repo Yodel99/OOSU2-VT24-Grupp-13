@@ -14,6 +14,7 @@ namespace PatienthanteringPL
     public partial class KvittensBokning : Form
     {
         public DoctorAppointment LakarBesok { get; }
+        User AktivAnvandare { get; }
         public KvittensBokning(DoctorAppointment lakarBesok)
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace PatienthanteringPL
         }
             private void button2_Click(object sender, EventArgs e)
         {
-            HanteraBesok hanteraBesok = new HanteraBesok();
+            HanteraBesok hanteraBesok = new HanteraBesok(AktivAnvandare);
             hanteraBesok.Show();
             this.Close();
         }

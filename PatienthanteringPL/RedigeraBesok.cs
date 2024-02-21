@@ -17,10 +17,12 @@ namespace PatienthanteringPL
     {
         HamtaListaController hamtaListaController = new HamtaListaController();
         ManageVisitController manageVisitController = new ManageVisitController();
-        public RedigeraBesok()
+        User AktivAnvandare { get; set; }
+        public RedigeraBesok(User user)
         {
             InitializeComponent();
             ListaBesok();
+            AktivAnvandare = user;
         }
         private void ListaBesok()
         {
@@ -62,7 +64,7 @@ namespace PatienthanteringPL
                 {
                     manageVisitController.RemoveAppointment(besokNr);
                     MessageBox.Show("Bokning borttagen.");
-                    HanteraBesok hanteraBesok = new HanteraBesok();
+                    HanteraBesok hanteraBesok = new HanteraBesok(AktivAnvandare);
                     hanteraBesok.Show();
                     this.Close();
                 }
@@ -97,7 +99,7 @@ namespace PatienthanteringPL
 
         private void buttonTillbaka_Click(object sender, EventArgs e)
         {
-            HanteraBesok hanterabesok = new HanteraBesok();
+            HanteraBesok hanterabesok = new HanteraBesok(AktivAnvandare);
             hanterabesok.Show();
             this.Close();
         }

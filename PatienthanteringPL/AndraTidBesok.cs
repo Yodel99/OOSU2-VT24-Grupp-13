@@ -18,6 +18,7 @@ namespace PatienthanteringPL
         
         ManageVisitController manageVisitController = new ManageVisitController();
         DoctorAppointment LakarBesokObjekt { get; set; }
+        User AktivAnvandare { get; }
         public AndraTidBesok(DoctorAppointment doctorAppointment)
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace PatienthanteringPL
 
         private void buttonTillbaka_Click(object sender, EventArgs e)
         {
-            RedigeraBesok redigeraBesok = new RedigeraBesok();
+            RedigeraBesok redigeraBesok = new RedigeraBesok(AktivAnvandare);
             redigeraBesok.Show();
             this.Close();
         }

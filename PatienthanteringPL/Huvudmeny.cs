@@ -14,21 +14,22 @@ namespace PatienthanteringPL
     public partial class Huvudmeny : Form
     {
         public User AktivAnvandare { get; }
-        public Huvudmeny()
+        public Huvudmeny(User user)
         {           
-            InitializeComponent();           
+            InitializeComponent();
+            AktivAnvandare = user;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PatientHantering patientHantering = new PatientHantering();
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
             this.Hide();
             patientHantering.Show();
         }
 
         private void hanteraPatient_Click(object sender, EventArgs e)
         {
-            HanteraBesok hanteraBesok = new HanteraBesok();
+            HanteraBesok hanteraBesok = new HanteraBesok(AktivAnvandare);
             this.Hide();
             hanteraBesok.Show();
         }

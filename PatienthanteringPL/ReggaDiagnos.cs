@@ -16,6 +16,7 @@ namespace PatienthanteringPL
     public partial class ReggaDiagnos : Form
     {
         private Patient SelectedPatient;
+        User AktivAnvandare {  get; }
 
         public ReggaDiagnos()
         {
@@ -34,7 +35,7 @@ namespace PatienthanteringPL
         {
             if (SelectedPatient != null)
             {
-                SkapaDiagnos skapaDiagnos = new SkapaDiagnos(SelectedPatient);
+                SkapaDiagnos skapaDiagnos = new SkapaDiagnos(SelectedPatient,AktivAnvandare);
                 this.Close();
                 skapaDiagnos.Show();
             }
@@ -59,7 +60,7 @@ namespace PatienthanteringPL
 
         private void Tillbakabutton_Click(object sender, EventArgs e)
         {
-            PatientHantering patienthantering = new PatientHantering();
+            PatientHantering patienthantering = new PatientHantering(AktivAnvandare);
             this.Close();
             patienthantering.Show();
         }

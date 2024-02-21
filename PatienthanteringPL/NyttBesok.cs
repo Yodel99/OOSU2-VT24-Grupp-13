@@ -16,12 +16,14 @@ namespace PatienthanteringPL
     {
         HamtaListaController hamtaListaController = new HamtaListaController();
         ManageVisitController manageVisitController = new ManageVisitController();
-        public NyttBesok()
+        User AktivAnvandare { get; }
+        public NyttBesok(User user)
         {
             InitializeComponent();
             ListPatients();
             ListNurses();
             ModifyDatePicker();
+            AktivAnvandare = user;
         }
         private void RefreshDatagridViewPatient(IList<Patient> patientlista)
         {
@@ -55,7 +57,7 @@ namespace PatienthanteringPL
         }
         private void ListPatients()
         {
-            IList<Patient> patienter = manageVisitController.GetPatients();
+            IList<Patient> patienter = hamtaListaController.HamtaPatienter();
 
             RefreshDatagridViewPatient(patienter);
         }
@@ -104,14 +106,6 @@ namespace PatienthanteringPL
         {
             return doctor.Profession == "Sjuksköterska";
         }
-        private Patient HamtaPatient(string patientNr)
-        {
-            return manageVisitController.GetPatient(patientNr);
-        }
-        private NursingStaff HamtaLakare(string staffNr)
-        {
-            return manageVisitController.GetDoctor(staffNr);
-        }
         private void VisaKvittens(DoctorAppointment lakarBesok)
         {
             KvittensBokning kvittensBokning = new KvittensBokning(lakarBesok);
@@ -127,7 +121,7 @@ namespace PatienthanteringPL
 
         private void buttonTillbaka_Click(object sender, EventArgs e)
         {
-            HanteraBesok hanterabesok = new HanteraBesok();
+            HanteraBesok hanterabesok = new HanteraBesok(AktivAnvandare);
             hanterabesok.Show();
             this.Close();
         }

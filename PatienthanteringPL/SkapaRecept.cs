@@ -15,12 +15,15 @@ namespace PatienthanteringPL
     public partial class SkapaRecept : Form
     {
         private Patient selectedpatient { get; }
+        User AktivAnvandare { get; }
 
-        public SkapaRecept(Patient SelectedPatient)
+        public SkapaRecept(Patient SelectedPatient,User user)
         {
             InitializeComponent();
             selectedpatient = SelectedPatient;
             VisaRecept();
+            AktivAnvandare = user;
+
         }
 
         private void textBoxlakemedel_TextChanged(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace PatienthanteringPL
 
             SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
             skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
-            PatientHantering patientHantering = new PatientHantering();
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
             this.Close();
             patientHantering.Show();
         }
@@ -73,7 +76,7 @@ namespace PatienthanteringPL
 
         private void Tillbakabutton_Click(object sender, EventArgs e)
         {
-            ValjPatientRecept valjPatientRecept = new ValjPatientRecept();
+            ValjPatientRecept valjPatientRecept = new ValjPatientRecept(AktivAnvandare);
             this.Close();
             valjPatientRecept.Show();
         }

@@ -36,7 +36,7 @@ namespace PatienthanteringPL
 
             if (inloggadAnvandare != null)
             {
-                Huvudmeny huvudmeny = new Huvudmeny();
+                Huvudmeny huvudmeny = new Huvudmeny(inloggadAnvandare);
                 this.Hide();
                 huvudmeny.Show();
             }
@@ -66,7 +66,7 @@ namespace PatienthanteringPL
 
                 if (inloggadAnvandare != null)
                 {
-                    Huvudmeny huvudmeny = new Huvudmeny();
+                    Huvudmeny huvudmeny = new Huvudmeny(inloggadAnvandare);
                     this.Hide();
                     huvudmeny.Show();
                 }

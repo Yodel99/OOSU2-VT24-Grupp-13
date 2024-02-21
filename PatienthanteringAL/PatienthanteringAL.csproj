@@ -52,6 +52,7 @@
     <Compile Include="SkapaDiagnosController.cs" />
     <Compile Include="SkrivUtReceptController.cs" />
     <Compile Include="UppdateraPatientController.cs" />
+    <Compile Include="ValidationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PatienthanteringDLef\PatienthanteringDLef.csproj">

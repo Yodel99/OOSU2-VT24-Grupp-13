@@ -13,13 +13,7 @@ namespace PatienthanteringAL
     public class ManageVisitController
     {
         
-        public IList<Patient> GetPatients()
-        {
-            using (PatientMSContext db = new PatientMSContext())
-            {
-                return db.Patients.ToList();
-            }
-        }
+        
        
         public NursingStaff GetDoctor(string staffNr)
         {

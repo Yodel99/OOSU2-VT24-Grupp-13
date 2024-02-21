@@ -15,13 +15,7 @@ namespace PatienthanteringAL
         {           
             using (PatientMSContext db = new PatientMSContext())
             {
-                var patientList = db.Patients.ToList();
-                List<Patient> patienter = new List<Patient>();
-                foreach (Patient patient1 in patientList)
-                {
-                    patienter.Add(patient1);
-                }
-                return patienter;
+                return  db.Patients.ToList();
             }
         }
 
