@@ -48,68 +48,72 @@ namespace PatienthanteringPL
 
         private void uppdateraPatientInfo_Click(object sender, EventArgs e)
         {            
-            UppdateraPatientController uppdateraPatientController = new UppdateraPatientController();            
-            UnitOfWork unitOfWork = new UnitOfWork(); 
-            PatientMSContext patientMSContext = new PatientMSContext();
-
-            string chosenPatient = textBoxPatientId.Text.ToLower();
-            string chosenAttribute = textBoxAttribut.Text.ToLower();
-            string chosenInput = textBoxInput.Text;
-            bool checkPatientNr = false;
-            bool checkAttribut = false;
-
-            Patient foundPatient = patientMSContext.Patients.FirstOrDefault(m => m.PatientNr.ToLower() == chosenPatient);
-            {
-                checkPatientNr = true;
-            }
-
-            if (chosenAttribute == "address")
-            {
-                checkAttribut = true;
-            }
-            else if (chosenAttribute == "email")
-            {
-                checkAttribut = true;
-
-            }
-            else if (chosenAttribute == "telnr")
-            {
-                checkAttribut = true;
-            }
-            else if (chosenAttribute == "fnamn")
-            {
-                checkAttribut = true;
-            }
-            else if (chosenAttribute == "lnamn")
-            {
-                checkAttribut = true;
-            }
-            else if (chosenAttribute == "ssn")
-            {
-                checkAttribut = true;
-            }
+            UppdateraPatientController uppdateraPatientController = new UppdateraPatientController();             
             
-            uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
+            using (var db = new PatientMSContext())
+            {
+                string chosenPatient = textBoxPatientId.Text.ToLower();
+                string chosenAttribute = textBoxAttribut.Text.ToLower();
+                string chosenInput = textBoxInput.Text;
+                bool checkPatientNr = false;
+                bool checkAttribut = false;
 
-            if (checkPatientNr && checkAttribut == true)
-            {
+                var foundPatient = db.Patients.Find(chosenPatient);
+                if (foundPatient != null)
+                {
+                    checkPatientNr = true;
+                }
+
+                if (chosenAttribute == "address")
+                {
+                    checkAttribut = true;
+                }
+                else if (chosenAttribute == "email")
+                {
+                    checkAttribut = true;
+
+                }
+                else if (chosenAttribute == "telnr")
+                {
+                    checkAttribut = true;
+                }
+                else if (chosenAttribute == "fnamn")
+                {
+                    checkAttribut = true;
+                }
+                else if (chosenAttribute == "lnamn")
+                {
+                    checkAttribut = true;
+                }
+                else if (chosenAttribute == "ssn")
+                {
+                    checkAttribut = true;
+                }
+
                 uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
-                UppdateraPatient uppdateraPatient = new UppdateraPatient();
-                this.Hide();
-                uppdateraPatient.Show();
+
+                if (checkPatientNr && checkAttribut == true)
+                {
+                    uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
+                    UppdateraPatient uppdateraPatient = new UppdateraPatient();
+                    this.Hide();
+                    uppdateraPatient.Show();
+                }
+                else if (checkPatientNr == true && checkAttribut == false)
+                {
+                    MessageBox.Show("Inte ett giltligt attribut, testa igen.");
+                }
+                else if (checkPatientNr == false && checkAttribut == true)
+                {
+                    MessageBox.Show("Inte ett giltligt patientnummer, testa igen.");
+                }
+                else if (checkPatientNr == false && checkAttribut == false)
+                {
+                    MessageBox.Show("Både patientnummret och attributen var ogiltigt, testa igen.");
+                }
             }
-            else if (checkPatientNr == true && checkAttribut == false)
-            {
-                MessageBox.Show("Inte ett giltligt attribut, testa igen.");
-            }
-            else if (checkPatientNr == false && checkAttribut == true)
-            {
-                MessageBox.Show("Inte ett giltligt patientnummer, testa igen.");
-            }
-            else if (checkPatientNr == false && checkAttribut == false)
-            {
-                MessageBox.Show("Både patientnummret och attributen var ogiltigt, testa igen.");
-            }
+
+           
         }
     }
 }

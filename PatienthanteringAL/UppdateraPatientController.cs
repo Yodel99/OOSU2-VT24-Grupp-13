@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -13,44 +14,55 @@ namespace PatienthanteringAL
     public class UppdateraPatientController
     {
         public bool UppdateraPatientInfo(string chosenPatientNr, string chosenAttribute, string chosenInput)
-        {            
-            PatientMSContext patientMSContext = new PatientMSContext();
-
-            bool check = false;
-
-            Patient foundPatient = patientMSContext.Patients.FirstOrDefault(a => a.PatientNr.Equals(chosenPatientNr));
+        {                      
+            using (var db = new PatientMSContext())
             {
+                var patient = db.Patients.Find(chosenPatientNr);
+                {
+                    if (patient != null) 
+                    {
+                        if (chosenAttribute.Equals("personnr"))
+                        {
+                            patient.SSN = chosenInput;
+
+                        }
+                        else if (chosenAttribute.Equals("fnamn"))
+                        {
+                            patient.FName = chosenInput;
+                        }
+                        else if (chosenAttribute.Equals("enamn"))
+                        {
+                            patient.EName = chosenInput;
+                        }
+                        else if (chosenAttribute.Equals("email"))
+                        {
+                            patient.Email = chosenInput;
+                        }
+                        else if (chosenAttribute.Equals("address"))
+                        {
+                            patient.Address = chosenInput;
+                        }
+                        else if (chosenAttribute.Equals("telnr"))
+                        {
+                            patient.TelNr = chosenInput;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 
-                if (chosenAttribute.Equals("personnr"))
-                {
-                    foundPatient.SSN = chosenInput;
-                }
-                else if (chosenAttribute.Equals("fnamn"))
-                {
-                    foundPatient.FName = chosenInput;
-                }
-                else if (chosenAttribute.Equals("enamn"))
-                {
-                    foundPatient.EName = chosenInput;
-                }
-                else if (chosenAttribute.Equals("email"))
-                {
-                    foundPatient.Email = chosenInput;
-                }
-                else if (chosenAttribute.Equals("adress"))
-                {
-                    foundPatient.Address = chosenInput;
-                }
-                else if (chosenAttribute.Equals("telnr"))
-                {
-                    foundPatient.TelNr = chosenInput;
-                }
-                else
-                {
-                    check = false;
-                }
-                return check;
-            }           
+            }
+            
+
         }
+
     }
 }
