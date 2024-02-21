@@ -15,7 +15,7 @@ namespace PatienthanteringPL
 {
     public partial class RedigeraBesok : Form
     {
-        Patienthantering patienthantering = new Patienthantering();
+        HamtaListaController hamtaListaController = new HamtaListaController();
         ManageVisitController manageVisitController = new ManageVisitController();
         public RedigeraBesok()
         {
@@ -24,7 +24,7 @@ namespace PatienthanteringPL
         }
         private void ListaBesok()
         {
-            IList<DoctorAppointment> doctorAppointment = manageVisitController.ListVisits();
+            IList<DoctorAppointment> doctorAppointment = hamtaListaController.ListVisits();
             RefreshDatagridViewBesok(doctorAppointment);
         }
         private void RefreshDatagridViewBesok(IList<DoctorAppointment> lakarBesok)
@@ -33,7 +33,7 @@ namespace PatienthanteringPL
 
             foreach (DoctorAppointment besok in lakarBesok)
             {
-                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.VisitNr, PatientNummer = besok.PatientNr, AnställningsNr = besok.AnstallningsID });
+                lakarBesok1.Add(new { Datum = besok.Datum, BesökNr = besok.VisitNr, Syfte = besok.Syfte, Patient = besok.PatientFNamn, Läkare = besok.LakareFnamn });
             }
 
             dataGridViewBefintligaBesok.DataSource = lakarBesok1;

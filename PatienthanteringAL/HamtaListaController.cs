@@ -57,5 +57,36 @@ namespace PatienthanteringAL
             }
 
         }
+        public IList<NursingStaff> ListNursingStaffs()
+        {
+
+            using (PatientMSContext db = new PatientMSContext())
+            {
+                var staff = db.NursingStaffs;
+                List<NursingStaff> doctors = new List<NursingStaff>();
+                foreach (var nursingStaff in staff)
+                {
+                    if (nursingStaff.Profession == "Sjuksköterska")
+                    {
+                        doctors.Add(nursingStaff);
+                    }
+                }
+
+                return doctors;
+            }
+        }
+        public IList<DoctorAppointment> ListVisits()
+        {
+            using (PatientMSContext db = new PatientMSContext())
+            {
+                var appointments = db.DoctorAppointments
+                                     .Include(p => p.Patient)
+                                     .Include(d => d.AnsvarigLakare)
+                                     .ToList();
+
+                return appointments;
+            }
+
+        }
     }
 }

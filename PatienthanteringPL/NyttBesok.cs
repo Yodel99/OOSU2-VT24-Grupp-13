@@ -14,7 +14,7 @@ namespace PatienthanteringPL
 {
     public partial class NyttBesok : Form
     {
-        
+        HamtaListaController hamtaListaController = new HamtaListaController();
         ManageVisitController manageVisitController = new ManageVisitController();
         public NyttBesok()
         {
@@ -61,7 +61,7 @@ namespace PatienthanteringPL
         }
         private void ListNurses()
         {
-            IList<NursingStaff> sjukSkotare = manageVisitController.ListNursingStaffs();
+            IList<NursingStaff> sjukSkotare = hamtaListaController.ListNursingStaffs();
             RefreshDatagridViewSjukskotare(sjukSkotare);
         }
         private void CreateVisit()
