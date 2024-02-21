@@ -44,11 +44,11 @@ namespace PatienthanteringPL
             {
                 MessageBox.Show("Felaktigt användarnamn eller lösenord. Försök igen.");
             }
-
-
-
         }
 
-        
+        private void buttonAvsluta_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

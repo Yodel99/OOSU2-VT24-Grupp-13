@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace PatienthanteringPL
 {
-    //hehehehe
     public partial class SkapaRecept : Form
     {
         private Patient selectedpatient { get; }
@@ -50,15 +49,16 @@ namespace PatienthanteringPL
             }
 
             SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
-            DrugPrescription lakemedelsrecept = skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
+            skrivUtReceptController.SkapaRecept(selectedpatient, lakemedel, dosering, anledning);
             PatientHantering patientHantering = new PatientHantering();
             this.Close();
             patientHantering.Show();
         }
+
         private void VisaRecept()
         {
-            SkrivUtReceptController skrivUtReceptController = new SkrivUtReceptController();
-            IList<DrugPrescription> lakemedelsrecept = skrivUtReceptController.HamtaRecept(selectedpatient);
+            HamtaListaController hamtaListaController = new HamtaListaController();
+            IList<DrugPrescription> lakemedelsrecept = hamtaListaController.HamtaRecept(selectedpatient);
 
             List<object> receptDataList = new List<object>();
 

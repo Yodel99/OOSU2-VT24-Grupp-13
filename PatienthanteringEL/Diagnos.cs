@@ -11,11 +11,11 @@ namespace PatienthanteringEL
     {
         
         public int DiagnosID { get; set; }
-
-        public Patient Patient { get; set; }
         public string DiagnosDescription { get; set; }
         public DateTime Date { get; set; }
-        public string Treatment { get; set; }
+        public string Treatment { get; set; }       
+        public Patient Patient { get; set; }
+        
 
         public Diagnos()
         {

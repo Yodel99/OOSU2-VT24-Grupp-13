@@ -12,7 +12,6 @@ using PatienthanteringEL;
 
 namespace PatienthanteringPL
 {
-    //hejejej
     public partial class SkapaDiagnos : Form
     {
         private Patient selectedpatient { get; }
@@ -46,27 +45,25 @@ namespace PatienthanteringPL
             }
 
             SkapaDiagnosController skapaDiagnosController = new SkapaDiagnosController();
-            Diagnos diagnos = skapaDiagnosController.SkapaDiagnos(selectedpatient, behandling, diagnosBeskrivning);
-            skapaDiagnosController.LaggTillDiagnosTillKund(selectedpatient, diagnos);
-
+            skapaDiagnosController.SkapaDiagnos(selectedpatient, behandling, diagnosBeskrivning);
             PatientHantering patientHantering = new PatientHantering();
             this.Close();
             patientHantering.Show();
         }
         private void VisaDiagnoser()
         {
-            SkapaDiagnosController skapaDiagnosController = new SkapaDiagnosController();
-            IList<Diagnos> diagnoser = skapaDiagnosController.HamtaDiagnoser(selectedpatient);
-
+            HamtaListaController hamtaListaController = new HamtaListaController();
+            IList<Diagnos> diagnoser = hamtaListaController.HamtaDiagnoser(selectedpatient);
             List<object> DiagnosDataList = new List<object>();
 
-            foreach (Diagnos diagnos in diagnoser)
-            {
-                // Lägg till varje rad som ett anpassat objekt.
-                DiagnosDataList.Add(new { patientnr = selectedpatient.PatientNr, diagnosBeskrivning = diagnos.DiagnosDescription, datum = diagnos.Date.ToShortDateString() , behandling = diagnos.Treatment });
-            }
 
-            dataGridViewVisaDiagnos.DataSource = DiagnosDataList;
+                foreach (Diagnos diagnos in diagnoser)
+                {
+                    // Lägg till varje rad som ett anpassat objekt.
+                    DiagnosDataList.Add(new { patientnr = selectedpatient.PatientNr, diagnosBeskrivning = diagnos.DiagnosDescription, datum = diagnos.Date.ToShortDateString(), behandling = diagnos.Treatment });
+                }
+
+                dataGridViewVisaDiagnos.DataSource = DiagnosDataList;
         }
 
         private void Tillbakabutton_Click(object sender, EventArgs e)

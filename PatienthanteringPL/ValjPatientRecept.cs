@@ -32,9 +32,9 @@ namespace PatienthanteringPL
         {
             if (SelectedPatient != null)
             {
-                SkapaDiagnos skapaDiagnos = new SkapaDiagnos(SelectedPatient);
+                SkapaRecept skapaRecept = new SkapaRecept(SelectedPatient);
                 this.Close();
-                skapaDiagnos.Show();
+                skapaRecept.Show();
             }
             else
             {
