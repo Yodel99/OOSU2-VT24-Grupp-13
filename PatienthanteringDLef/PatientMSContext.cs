@@ -20,7 +20,7 @@ namespace PatienthanteringDLef
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Diagnos> Diagnosis { get; set; }
+        public DbSet<Diagnosis> Diagnosis { get; set; }
         public DbSet<DoctorAppointment> DoctorAppointments { get; set; }
         public DbSet<DrugPrescription> DrugPrescriptions { get; set; }
         public DbSet<Patient> Patients { get; set; }

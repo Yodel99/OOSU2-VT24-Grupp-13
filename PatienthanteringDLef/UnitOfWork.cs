@@ -26,7 +26,7 @@ namespace PatienthanteringDLef
         {
             get; private set;
         }
-        public Repository<Diagnos> DiagnosRepository
+        public Repository<Diagnosis> DiagnosRepository
         {
             get; private set;
         }

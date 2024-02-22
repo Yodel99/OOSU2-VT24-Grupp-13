@@ -11,6 +11,7 @@ namespace PatienthanteringDLef.DataSeed
     {
         public static void Fill(PatientMSContext context)
         {
+            
             #region Hårdkodade Vårdpersonaler
             NursingStaff nursingStaff1 = new NursingStaff("19780706-1234", "Karl", "Karlsson", "gokart69@gmail.com", "A-1", "Läkare", "Ortoped");
             NursingStaff nursingStaff2 = new NursingStaff("20010303-5783", "Anders", "Magnusson", "landhockey420@gmail.com", "A-2", "Receptionist");
@@ -51,7 +52,7 @@ namespace PatienthanteringDLef.DataSeed
             #endregion
 
             #region Hårdkodade Diagnoser
-            Diagnos diagnos1 = new Diagnos(patient1, "Brutet ben", DateTime.Now, "Rehab 1 gång i veckan");
+            Diagnosis diagnos1 = new Diagnosis(patient1, "Brutet ben", DateTime.Now, "Rehab 1 gång i veckan");
             context.Diagnosis.Add(diagnos1);
             #endregion
 
@@ -76,10 +77,10 @@ namespace PatienthanteringDLef.DataSeed
         //    #region Anvandare
         //    var anvandare1 = new List<User>
         //    {
-        //        new User{LogginID ="lakare1", Password = "lakare1", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-1") },
-        //        new User{LogginID ="lakare2", Password = "lakare2",NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-2") },
-        //        new User{LogginID ="lakare3",Password = "lakare3", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-3") },
-        //        new User{LogginID ="lakare4",Password = "lakare4", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-4")}
+        //        new User{LoggInID ="lakare1", Password = "lakare1", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-1") },
+        //        new User{LoggInID ="lakare2", Password = "lakare2",NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-2") },
+        //        new User{LoggInID ="lakare3",Password = "lakare3", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-3") },
+        //        new User{LoggInID ="lakare4",Password = "lakare4", NursingStaff = vardPersonal.Find(m => m.StaffNr == "A-4")}
         //    };
         //    Users.AddRange(anvandare1);
         //    SaveChanges();
@@ -107,7 +108,7 @@ namespace PatienthanteringDLef.DataSeed
         //    #region Besök
         //    var lakarBesok = new List<DoctorAppointment>
         //    {
-        //        new DoctorAppointment{VisitNr = "B-1", Datum = DateTime.Now, Syfte = "Haltar med benet", Patient = patienter.Find(m => m.PatientNr == "P-1"), AnsvarigLakare = vardPersonal.Find(m => m.StaffNr == "A-1") }
+        //        new DoctorAppointment{VisitNr = "B-1", Date = DateTime.Now, Reason = "Haltar med benet", Patient = patienter.Find(m => m.PatientNr == "P-1"), ResponsibleNurse = vardPersonal.Find(m => m.StaffNr == "A-1") }
         //    };
         //    DoctorAppointments.AddRange(lakarBesok);
         //    SaveChanges();
@@ -115,7 +116,7 @@ namespace PatienthanteringDLef.DataSeed
         //    #region Diagnoser
         //    var diagnoser = new List<Diagnos>
         //    {
-        //        new Diagnos{Patient = patienter.Find(m => m.PatientNr == "P-1"), DiagnosDescription = "Brutet ben", Date = DateTime.Now, Treatment = "Rehab 1 gång i veckan" }
+        //        new Diagnos{Patient = patienter.Find(m => m.PatientNr == "P-1"), DiagnosisDescription = "Brutet ben", Date = DateTime.Now, Treatment = "Rehab 1 gång i veckan" }
         //    };
         //    Diagnosis.AddRange(diagnoser);
         //    SaveChanges();

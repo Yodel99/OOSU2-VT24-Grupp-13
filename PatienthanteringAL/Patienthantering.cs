@@ -15,7 +15,7 @@ namespace PatienthanteringAL
 
         //UnitOfWork unitOfWork = new UnitOfWork();
         //public Patienthantering() { }      
-            //public IList<Patient> HamtaPatienter()
+            //public IList<Patient> GetPatients()
             //{
             //    List<Patient> patienter = new List<Patient>();
             //    foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
@@ -26,7 +26,7 @@ namespace PatienthanteringAL
             //    return null;
             //}
 
-            //public IList<Patient> HamtaPatienter()
+            //public IList<Patient> GetPatients()
             //{
             //    List<Patient> patienter = new List<Patient>();
             //    foreach (Patient patient in unitOfWork.PatientRepository.Find(m => m.PatientNr != null))
@@ -37,7 +37,7 @@ namespace PatienthanteringAL
             //    return patienter;
             //}
 
-            //public Diagnos SkapaDiagnos(Patient selectedpatient, string behandling, string diagnosbeskrivning)
+            //public Diagnos CreateDiagnosis(Patient selectedpatient, string behandling, string diagnosbeskrivning)
             //{
             //    UnitOfWork unitOfWork = new UnitOfWork();
             //    Diagnos diagnos = new Diagnos(selectedpatient, diagnosbeskrivning, DateTime.Now, behandling);
@@ -57,7 +57,7 @@ namespace PatienthanteringAL
 
             //}
 
-            //public IList<Diagnos> HamtaDiagnoser(Patient selectedpatient)
+            //public IList<Diagnos> GetDiagnosis(Patient selectedpatient)
             //{
             //    UnitOfWork unitOfWork = new UnitOfWork();
             //    List<Diagnos> diagnoser = new List<Diagnos>();
@@ -69,7 +69,7 @@ namespace PatienthanteringAL
             //    return diagnoser;
             //}
 
-            //public Lakemedelsrecept SkapaRecept(Patient selectedpatient, string lakemedel, string dosering, string anledning)
+            //public Lakemedelsrecept PrescripePrescription(Patient selectedpatient, string lakemedel, string dosering, string anledning)
             //{
             //    UnitOfWork unitOfWork = new UnitOfWork();
             //    Lakemedelsrecept lakemedelsrecept = new Lakemedelsrecept(selectedpatient, lakemedel, dosering, DateTime.Now, anledning);
@@ -77,7 +77,7 @@ namespace PatienthanteringAL
             //    return lakemedelsrecept;
             //}
 
-            //public IList<Lakemedelsrecept> HamtaRecept(Patient selectedpatient)
+            //public IList<Lakemedelsrecept> GetPrescriptions(Patient selectedpatient)
             //{
             //    UnitOfWork unitOfWork = new UnitOfWork();
             //    List<Lakemedelsrecept> lakemedelsrecepts = new List<Lakemedelsrecept>();
@@ -91,7 +91,7 @@ namespace PatienthanteringAL
             //}
 
 
-            //public void UppdateraPatientInfo(string valdPatientID, string valdAttribut, string valdInput)
+            //public void UpdatePatientInfo(string valdPatientID, string valdAttribut, string valdInput)
             //{
             //    UnitOfWork unitOfWork = new UnitOfWork();
 

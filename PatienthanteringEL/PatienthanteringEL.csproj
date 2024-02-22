@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="User.cs" />
-    <Compile Include="Diagnos.cs" />
+    <Compile Include="Diagnosis.cs" />
     <Compile Include="DoctorAppointment.cs" />
     <Compile Include="DrugPrescription.cs" />
     <Compile Include="Patient.cs" />

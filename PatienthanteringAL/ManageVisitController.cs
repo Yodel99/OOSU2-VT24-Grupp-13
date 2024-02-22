@@ -49,11 +49,11 @@ namespace PatienthanteringAL
         {
             using (var db = new PatientMSContext())
             {
-                var doctor = db.NursingStaffs.Find(visit.AnstallningsID);
+                var doctor = db.NursingStaffs.Find(visit.StaffNr);
                 var patient = db.Patients.Find(visit.PatientNr);
                 if (doctor != null)
                 {
-                    visit.AnsvarigLakare = doctor;
+                    visit.ResponsibleNurse = doctor;
                 }
                 if (patient != null)
                 {
@@ -85,7 +85,7 @@ namespace PatienthanteringAL
                 {
                     DoctorAppointment doctorAppointment = patientMSContext.DoctorAppointments
                         .Include(a => a.Patient)
-                        .Include(a => a.AnsvarigLakare)
+                        .Include(a => a.ResponsibleNurse)
                         .SingleOrDefault(a => a.VisitNr.Equals(visitNr));
 
                     if (doctorAppointment != null)
@@ -102,7 +102,7 @@ namespace PatienthanteringAL
             using (var db = new PatientMSContext())
             {
                 var appointment = db.DoctorAppointments.SingleOrDefault(a => a.VisitNr == doctorAppointment.VisitNr);
-                appointment.Datum = newDate;
+                appointment.Date = newDate;
                 db.SaveChanges();
             }
             ;

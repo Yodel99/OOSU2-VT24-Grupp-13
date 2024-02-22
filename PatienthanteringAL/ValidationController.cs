@@ -35,7 +35,7 @@ namespace PatienthanteringAL
             using (var patientMSContext = new PatientMSContext())
             {
                 NursingStaff nursingStaff = GetNursingstaff(activeUser);
-
+               
                 if (nursingStaff.Profession == "Läkare")
                 {
                     return true;
@@ -46,22 +46,25 @@ namespace PatienthanteringAL
                 }
             }
         }
-    
+
         private NursingStaff GetNursingstaff(User activeUser)
         {
             using (var patientMSContext = new PatientMSContext())
             {
                 User user = patientMSContext.Users
                     .Include(a => a.NursingStaff)
-                    .SingleOrDefault(a => a.LogginID.Equals(activeUser.LogginID));
+                    .SingleOrDefault(a => a.LoggInID.Equals(activeUser.LoggInID));
 
-                if (user.NursingStaff != null)
+                if (user != null && user.NursingStaff != null)
                 {
                     return user.NursingStaff;
                 }
+                else
+                {
+  
+                    return null;
+                }
             }
-
-            return null;
         }
     }
 }

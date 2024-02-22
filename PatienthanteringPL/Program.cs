@@ -17,7 +17,7 @@ namespace PatienthanteringPL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoggaIn());           
+            Application.Run(new LogIn());           
         }
     }
 }

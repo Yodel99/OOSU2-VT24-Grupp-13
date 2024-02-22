@@ -155,130 +155,121 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Felinlogg.cs">
+    <Compile Include="FailedLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Felinlogg.Designer.cs">
-      <DependentUpon>Felinlogg.cs</DependentUpon>
+    <Compile Include="FailedLogin.Designer.cs">
+      <DependentUpon>FailedLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AndraTidBesok.cs">
+    <Compile Include="EditTimeVisit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AndraTidBesok.Designer.cs">
-      <DependentUpon>AndraTidBesok.cs</DependentUpon>
+    <Compile Include="EditTimeVisit.Designer.cs">
+      <DependentUpon>EditTimeVisit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Felmeddelande.cs">
+    <Compile Include="MenageVisits.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Felmeddelande.Designer.cs">
-      <DependentUpon>Felmeddelande.cs</DependentUpon>
+    <Compile Include="MenageVisits.Designer.cs">
+      <DependentUpon>MenageVisits.cs</DependentUpon>
     </Compile>
-    <Compile Include="HanteraBesok.cs">
+    <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HanteraBesok.Designer.cs">
-      <DependentUpon>HanteraBesok.cs</DependentUpon>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Huvudmeny.cs">
+    <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Huvudmeny.Designer.cs">
-      <DependentUpon>Huvudmeny.cs</DependentUpon>
+    <Compile Include="LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoggaIn.cs">
+    <Compile Include="ReceiptVisit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoggaIn.Designer.cs">
-      <DependentUpon>LoggaIn.cs</DependentUpon>
+    <Compile Include="ReceiptVisit.Designer.cs">
+      <DependentUpon>ReceiptVisit.cs</DependentUpon>
     </Compile>
-    <Compile Include="KvittensBokning.cs">
+    <Compile Include="NewVisit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KvittensBokning.Designer.cs">
-      <DependentUpon>KvittensBokning.cs</DependentUpon>
+    <Compile Include="NewVisit.Designer.cs">
+      <DependentUpon>NewVisit.cs</DependentUpon>
     </Compile>
-    <Compile Include="NyttBesok.cs">
+    <Compile Include="ManagePatients.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NyttBesok.Designer.cs">
-      <DependentUpon>NyttBesok.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PatientHantering.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PatientHantering.Designer.cs">
-      <DependentUpon>PatientHantering.cs</DependentUpon>
+    <Compile Include="ManagePatients.Designer.cs">
+      <DependentUpon>ManagePatients.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Felinlogg.resx">
-      <DependentUpon>Felinlogg.cs</DependentUpon>
+    <EmbeddedResource Include="FailedLogin.resx">
+      <DependentUpon>FailedLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="RegistreraPatient.cs">
+    <Compile Include="RegisterPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistreraPatient.Designer.cs">
-      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    <Compile Include="RegisterPatient.Designer.cs">
+      <DependentUpon>RegisterPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReggaDiagnos.cs">
+    <Compile Include="RegisterDiagnosis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReggaDiagnos.Designer.cs">
-      <DependentUpon>ReggaDiagnos.cs</DependentUpon>
+    <Compile Include="RegisterDiagnosis.Designer.cs">
+      <DependentUpon>RegisterDiagnosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="SkapaDiagnos.cs">
+    <Compile Include="CreateDiagnosis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SkapaDiagnos.Designer.cs">
-      <DependentUpon>SkapaDiagnos.cs</DependentUpon>
+    <Compile Include="CreateDiagnosis.Designer.cs">
+      <DependentUpon>CreateDiagnosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="SkapaRecept.cs">
+    <Compile Include="CreatePrescription.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SkapaRecept.Designer.cs">
-      <DependentUpon>SkapaRecept.cs</DependentUpon>
+    <Compile Include="CreatePrescription.Designer.cs">
+      <DependentUpon>CreatePrescription.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValjPatientRecept.cs">
+    <Compile Include="ChoosePatientPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValjPatientRecept.Designer.cs">
-      <DependentUpon>ValjPatientRecept.cs</DependentUpon>
+    <Compile Include="ChoosePatientPrescription.Designer.cs">
+      <DependentUpon>ChoosePatientPrescription.cs</DependentUpon>
     </Compile>
-    <Compile Include="UppdateraPatient.cs">
+    <Compile Include="UpdatePatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UppdateraPatient.Designer.cs">
-      <DependentUpon>UppdateraPatient.cs</DependentUpon>
+    <Compile Include="UpdatePatient.Designer.cs">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="RedigeraBesok.cs">
+    <Compile Include="EditVisit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RedigeraBesok.Designer.cs">
-      <DependentUpon>RedigeraBesok.cs</DependentUpon>
+    <Compile Include="EditVisit.Designer.cs">
+      <DependentUpon>EditVisit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AndraTidBesok.resx">
-      <DependentUpon>AndraTidBesok.cs</DependentUpon>
+    <EmbeddedResource Include="EditTimeVisit.resx">
+      <DependentUpon>EditTimeVisit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Felmeddelande.resx">
-      <DependentUpon>Felmeddelande.cs</DependentUpon>
+    <EmbeddedResource Include="MenageVisits.resx">
+      <DependentUpon>MenageVisits.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HanteraBesok.resx">
-      <DependentUpon>HanteraBesok.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Huvudmeny.resx">
-      <DependentUpon>Huvudmeny.cs</DependentUpon>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoggaIn.resx">
-      <DependentUpon>LoggaIn.cs</DependentUpon>
+    <EmbeddedResource Include="ReceiptVisit.resx">
+      <DependentUpon>ReceiptVisit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KvittensBokning.resx">
-      <DependentUpon>KvittensBokning.cs</DependentUpon>
+    <EmbeddedResource Include="NewVisit.resx">
+      <DependentUpon>NewVisit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NyttBesok.resx">
-      <DependentUpon>NyttBesok.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PatientHantering.resx">
-      <DependentUpon>PatientHantering.cs</DependentUpon>
+    <EmbeddedResource Include="ManagePatients.resx">
+      <DependentUpon>ManagePatients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -289,26 +280,26 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistreraPatient.resx">
-      <DependentUpon>RegistreraPatient.cs</DependentUpon>
+    <EmbeddedResource Include="RegisterPatient.resx">
+      <DependentUpon>RegisterPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReggaDiagnos.resx">
-      <DependentUpon>ReggaDiagnos.cs</DependentUpon>
+    <EmbeddedResource Include="RegisterDiagnosis.resx">
+      <DependentUpon>RegisterDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SkapaDiagnos.resx">
-      <DependentUpon>SkapaDiagnos.cs</DependentUpon>
+    <EmbeddedResource Include="CreateDiagnosis.resx">
+      <DependentUpon>CreateDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SkapaRecept.resx">
-      <DependentUpon>SkapaRecept.cs</DependentUpon>
+    <EmbeddedResource Include="CreatePrescription.resx">
+      <DependentUpon>CreatePrescription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValjPatientRecept.resx">
-      <DependentUpon>ValjPatientRecept.cs</DependentUpon>
+    <EmbeddedResource Include="ChoosePatientPrescription.resx">
+      <DependentUpon>ChoosePatientPrescription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UppdateraPatient.resx">
-      <DependentUpon>UppdateraPatient.cs</DependentUpon>
+    <EmbeddedResource Include="UpdatePatient.resx">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RedigeraBesok.resx">
-      <DependentUpon>RedigeraBesok.cs</DependentUpon>
+    <EmbeddedResource Include="EditVisit.resx">
+      <DependentUpon>EditVisit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

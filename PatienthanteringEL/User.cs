@@ -12,7 +12,7 @@ namespace PatienthanteringEL
 
 
         [Key]
-        public string LogginID { get; set; }
+        public string LoggInID { get; set; }
         public string Password { get; set; }
         public NursingStaff NursingStaff { get; set; }
 
@@ -22,7 +22,7 @@ namespace PatienthanteringEL
         }
         public User(string inloggID, string losenord, NursingStaff nursingStaff)
         {
-            this.LogginID = inloggID;
+            this.LoggInID = inloggID;
             this.Password = losenord;
             this.NursingStaff = nursingStaff;
         }

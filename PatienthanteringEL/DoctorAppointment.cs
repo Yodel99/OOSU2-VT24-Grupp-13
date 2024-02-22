@@ -12,26 +12,26 @@ namespace PatienthanteringEL
 
         [Key]
         public string VisitNr { get; set; }
-        public DateTime Datum { get; set; }
-        public string Syfte { get; set; }
+        public DateTime Date { get; set; }
+        public string Reason { get; set; }
         public Patient Patient { get; set; }
-        public NursingStaff AnsvarigLakare { get; set; }
-        public string AnstallningsID => AnsvarigLakare?.StaffNr;
+        public NursingStaff ResponsibleNurse { get; set; }
+        public string StaffNr => ResponsibleNurse?.StaffNr;
         public string PatientNr => Patient?.PatientNr;
         public string PatientFNamn => Patient?.FName;
-        public string LakareFnamn => AnsvarigLakare?.FName;
+        public string DoctorFname => ResponsibleNurse?.FName;
 
         public DoctorAppointment()
         {
 
         }
-        public DoctorAppointment(string besokNr, DateTime datum, string syfte, Patient patient, NursingStaff ansvarigLäkare)
+        public DoctorAppointment(string visitNr, DateTime date, string reason, Patient patient, NursingStaff responsibleNurse)
         {
-            this.VisitNr = besokNr;
-            this.Datum = datum;
-            this.Syfte = syfte;
+            this.VisitNr = visitNr;
+            this.Date = date;
+            this.Reason = reason;
             this.Patient = patient;
-            this.AnsvarigLakare = ansvarigLäkare;
+            this.ResponsibleNurse = responsibleNurse;
         }
     }
 }
