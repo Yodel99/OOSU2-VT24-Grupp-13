@@ -98,6 +98,7 @@ namespace PatienthanteringPL
                 {
                     uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
                     UppdateraPatient uppdateraPatient = new UppdateraPatient(AktivAnvandare);
+
                     this.Hide();
                     uppdateraPatient.Show();
                 }
