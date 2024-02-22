@@ -43,7 +43,7 @@
             this.dataGridViewBefintligaBesok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBefintligaBesok.Location = new System.Drawing.Point(23, 44);
             this.dataGridViewBefintligaBesok.Name = "dataGridViewBefintligaBesok";
-            this.dataGridViewBefintligaBesok.Size = new System.Drawing.Size(488, 150);
+            this.dataGridViewBefintligaBesok.Size = new System.Drawing.Size(548, 150);
             this.dataGridViewBefintligaBesok.TabIndex = 0;
             // 
             // label1
@@ -88,7 +88,7 @@
             // buttonTaBort
             // 
             this.buttonTaBort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTaBort.Location = new System.Drawing.Point(192, 344);
+            this.buttonTaBort.Location = new System.Drawing.Point(170, 344);
             this.buttonTaBort.Name = "buttonTaBort";
             this.buttonTaBort.Size = new System.Drawing.Size(137, 51);
             this.buttonTaBort.TabIndex = 5;
@@ -99,9 +99,9 @@
             // buttonTillbaka
             // 
             this.buttonTillbaka.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTillbaka.Location = new System.Drawing.Point(358, 344);
+            this.buttonTillbaka.Location = new System.Drawing.Point(475, 399);
             this.buttonTillbaka.Name = "buttonTillbaka";
-            this.buttonTillbaka.Size = new System.Drawing.Size(137, 51);
+            this.buttonTillbaka.Size = new System.Drawing.Size(103, 39);
             this.buttonTillbaka.TabIndex = 6;
             this.buttonTillbaka.Text = "Tillbaka";
             this.buttonTillbaka.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 450);
+            this.ClientSize = new System.Drawing.Size(590, 450);
             this.Controls.Add(this.buttonTillbaka);
             this.Controls.Add(this.buttonTaBort);
             this.Controls.Add(this.buttonRedigeraTid);

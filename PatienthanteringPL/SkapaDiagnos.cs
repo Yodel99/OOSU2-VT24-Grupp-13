@@ -15,12 +15,14 @@ namespace PatienthanteringPL
     public partial class SkapaDiagnos : Form
     {
         private Patient selectedpatient { get; }
+        User AktivAnvandare { get; }
         
-        public SkapaDiagnos(Patient SelectedPatient)
+        public SkapaDiagnos(Patient SelectedPatient,User user)
         {
             InitializeComponent();
             selectedpatient = SelectedPatient;
-            VisaDiagnoser();           
+            VisaDiagnoser();
+            AktivAnvandare = user;
         }
 
         private void textBoxDiagnosBeskrivning_TextChanged(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace PatienthanteringPL
 
             SkapaDiagnosController skapaDiagnosController = new SkapaDiagnosController();
             skapaDiagnosController.SkapaDiagnos(selectedpatient, behandling, diagnosBeskrivning);
-            PatientHantering patientHantering = new PatientHantering();
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
             this.Close();
             patientHantering.Show();
         }

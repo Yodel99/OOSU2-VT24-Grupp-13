@@ -15,10 +15,12 @@ namespace PatienthanteringPL
     public partial class RegistreraPatient : Form
     {
         HamtaListaController hamtaListaController = new HamtaListaController();
-        public RegistreraPatient()
+        User AktivAnvandare { get; }
+        public RegistreraPatient(User user)
         {
             InitializeComponent();
             VisaPatienter();
+            AktivAnvandare = user;
         }
 
         public void VisaPatienter()
@@ -32,7 +34,7 @@ namespace PatienthanteringPL
         private void registrerapersonuppgifter1_Click(object sender, EventArgs e)
         {
             Patienthantering patienthantering = new Patienthantering();
-            PatientHantering PatienthanteringWindow = new PatientHantering ();
+            PatientHantering PatienthanteringWindow = new PatientHantering (AktivAnvandare);
             RegistreraPatientController registreraPatientController = new RegistreraPatientController();
             string personNmr = textBox1.Text;
             string fnamn= textBox2.Text;
@@ -60,7 +62,7 @@ namespace PatienthanteringPL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PatientHantering patientHantering = new PatientHantering();
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
 
             this.Hide();
             patientHantering.Show();

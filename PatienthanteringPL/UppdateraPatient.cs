@@ -18,10 +18,12 @@ namespace PatienthanteringPL
 {
     public partial class UppdateraPatient : Form
     {
-        public UppdateraPatient()
+        User AktivAnvandare { get; }
+        public UppdateraPatient(User user)
         {
             InitializeComponent();
             VisaPatienter();
+            AktivAnvandare = user;
         }
 
         private void VisaPatienter()
@@ -34,7 +36,7 @@ namespace PatienthanteringPL
         
         private void button3_Click(object sender, EventArgs e)
         {
-            PatientHantering patientHantering = new PatientHantering();
+            PatientHantering patientHantering = new PatientHantering(AktivAnvandare);
 
             this.Hide();
             patientHantering.Show();
@@ -95,7 +97,8 @@ namespace PatienthanteringPL
                 if (checkPatientNr && checkAttribut == true)
                 {
                     uppdateraPatientController.UppdateraPatientInfo(chosenPatient, chosenAttribute, chosenInput);
-                    UppdateraPatient uppdateraPatient = new UppdateraPatient();
+                    UppdateraPatient uppdateraPatient = new UppdateraPatient(AktivAnvandare);
+
                     this.Hide();
                     uppdateraPatient.Show();
                 }

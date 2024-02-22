@@ -16,10 +16,12 @@ namespace PatienthanteringPL
     public partial class ValjPatientRecept : Form
     {
         private Patient SelectedPatient;
-        public ValjPatientRecept()
+        User AktivAnvandare { get; }
+        public ValjPatientRecept(User aktivAnvandare)
         {
             InitializeComponent();
             VisaPatienter();
+            AktivAnvandare = aktivAnvandare;
         }
         private void VisaPatienter()
         {
@@ -32,7 +34,7 @@ namespace PatienthanteringPL
         {
             if (SelectedPatient != null)
             {
-                SkapaRecept skapaRecept = new SkapaRecept(SelectedPatient);
+                SkapaRecept skapaRecept = new SkapaRecept(SelectedPatient, AktivAnvandare);
                 this.Close();
                 skapaRecept.Show();
             }
@@ -57,7 +59,7 @@ namespace PatienthanteringPL
 
         private void Tillbakabutton_Click(object sender, EventArgs e)
         {
-            PatientHantering patienthantering = new PatientHantering();
+            PatientHantering patienthantering = new PatientHantering(AktivAnvandare);
             this.Close();
             patienthantering.Show();
         }

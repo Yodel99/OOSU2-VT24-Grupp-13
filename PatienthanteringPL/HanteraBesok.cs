@@ -15,9 +15,10 @@ namespace PatienthanteringPL
     {
 
         public User AktivAnvandare { get; }
-        public HanteraBesok()
-        {          
+        public HanteraBesok(User user)
+        {
             InitializeComponent();
+            AktivAnvandare = user;
         }
 
         private void HanteraBesok_Load(object sender, EventArgs e)
@@ -27,21 +28,21 @@ namespace PatienthanteringPL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NyttBesok nyttBesok = new NyttBesok();
+            NyttBesok nyttBesok = new NyttBesok(AktivAnvandare);
             this.Close();
             nyttBesok.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RedigeraBesok redigeraBesok= new RedigeraBesok();
+            RedigeraBesok redigeraBesok= new RedigeraBesok(AktivAnvandare);
             this.Close();
             redigeraBesok.Show();
         }
 
         private void buttonHuvudMeny_Click(object sender, EventArgs e)
         {
-            Huvudmeny huvudmeny = new Huvudmeny();
+            Huvudmeny huvudmeny = new Huvudmeny(AktivAnvandare);
             huvudmeny.Show();
             this.Close();
         }
