@@ -10,21 +10,18 @@ using System.Threading.Tasks;
 namespace PatienthanteringAL
 {
     public class CreateDiagnosisController
-    {
+    {UnitOfWork unitOfWork = new UnitOfWork();
         public void CreateDiagnosis(Patient selectedpatient, string treatment, string diagnosisDescription)
         {
-            using (var db = new PatientMSContext())
-            {
-                var patient = db.Patients.Find(selectedpatient.PatientNr);
-                
-                Diagnosis diagnos = new Diagnosis(selectedpatient, diagnosisDescription, DateTime.Now, treatment);
-                if (patient != null)
+            var patient = unitOfWork.PatientRepository.GetSpecificPatient(selectedpatient.PatientNr);   
+             Diagnosis diagnosis = new Diagnosis(selectedpatient, diagnosisDescription, DateTime.Now, treatment);
+             if (patient != null)
                 {
-                    diagnos.Patient = patient;
+                    diagnosis.Patient = patient;
                 }
-                db.Diagnosis.Add(diagnos);
-                db.SaveChanges();
-            }
+            unitOfWork.DiagnosisRepository.Add(diagnosis);
+            unitOfWork.SaveChanges();
+            
         }
     }
 }

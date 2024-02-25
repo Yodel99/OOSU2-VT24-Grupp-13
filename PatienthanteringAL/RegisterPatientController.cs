@@ -10,29 +10,27 @@ namespace PatienthanteringAL
 {
     public class RegisterPatientController
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         public Patient GetPatient(string patientNr)
         {
-
-            using (var patientMSContext = new PatientMSContext())
-            {
-                Patient patient = patientMSContext.Patients.FirstOrDefault(a => a.PatientNr.Equals(patientNr));
-
+            var patient = unitOfWork.PatientRepository.GetSpecificPatient(patientNr);
+            
                 if (patient != null)
                 {
                     return patient;
                 }
-            }
+            
 
             return null;
         }
         public void RegisterPatient(string personNmr, string fnamn, string enamn, string email, string patientNmr, string adress, string telNmr)
         {            
             Patient patient = new Patient(personNmr, fnamn, enamn, email, patientNmr, adress, telNmr);            
-            using (var db = new PatientMSContext()) 
-            {
-                db.Patients.Add(patient);
-                db.SaveChanges();
-            }       
+             
+            
+                unitOfWork.PatientRepository.Add(patient);
+                unitOfWork.SaveChanges();
+                   
         }
     }
 

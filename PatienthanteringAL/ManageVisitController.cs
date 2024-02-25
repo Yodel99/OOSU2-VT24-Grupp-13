@@ -12,45 +12,41 @@ namespace PatienthanteringAL
 {
     public class ManageVisitController
     {
-        
+        UnitOfWork unitOfWork = new UnitOfWork();
         
        
         public NursingStaff GetDoctor(string staffNr)
         {
-            using (var patientMSContext = new PatientMSContext())
-            {
-                NursingStaff nursingStaff = patientMSContext.NursingStaffs.FirstOrDefault(a => a.StaffNr.Equals(staffNr));
+            NursingStaff nursingStaff = unitOfWork.NursingStaffRepository.GetspecificDoctor(staffNr);
 
                 if (nursingStaff != null)
                 {
                     return nursingStaff;
                 }
-            }
+            
 
             return null;
         }
         public Patient GetPatient(string patientNr)
         {
-
-            using (var patientMSContext = new PatientMSContext())
-            {
-                Patient patient = patientMSContext.Patients.FirstOrDefault(a => a.PatientNr.Equals(patientNr));
+            Patient patient = unitOfWork.PatientRepository.GetSpecificPatient(patientNr);
+            
 
                 if (patient != null)
                 {
                     return patient;
                 }
-            }
+            
 
             return null;
         }
     
         public void AddVisit(DoctorAppointment visit)
         {
-            using (var db = new PatientMSContext())
-            {
-                var doctor = db.NursingStaffs.Find(visit.StaffNr);
-                var patient = db.Patients.Find(visit.PatientNr);
+            
+            
+            var doctor = unitOfWork.NursingStaffRepository.GetspecificDoctor(visit.StaffNr);
+            var patient = unitOfWork.PatientRepository.GetSpecificPatient(visit.PatientNr);
                 if (doctor != null)
                 {
                     visit.ResponsibleNurse = doctor;
@@ -60,52 +56,40 @@ namespace PatienthanteringAL
                     visit.Patient = patient;
                 }
 
-                db.DoctorAppointments.Add(visit);
-                db.SaveChanges();
-            }
+            unitOfWork.DoctorAppointmentRepository.Add(visit);
+            unitOfWork.SaveChanges();
+            
         }
         
         public void RemoveAppointment(string besokNr)
         {
 
-            using (var db = new PatientMSContext())
-            {
-                var appointment = db.DoctorAppointments.Find(besokNr);
-                
-                db.DoctorAppointments.Remove(appointment);
-                db.SaveChanges();
-            }
+            
+            unitOfWork.DoctorAppointmentRepository.Remove(GetVisit(besokNr));
+            unitOfWork.SaveChanges();
             
 
         }
         public DoctorAppointment GetVisit(string visitNr)
         {
             {
-                using (var patientMSContext = new PatientMSContext())
-                {
-                    DoctorAppointment doctorAppointment = patientMSContext.DoctorAppointments
-                        .Include(a => a.Patient)
-                        .Include(a => a.ResponsibleNurse)
-                        .SingleOrDefault(a => a.VisitNr.Equals(visitNr));
+                DoctorAppointment doctorAppointment = unitOfWork.DoctorAppointmentRepository.GetSpecificVisit(visitNr);
 
-                    if (doctorAppointment != null)
+                if (doctorAppointment != null)
                     {
                         return doctorAppointment;
                     }
-                }
+                
 
                 return null;
             }
         }
         public void ChangeDate(DateTime newDate, DoctorAppointment doctorAppointment)
         {
-            using (var db = new PatientMSContext())
-            {
-                var appointment = db.DoctorAppointments.SingleOrDefault(a => a.VisitNr == doctorAppointment.VisitNr);
-                appointment.Date = newDate;
-                db.SaveChanges();
-            }
-            ;
+            DoctorAppointment appointment = GetVisit(doctorAppointment.VisitNr);
+            appointment.Date = newDate;
+            unitOfWork.SaveChanges();
+            
         }
     }
 }

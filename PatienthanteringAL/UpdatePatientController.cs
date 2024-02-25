@@ -13,51 +13,52 @@ namespace PatienthanteringAL
 {
     public class UpdatePatientController
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         public bool UpdatePatientInfo(string chosenPatientNr, string chosenAttribute, string chosenInput)
         {                      
-            using (var db = new PatientMSContext())
+            
+            
+            var patient = unitOfWork.PatientRepository.GetSpecificPatient(chosenPatientNr);
             {
-                var patient = db.Patients.Find(chosenPatientNr);
+                if (patient != null) 
                 {
-                    if (patient != null) 
+                    if (chosenAttribute.Equals("personnr"))
                     {
-                        if (chosenAttribute.Equals("personnr"))
-                        {
-                            patient.SSN = chosenInput;
+                        patient.SSN = chosenInput;
 
-                        }
-                        else if (chosenAttribute.Equals("fnamn"))
-                        {
-                            patient.FName = chosenInput;
-                        }
-                        else if (chosenAttribute.Equals("enamn"))
-                        {
-                            patient.EName = chosenInput;
-                        }
-                        else if (chosenAttribute.Equals("email"))
-                        {
-                            patient.Email = chosenInput;
-                        }
-                        else if (chosenAttribute.Equals("address"))
-                        {
-                            patient.Address = chosenInput;
-                        }
-                        else if (chosenAttribute.Equals("telnr"))
-                        {
-                            patient.TelNr = chosenInput;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        db.SaveChanges();
+                    }
+                    else if (chosenAttribute.Equals("fnamn"))
+                    {
+                        patient.FName = chosenInput;
+                    }
+                    else if (chosenAttribute.Equals("enamn"))
+                    {
+                        patient.EName = chosenInput;
+                    }
+                    else if (chosenAttribute.Equals("email"))
+                    {
+                        patient.Email = chosenInput;
+                    }
+                    else if (chosenAttribute.Equals("address"))
+                    {
+                        patient.Address = chosenInput;
+                    }
+                    else if (chosenAttribute.Equals("telnr"))
+                    {
+                        patient.TelNr = chosenInput;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                        unitOfWork.SaveChanges();
                         return true;
                     }
                     else
                     {
                         return false;
                     }
-                }
+                
                 
             }
             

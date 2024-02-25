@@ -138,7 +138,7 @@
     <Compile Include="Repositorys\PatientRepository.cs" />
     <Compile Include="Repositorys\PersonRepository.cs" />
     <Compile Include="Repositorys\DoctorAppointmentRepository.cs" />
-    <Compile Include="Repositorys\DiagnosRepository.cs" />
+    <Compile Include="Repositorys\DiagnosisRepository.cs" />
     <Compile Include="Repositorys\DrugPrescriptionRepository.cs" />
     <Compile Include="PatientMSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

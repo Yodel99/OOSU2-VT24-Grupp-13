@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PatienthanteringEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace PatienthanteringDLef
 {
@@ -74,8 +77,10 @@ namespace PatienthanteringDLef
             {
                 return Context.Set<T>().Count();
             }
+        
 
-       
+
+
 
         //public Repository()
         //{
@@ -88,6 +93,6 @@ namespace PatienthanteringDLef
         // This is a bit strange but I don't want multiple lists of the class T.
         // NOTE: This is very bad if you use multiple threads.
         //private static IList<T> Context;
-        
+
     }
 }

@@ -13,14 +13,13 @@ namespace PatienthanteringAL
 {
     public class LogInController
     {
-
+        UnitOfWork unitOfWork = new UnitOfWork();
 
         public User GetUser(string logInID, string password)
         {
-            using (var patientMSContext = new PatientMSContext())
-            {               
-                User user = patientMSContext.Users.FirstOrDefault(a => a.LoggInID.Equals(logInID));
-                
+            
+                         
+                User user = unitOfWork.UserRepository.GetUser(logInID);
                 if (user != null)
                 {                    
                     if (password.Equals(user.Password))
@@ -28,7 +27,7 @@ namespace PatienthanteringAL
                         return user;
                     }
                 }
-            }
+            
 
             return null;
         }

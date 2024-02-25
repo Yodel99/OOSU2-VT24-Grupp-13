@@ -10,20 +10,20 @@ namespace PatienthanteringAL
 {
     public class PrescribePrescriptionController
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         public void PrescripePrescription(Patient selectedpatient, string prescription, string dosage, string reason)
         {
-            using (var db = new PatientMSContext())
-            {
-                var patient = db.Patients.Find(selectedpatient.PatientNr);
+            
+                var patient = unitOfWork.PatientRepository.GetSpecificPatient(selectedpatient.PatientNr);
 
                 DrugPrescription drugPrescription = new DrugPrescription(selectedpatient, prescription, dosage, DateTime.Now, reason);
                 if (patient != null)
                 {
                     drugPrescription.Patient = patient;
                 }
-                db.DrugPrescriptions.Add(drugPrescription);
-                db.SaveChanges();
-            }
+                unitOfWork.DrugPrescriptionRepository.Add(drugPrescription);
+                unitOfWork.SaveChanges();
+            
         }
     }
 }

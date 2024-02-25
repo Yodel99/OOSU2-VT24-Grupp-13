@@ -13,36 +13,34 @@ namespace PatienthanteringDLef
 {
     public class UnitOfWork
     {
-        
+        private bool isDisposed = false;
         private readonly bool disposeContext = false;
         PatientMSContext PatientMSContext { get; }
        
-        public Repository<User> UserRepository
+        public UserRepository UserRepository
         {
             get; private set;
         }
 
-        public Repository<DrugPrescription> DrugPrescriptionRepository
+        public DrugPrescriptionRepository DrugPrescriptionRepository
         {
             get; private set;
         }
-        public Repository<Diagnosis> DiagnosRepository
+        public DiagnosisRepository DiagnosisRepository
         {
             get; private set;
         }
-        public Repository<DoctorAppointment> DoctorAppointmentRepository
+        public DoctorAppointmentRepository DoctorAppointmentRepository
+        { get; private set; }
+        public PersonRepository PersonRepository
         {
             get; private set;
         }
-        public Repository<Person> PersonRepository
+        public NursingStaffRepository NursingStaffRepository
         {
             get; private set;
         }
-        public Repository<NursingStaff> NursingStaffRepository
-        {
-            get; private set;
-        }
-        public Repository<Patient> PatientRepository
+        public PatientRepository PatientRepository
         {
             get; private set;
         }
@@ -60,7 +58,7 @@ namespace PatienthanteringDLef
             PatientMSContext = context;
             UserRepository = new UserRepository(context);
             DrugPrescriptionRepository = new DrugPrescriptionRepository(context);
-            DiagnosRepository = new DiagnosRepository(context);
+            DiagnosisRepository = new DiagnosisRepository(context);
             DoctorAppointmentRepository = new DoctorAppointmentRepository(context);
             PersonRepository = new PersonRepository(context);
             NursingStaffRepository = new NursingStaffRepository(context);
