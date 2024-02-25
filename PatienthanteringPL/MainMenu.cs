@@ -38,5 +38,12 @@ namespace PatienthanteringPL
         {
             Environment.Exit(0);
         }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            LogIn logIn = new LogIn();
+            this.Close();
+            logIn.Show();
+        }
     }
 }

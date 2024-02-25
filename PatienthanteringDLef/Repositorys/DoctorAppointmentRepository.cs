@@ -26,7 +26,8 @@ namespace PatienthanteringDLef
 
             return Context.Set<DoctorAppointment>()
                           .Include(appointment => appointment.Patient)
-                          .Include(appointment => appointment.ResponsibleNurse).ToList();
+                          .Include(appointment => appointment.ResponsibleNurse)
+                          .ToList();
         }
     }
 }

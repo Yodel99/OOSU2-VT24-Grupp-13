@@ -12,12 +12,10 @@ namespace PatienthanteringAL
 {
     public class ValidationController
     {
-
+        UnitOfWork unitOfWork = new UnitOfWork();
         public bool AccessCheckNurse(User activeUser)
         {
 
-            using (var patientMSContext = new PatientMSContext())
-            {
                 NursingStaff nursingStaff = GetNursingstaff(activeUser);
 
                 if (nursingStaff.Profession == "Sjuksköterska"|| nursingStaff.Profession=="Läkare")
@@ -28,12 +26,10 @@ namespace PatienthanteringAL
                 {
                     return false;
                 }
-            }
+            
         }
         public bool AccessCheckDoctor(User activeUser)
-        {
-            using (var patientMSContext = new PatientMSContext())
-            {
+        {   
                 NursingStaff nursingStaff = GetNursingstaff(activeUser);
                
                 if (nursingStaff.Profession == "Läkare")
@@ -45,26 +41,22 @@ namespace PatienthanteringAL
                     return false;
                 }
             }
-        }
-
         private NursingStaff GetNursingstaff(User activeUser)
         {
-            using (var patientMSContext = new PatientMSContext())
-            {
-                User user = patientMSContext.Users
-                    .Include(a => a.NursingStaff)
-                    .SingleOrDefault(a => a.LoggInID.Equals(activeUser.LoggInID));
 
-                if (user != null && user.NursingStaff != null)
-                {
-                    return user.NursingStaff;
-                }
-                else
-                {
-  
-                    return null;
-                }
+
+            User user = unitOfWork.UserRepository.GetUser(activeUser.LoggInID);
+
+            if (user != null && user.NursingStaff != null)
+            {
+                return user.NursingStaff;
             }
+            else
+            {
+
+                return null;
+            }
+
         }
     }
 }

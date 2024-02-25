@@ -1,4 +1,5 @@
-﻿using PatienthanteringEL;
+﻿using Microsoft.EntityFrameworkCore;
+using PatienthanteringEL;
 using System.Linq;
 
 namespace PatienthanteringDLef
@@ -8,7 +9,9 @@ namespace PatienthanteringDLef
         public UserRepository(PatientMSContext context) : base(context) { }
         public User GetUser(string logInID)
         {
-            return Context.Set<User>().FirstOrDefault(a => a.LoggInID.Equals(logInID));
+            return Context.Set<User>()
+                .Include(u => u.NursingStaff)
+                .FirstOrDefault(a => a.LoggInID.Equals(logInID));
         }
     }
 }
