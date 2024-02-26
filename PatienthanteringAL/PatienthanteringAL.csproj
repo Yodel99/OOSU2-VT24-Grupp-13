@@ -46,7 +46,6 @@
     <Compile Include="LogInController.cs" />
     <Compile Include="GetListsController.cs" />
     <Compile Include="ManageVisitController.cs" />
-    <Compile Include="Patienthantering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterPatientController.cs" />
     <Compile Include="CreateDiagnosisController.cs" />
