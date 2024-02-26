@@ -47,9 +47,9 @@
             // 
             // LoggaInbutton1
             // 
-            this.LoggaInbutton1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LoggaInbutton1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.LoggaInbutton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoggaInbutton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LoggaInbutton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.LoggaInbutton1.Location = new System.Drawing.Point(239, 253);
             this.LoggaInbutton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LoggaInbutton1.Name = "LoggaInbutton1";
@@ -63,7 +63,7 @@
             // 
             this.InloggIDlabel1.AutoSize = true;
             this.InloggIDlabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InloggIDlabel1.Location = new System.Drawing.Point(126, 125);
+            this.InloggIDlabel1.Location = new System.Drawing.Point(124, 123);
             this.InloggIDlabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.InloggIDlabel1.Name = "InloggIDlabel1";
             this.InloggIDlabel1.Size = new System.Drawing.Size(111, 17);
@@ -74,7 +74,7 @@
             // 
             this.LösenOrdlabel2.AutoSize = true;
             this.LösenOrdlabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LösenOrdlabel2.Location = new System.Drawing.Point(126, 207);
+            this.LösenOrdlabel2.Location = new System.Drawing.Point(154, 208);
             this.LösenOrdlabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LösenOrdlabel2.Name = "LösenOrdlabel2";
             this.LösenOrdlabel2.Size = new System.Drawing.Size(81, 17);
@@ -85,7 +85,7 @@
             // 
             this.LoggaInlabel3.AutoSize = true;
             this.LoggaInlabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoggaInlabel3.Location = new System.Drawing.Point(226, 61);
+            this.LoggaInlabel3.Location = new System.Drawing.Point(213, 60);
             this.LoggaInlabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoggaInlabel3.Name = "LoggaInlabel3";
             this.LoggaInlabel3.Size = new System.Drawing.Size(189, 24);
@@ -103,9 +103,9 @@
             // 
             // buttonAvsluta
             // 
-            this.buttonAvsluta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonAvsluta.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.buttonAvsluta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAvsluta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAvsluta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonAvsluta.Location = new System.Drawing.Point(475, 324);
             this.buttonAvsluta.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonAvsluta.Name = "buttonAvsluta";
@@ -119,6 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(600, 365);
             this.Controls.Add(this.buttonAvsluta);
             this.Controls.Add(this.LoggaInlabel3);
