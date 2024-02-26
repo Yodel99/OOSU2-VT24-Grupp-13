@@ -1,2 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PatienthanteringEL.Diagnosis">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <AssociationLine Name="Patient" Type="PatienthanteringEL.Patient" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="7.066" />
+        <Point X="6.25" Y="7.066" />
+        <Point X="6.25" Y="5.069" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAABAAAAAAAAACAABAAAAAAAACAA=</HashCode>
+      <FileName>Diagnosis.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PatienthanteringEL.DoctorAppointment">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACEAAAAAAAIgAAAAEAAAAAAAAAABAAgAAAAACAA=</HashCode>
+      <FileName>DoctorAppointment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PatienthanteringEL.DrugPrescription">
+    <Position X="7.75" Y="6" Width="1.5" />
+    <AssociationLine Name="Patient" Type="PatienthanteringEL.Patient" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="7.062" />
+        <Point X="7.312" Y="7.062" />
+        <Point X="7.312" Y="5.069" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAgAAIAAAAAAAAAAIAAAAAAAAIAAAAACAA=</HashCode>
+      <FileName>DrugPrescription.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PatienthanteringEL.NursingStaff">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAEA=</HashCode>
+      <FileName>NursingStaff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PatienthanteringEL.Patient">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Patient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PatienthanteringEL.Person">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAABAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PatienthanteringEL.User">
+    <Position X="1.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NursingStaff" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
