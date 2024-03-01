@@ -1,0 +1,204 @@
+﻿<Window x:Class="PatientHanteringWPFF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientHanteringWPFF"
+        xmlns:viewModel="clr-namespace:PatientHanteringWPFF.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="525"
+        Width="850"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <!--// Background Grid//-->
+    <Grid Background="#232628">
+        <!--// Menu Panel //-->
+        <StackPanel Background="#2E333A"
+                    Width="269"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Left">
+            <!--//PatientMS Logo-->
+            <Grid Height="50"
+                  VerticalAlignment="Top"
+                  Margin="0,30,0,0">
+                <Border Background="#FF0B6567"
+                          Height="25"
+                          CornerRadius="3,0,0,3"
+                          Width="6"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Right"/>
+                <TextBlock Text="PatientMS"
+                           Foreground="#FFFFFF"
+                           FontFamily="#Roboto-Light"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+            <!--Main menu//-->
+            <Menu Height="450"
+                  Background="Transparent"
+                  Margin="0,40,0,0">
+
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel 
+                            Orientation="Vertical">
+                        </VirtualizingStackPanel>
+
+
+                    </ItemsPanelTemplate>
+
+
+                </Menu.ItemsPanel>
+                <!--Main menu Home-->
+                <MenuItem Header="Home"
+                          Template="{StaticResource Menu_Template}"
+                          IsChecked="True"
+                          Command="{Binding HomeViewCommand}">
+                    <MenuItem.Icon>
+
+                        <Image Source="MVVM/Assets/icons8-home-32.png"
+                             Stretch="Fill"/>
+                    </MenuItem.Icon>
+                    
+
+                </MenuItem>
+                <!--Main menu Patients-->
+                <MenuItem Header="Patients"
+                          Template="{StaticResource Menu_SubMenu_Template}">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="MVVM/Assets/icons8-patient-32.png"
+                               Stretch="Fill"/>
+                    </MenuItem.Icon>
+                    <!--Patient Add-->
+                    <MenuItem Header="Add"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding AddPatientViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-add-50.png"
+                                   Stretch="Fill"/>
+                        </MenuItem.Icon>
+
+
+
+                    </MenuItem>
+                    <!--Patient Edit-->
+                    <MenuItem Header="Edit"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding EditPatientViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-edit-32.png"
+                                  Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <!--Main menu Appointments-->
+                <MenuItem Header="Appointment"
+                          Template="{StaticResource Menu_SubMenu_Template}">
+                    <MenuItem.Icon>
+
+                        <Image Source="MVVM/Assets/icons8-doctor-appointments-32.png"
+                               Stretch="Fill"/>
+                    </MenuItem.Icon>
+                    <!--Appointment Add-->
+                    <MenuItem Header="Add"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding AddVisitViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-add-50.png"
+                                   Stretch="Fill"/>
+                        </MenuItem.Icon>
+
+
+
+                    </MenuItem>
+                    <!--Appointment Edit-->
+                    <MenuItem Header="Edit"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding EditVisitViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-edit-32.png"
+                                   Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--Appointment Manage-->
+                    <MenuItem Header="Manage"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding ManageVisitViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-doctor-32.png"
+                                   Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <!--Main menu Prescriptions-->
+                <MenuItem Header="Prescriptions"
+                          Template="{StaticResource Menu_SubMenu_Template}">
+                    <MenuItem.Icon>
+                        <Image Source="MVVM/Assets/icons8-medicine-32.png"
+                               Stretch="Fill"/>
+                    </MenuItem.Icon>
+                    <!--Prescription Add-->
+                    <MenuItem Header="Add"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding AddPrescriptionViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-add-50.png"
+                                  Stretch="Fill"/>
+                        </MenuItem.Icon>
+
+                    </MenuItem>
+                    <!--Prescription Prescribe-->
+                    <MenuItem Header="Prescribe"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding PrescribeMedicineViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-prescription-32.png"
+                                   Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <!--Main menu Diagnosis-->
+                <MenuItem Header="Add Diagnosis"
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding AddDiagnosisViewCommand}" Width="263">
+                    <MenuItem.Icon>
+                        <Image Source="MVVM/Assets/icons8-diagnosis-64.png"
+                               Stretch="Fill"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Main menu Log Out-->
+                <MenuItem Header="Log Out"
+           Template="{StaticResource Menu_Template}">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="MVVM/Assets/icons8-log-out-32.png"
+                Stretch="Fill"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+
+            </Menu>
+        </StackPanel>
+        <!--Close app-->
+        <Button x:Name="Closebtn"
+                Style="{StaticResource CloseBtnStyle}" Click="Closebtn_Click"/>
+        <ContentControl
+                        Margin="269,103,15,10"
+                        Content="{Binding CurrentVeiw}"/>
+
+    </Grid>
+</Window>

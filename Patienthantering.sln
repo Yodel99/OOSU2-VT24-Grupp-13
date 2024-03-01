@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedConsole", "SeedConsole\
 		{6AEE3331-1FF5-4970-9AF4-68240DAF321C} = {6AEE3331-1FF5-4970-9AF4-68240DAF321C}
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientHanteringWPFF", "PatientHanteringWPFF\PatientHanteringWPFF.csproj", "{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{FADA8C4B-762D-4A99-9E1A-3FE256321D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FADA8C4B-762D-4A99-9E1A-3FE256321D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FADA8C4B-762D-4A99-9E1A-3FE256321D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
