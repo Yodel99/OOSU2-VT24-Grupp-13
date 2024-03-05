@@ -20,11 +20,5 @@ namespace PatientHanteringWPFF
         {
             InitializeComponent();
         }
-
-
-        private void Closebtn_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
     }
 }

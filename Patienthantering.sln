@@ -26,7 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedConsole", "SeedConsole\
 		{6AEE3331-1FF5-4970-9AF4-68240DAF321C} = {6AEE3331-1FF5-4970-9AF4-68240DAF321C}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientHanteringWPFF", "PatientHanteringWPFF\PatientHanteringWPFF.csproj", "{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientHanteringWPF.MVVM", "PatientHanteringWPFF\PatientHanteringWPF.MVVM.csproj", "{F7F6D17F-A74B-471E-960D-CAB5CBF9A35C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{673B83CA-82EC-4725-8814-EEBDB2597F5F} = {673B83CA-82EC-4725-8814-EEBDB2597F5F}
+		{939817BB-53B3-4C4F-9D77-88324E7859CD} = {939817BB-53B3-4C4F-9D77-88324E7859CD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
