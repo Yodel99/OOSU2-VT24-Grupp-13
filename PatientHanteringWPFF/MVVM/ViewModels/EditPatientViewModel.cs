@@ -22,7 +22,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
         }
 
-        //(ObservableCollection<Patient>) getListsController.GetPatients();
+        
         public EditPatientViewModel()
         {
             getListsController = new GetListsController();
