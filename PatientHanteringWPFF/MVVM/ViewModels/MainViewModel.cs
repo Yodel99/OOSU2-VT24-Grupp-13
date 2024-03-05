@@ -58,7 +58,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             
             CurrentVeiw = HomeVm;
 
-            HomeViewCommand = new RelayCommand(o => 
+            HomeViewCommand = new RelayCommand(execute => 
             {
                 CurrentVeiw = HomeVm;
             });

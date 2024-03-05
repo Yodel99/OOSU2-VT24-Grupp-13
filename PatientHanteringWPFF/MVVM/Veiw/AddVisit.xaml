@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="590">
     <StackPanel>
+        <!--Add Doctor Appointment menu panel-->
         <StackPanel Orientation="Horizontal">
             <Border Width="369"
-            Height="200">
+            Height="120">
                 <TextBlock Text="Add Doctor Appointment"
                    Foreground="White"
                    FontSize="30"
@@ -17,6 +18,68 @@
                    HorizontalAlignment="Left"
                    Margin="15,15,10,0" Width="400"/>
             </Border>
+
         </StackPanel>
+        <!--Add Doctor Appointment Data panel -->
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    Width="550"
+                    Height="250"
+                    Margin="20,0,0,0">
+            <WrapPanel>
+                <StackPanel>
+                    <!--TextBox and ListBox Nurses-->
+                    <TextBox Width="120"
+                             Height="30"
+                             VerticalContentAlignment="Center"
+                             Margin="10,0,7,0"
+                             Style="{StaticResource TextboxTemplate}" Tag="Nurses"
+                             Background="Transparent"/>
+                    <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
+                             Background="#2E333A"
+                             Foreground="White"
+                             FontFamily="#Roboto-light"
+                             Height="175"
+                             Width="120"
+                             Margin="10,7,7,0"
+                             VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <!--TexBox and ListBox Patients-->
+                <StackPanel>
+                    <TextBox Width="120"
+                             Height="30"
+                             VerticalContentAlignment="Center"
+                             Margin="10,0,7,0"
+                             Style="{StaticResource TextboxTemplate}" Tag="Patients"
+                             Background="Transparent"/>
+                    <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
+                             Background="#2E333A"
+                             Foreground="White"
+                             FontFamily="#Roboto-light"
+                             Height="175"
+                             Width="120"
+                             Margin="10,7,7,0"
+                             VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
+                <StackPanel>
+                    <DatePicker Style="{StaticResource ModernDateTimePicker}" 
+                                Height="30"
+ />
+                </StackPanel>
+                <StackPanel>
+                    <TextBox Width="120"
+                             Height="215"
+                             VerticalAlignment="Top"
+                             Margin="10,0,7,0"
+                             Style="{StaticResource MultilineTextboxTemplate}"
+                             Tag="Appointment Reason.."
+                             Background="Transparent"/>
+
+                </StackPanel>
+
+            </WrapPanel>
+        </StackPanel>
+
     </StackPanel>
 </UserControl>

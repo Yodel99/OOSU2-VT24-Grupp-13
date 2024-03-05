@@ -26,5 +26,10 @@ namespace PatientHanteringWPFF.MVVM.Veiw
         {
             InitializeComponent();
         }
+
+        private void PART_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

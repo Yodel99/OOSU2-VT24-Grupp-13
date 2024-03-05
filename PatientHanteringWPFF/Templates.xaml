@@ -426,6 +426,68 @@
 
 
     </Style>
+    <Style x:Key="ListBoxWithBorderRadius" TargetType="ListBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border CornerRadius="5"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ModernDateTimePicker" TargetType="{x:Type DatePicker}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#2E333A"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePicker}">
+                    <Border Background="{TemplateBinding Background}"
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                     BorderThickness="0"
+                     CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <DatePickerTextBox x:Name="PART_TextBox"
+                                        Grid.Column="0"
+                                        Padding="{TemplateBinding Padding}"
+                                        BorderThickness="0"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        Foreground="{TemplateBinding Foreground}"/>
+                            <Button Grid.Column="1"
+                             Margin="2"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Padding="5"
+                             
+                             FontFamily="#Roboto-Light"
+                             Background="#2E333A"
+                             BorderThickness="0"
+                             Foreground="{TemplateBinding Foreground}"
+                             ClickMode="Press"
+                             Focusable="False"
+                             Cursor="Hand">
+                                <Image Source="MVVM/Assets/icons8-calender-16.png"
+                                    Stretch="Fill"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 
 
 </ResourceDictionary>

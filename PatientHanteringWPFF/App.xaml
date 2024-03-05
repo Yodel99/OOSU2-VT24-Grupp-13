@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Templates.xaml" />
+                <ResourceDictionary Source="TextboxTemplate.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
             
