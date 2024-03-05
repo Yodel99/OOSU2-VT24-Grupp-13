@@ -1,5 +1,5 @@
-﻿using PatienthanteringAL;
-using PatienthanteringEL;
+﻿using PatienthanteringALNy;
+using PatienthanteringELNy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

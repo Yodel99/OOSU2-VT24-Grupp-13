@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PatienthanteringAL;
-using PatienthanteringEL;
+using PatienthanteringALNy;
+using PatienthanteringELNy;
 
 namespace PatientHanteringWPFF.MVVM.Veiw
 {

@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatienthanteringAL
+namespace PatienthanteringALNy
 {
     
     public class GetListsController
     {
         UnitOfWork unitOfWork = new UnitOfWork();
-        public IList<Patient> GetPatients()
+        public List<Patient> GetPatients()
         {
             return unitOfWork.PatientRepository.GetAllPatients();
         }

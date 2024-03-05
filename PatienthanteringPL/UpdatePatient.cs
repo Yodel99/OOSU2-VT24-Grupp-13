@@ -8,9 +8,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PatienthanteringAL;
+using PatienthanteringALNy;
 using PatienthanteringDLef;
-using PatienthanteringEL;
+using PatienthanteringELNy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 

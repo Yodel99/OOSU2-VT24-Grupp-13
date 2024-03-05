@@ -37,6 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PatienthanteringALNy\PatienthanteringALNy.csproj" />
+    <ProjectReference Include="..\PatienthanteringELNy\PatienthanteringELNy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="MVVM\Assets\icons8-add-50.png" />
   </ItemGroup>
 
@@ -65,11 +70,6 @@
     <Resource Include="MVVM\Veiw\ViewImages\icons8-doctor-appointment-100.png" />
     <Resource Include="MVVM\Veiw\ViewImages\icons8-medicine-100.png" />
     <Resource Include="MVVM\Veiw\ViewImages\icons8-patient-100.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PatienthanteringAL\PatienthanteringAL.csproj" />
-    <ProjectReference Include="..\PatienthanteringEL\PatienthanteringEL.csproj" />
   </ItemGroup>
 
 </Project>

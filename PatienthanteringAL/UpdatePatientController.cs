@@ -9,7 +9,7 @@ using PatienthanteringDLef;
 using PatienthanteringEL;
 
 
-namespace PatienthanteringAL
+namespace PatienthanteringALNy
 {
     public class UpdatePatientController
     {

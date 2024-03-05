@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PatienthanteringAL;
-using PatienthanteringEL;
+using PatienthanteringALNy;
+using PatienthanteringELNy;
 
 namespace PatienthanteringPL
 {

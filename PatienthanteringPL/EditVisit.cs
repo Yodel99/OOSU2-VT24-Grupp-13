@@ -1,4 +1,4 @@
-﻿using PatienthanteringEL;
+﻿using PatienthanteringELNy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PatienthanteringAL;
+using PatienthanteringALNy;
 using System.Diagnostics;
 
 namespace PatienthanteringPL
