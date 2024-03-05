@@ -9,7 +9,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class MainViewModel : ObservableObject
     {
-        public RelayCommand HomeViewCommand { get; set; }
+        public RelayCommand HomeViewCommand { get; set; } 
         public RelayCommand AddVisitViewCommand { get; set; }
         public RelayCommand EditVisitViewCommand { get; set; }
         public RelayCommand ManageVisitViewCommand { get; set; }

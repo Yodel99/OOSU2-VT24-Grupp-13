@@ -52,7 +52,7 @@ namespace PatienthanteringAL
             
 
         }
-        public IList<NursingStaff> GetNursingStaffs()
+        public List<NursingStaff> GetNursingStaffs()
         {
 
 
