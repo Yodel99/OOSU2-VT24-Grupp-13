@@ -29,27 +29,38 @@
             <WrapPanel>
                 <StackPanel>
                     <!--TextBox and ListBox Nurses-->
-                    <TextBox Width="120"
-                             Height="30"
-                             VerticalContentAlignment="Center"
-                             Margin="10,0,7,0"
-                             Style="{StaticResource TextboxTemplate}" Tag="Nurses"
-                             Background="Transparent"/>
+                    <TextBox Width="140"
+             Height="30"
+             VerticalContentAlignment="Center"
+             Margin="0,0,7,0"
+             Style="{StaticResource TextboxTemplate}" Tag="Nurses"
+             Background="Transparent"/>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
-                             Background="#2E333A"
-                             Foreground="White"
-                             FontFamily="#Roboto-light"
-                             Height="175"
-                             Width="120"
-                             Margin="10,7,7,0"
-                             VerticalContentAlignment="Center"/>
+             Background="#2E333A"
+             Foreground="White"
+             FontFamily="#Roboto-light"
+             Height="175"
+             Width="140"
+             Margin="0,7,7,0"
+             VerticalContentAlignment="Center"
+             ItemsSource ="{Binding Nurses}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding FName}" Margin="0,0,3,0"/>
+                                    <TextBlock Text="{Binding EName}" Margin="3,0,0,0"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
-                <!--TexBox and ListBox Patients-->
+
+                <!--TextBox and ListBox Patients-->
                 <StackPanel>
-                    <TextBox Width="120"
+                    <TextBox Width="140"
                              Height="30"
                              VerticalContentAlignment="Center"
-                             Margin="10,0,7,0"
+                             Margin="5,0,7,0"
                              Style="{StaticResource TextboxTemplate}" Tag="Patients"
                              Background="Transparent"/>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
@@ -57,9 +68,22 @@
                              Foreground="White"
                              FontFamily="#Roboto-light"
                              Height="175"
-                             Width="120"
-                             Margin="10,7,7,0"
-                             VerticalContentAlignment="Center"/>
+                             Width="140"
+                             Margin="5,7,7,0"
+                             VerticalContentAlignment="Center"
+                             ItemsSource ="{Binding Patients}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding FName}" Margin="0,0,0,0"/>
+                                    <TextBlock Text="{Binding EName}" Margin="3,0,0,0"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+
+
+                    </ListBox>
                 </StackPanel>
                 <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
                 <StackPanel>
@@ -71,7 +95,7 @@
                     <TextBox Width="120"
                              Height="215"
                              VerticalAlignment="Top"
-                             Margin="10,0,7,0"
+                             Margin="5,0,7,0"
                              Style="{StaticResource MultilineTextboxTemplate}"
                              Tag="Appointment Reason.."
                              Background="Transparent"/>

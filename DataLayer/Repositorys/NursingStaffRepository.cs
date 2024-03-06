@@ -14,7 +14,21 @@ namespace DataLayer
         }
         public List<NursingStaff> GetAll()
         {
-            return Context.Set<NursingStaff>().ToList();
+            var nursingStaffList = Context.Set<NursingStaff>()
+                        .Select(ns => new NursingStaff
+                        {
+                            FName = ns.FName,
+                            EName = ns.EName,
+                            Email = ns.Email,
+                            SSN = ns.SSN,
+                            StaffNr = ns.StaffNr,
+                            Profession = ns.Profession,
+                            Specialization = ns.Specialization != null ? ns.Specialization : "Not Specified",
+
+                        })
+                        .ToList();
+
+            return nursingStaffList;
         }
     }
 }

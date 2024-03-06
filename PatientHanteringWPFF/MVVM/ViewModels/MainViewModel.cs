@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,6 +43,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged();
             }
 
+        }
+        public void CloseBtn()
+        {
+            Environment.Exit(0);
         }
 
         public MainViewModel()
@@ -94,6 +99,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             {
                 CurrentVeiw = AddDiagnosisVm;
             });
+            
         }
     }
 }

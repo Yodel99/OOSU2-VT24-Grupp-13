@@ -7,7 +7,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10"
                         Background="#333540"
-                        Width="120"
+                        Width="140"
                         Height="30">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
