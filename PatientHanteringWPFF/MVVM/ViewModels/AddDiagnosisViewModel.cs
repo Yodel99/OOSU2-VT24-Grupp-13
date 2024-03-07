@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
@@ -102,7 +103,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             CreateDiagnosisCommand = new RelayCommand(param => CreateDiagnosis());
                        
         }
-        
+         
         private void FilterPatients()
         {
             if (string.IsNullOrWhiteSpace(SearchTerm))
@@ -117,9 +118,17 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
 
         private void CreateDiagnosis()
-        {            
-            createDiagnosisController.CreateDiagnosis(PatientSelectedItem, TreatmentPlan, DiagnosisDescription);
-            UpdateDiagnoses();
+        {
+            if (PatientSelectedItem != null && TreatmentPlan !=null && DiagnosisDescription != null) 
+            {                
+                createDiagnosisController.CreateDiagnosis(PatientSelectedItem, TreatmentPlan, DiagnosisDescription);
+                UpdateDiagnoses();
+            }
+            else
+            {
+                MessageBox.Show("Please fill in every field");
+            }
+            
         }
         private void UpdateDiagnoses()
         {
