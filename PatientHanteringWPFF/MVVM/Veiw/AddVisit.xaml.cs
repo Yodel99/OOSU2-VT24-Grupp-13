@@ -24,6 +24,7 @@ namespace PatientHanteringWPFF.MVVM.Veiw
     {
         public AddVisit()
         {
+            
             InitializeComponent();
         }
 

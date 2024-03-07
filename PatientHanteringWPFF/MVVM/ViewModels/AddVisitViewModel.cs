@@ -56,7 +56,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             get { return filteredNurses; }
             set
             {
-                nurses = value;
+                filteredNurses = value;
                 OnPropertyChanged(nameof(FilteredNurses));
             }
         }
@@ -71,7 +71,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             SearchCommand = new RelayCommand(Search);
         }
 
-        public string SearchText
+        public string SearchTextPatient
         {
             get { return searchText; }
             set
@@ -80,11 +80,25 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 {
                     searchText = value;
                     ApplyFilterPatients();
-                    ApplyFilterNurses();
-                    OnPropertyChanged(nameof(SearchText));
+                    //ApplyFilterNurses();
+                    OnPropertyChanged(nameof(SearchTextPatient));
                     
                 }
                 
+            }
+        }
+        private string searchTextNurse;
+        public string SearchTextNurse
+        {
+            get { return searchTextNurse; }
+            set
+            {
+                if (searchTextNurse != value)
+                {
+                    searchTextNurse = value;
+                    ApplyFilterNurses();
+                    OnPropertyChanged(nameof(SearchTextNurse));
+                }
             }
         }
 
@@ -96,7 +110,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
         private void ApplyFilterPatients()
         {
-            if (SearchText==null)
+            if (SearchTextPatient==null)
             {
                 FilteredPatients = new ObservableCollection<Patient>(Patients);
                 return;
@@ -105,7 +119,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             FilteredPatients.Clear();
             foreach (var patient in Patients)
             {
-                if (patient.FName.Contains(SearchText) || patient.EName.Contains(SearchText))
+                if (patient.FName.Contains(SearchTextPatient) || patient.EName.Contains(SearchTextPatient))
                 {
                     FilteredPatients.Add(patient);
                 }
@@ -114,18 +128,18 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
         private void ApplyFilterNurses()
         {
-            if (string.IsNullOrEmpty(SearchText))
+            if (SearchTextNurse==null)
             {
                 FilteredNurses = new ObservableCollection<NursingStaff>(Nurses);
                 return;
             }
-
-            // Rensa befintliga filtrerade sjuksköterskor och lägg till nya filtrerade sjuksköterskor
+            else 
             FilteredNurses.Clear();
             foreach (var nurse in Nurses)
             {
-                if (nurse.FName.Contains(SearchText) || nurse.EName.Contains(SearchText))
+                if (nurse.FName.Contains(SearchTextNurse) || nurse.EName.Contains(SearchTextNurse))
                 {
+                    
                     FilteredNurses.Add(nurse);
                 }
             }
@@ -137,7 +151,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            MessageBox.Show($"Property {propertyName}");
+            
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

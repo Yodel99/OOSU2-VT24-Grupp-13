@@ -12,33 +12,12 @@
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
-                                 Text="{TemplateBinding Text}"
                                  BorderThickness="0"
                                  Background="Transparent"
                                  VerticalAlignment="Center"
                                  Padding="5"
                                  Foreground="White"
                                  x:Name="SearchBox"/>
-                            <TextBlock IsHitTestVisible="False"
-                                   Text="{TemplateBinding Tag}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   Margin="10,0,0,0"
-                                   FontSize="11"
-                                   FontFamily="#Roboto-Light"
-                                   Foreground="White"
-                                   Grid.Column="1">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="Visibility" Value="Hidden"/>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
                         </Grid>
                     </Border>
                 </ControlTemplate>

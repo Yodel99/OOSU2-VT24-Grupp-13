@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="590">
     
+    
     <StackPanel>
         <!--Add Doctor Appointment menu panel-->
         <StackPanel Orientation="Horizontal">
@@ -30,12 +31,21 @@
             <WrapPanel>
                 <StackPanel>
                     <!--TextBox and ListBox Nurses-->
-                    <TextBox Width="140"
-             Height="30"
-             VerticalContentAlignment="Center"
-             Margin="0,0,7,0"
-             Style="{StaticResource TextboxTemplate}" Tag="Nurses"
-             Background="Transparent"/>
+                    <Border CornerRadius="10"
+                            Background="#333540"
+                             Width="140"
+                             Height="30">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     VerticalAlignment="Center"
+                                     Padding="5"
+                                     Foreground="White"
+                                     Text="{Binding SearchTextNurse,UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </Border>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
              Background="#2E333A"
              Foreground="White"
@@ -44,7 +54,7 @@
              Width="140"
              Margin="0,7,7,0"
              VerticalContentAlignment="Center"
-             ItemsSource ="{Binding Nurses}">
+             ItemsSource ="{Binding FilteredNurses}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -58,18 +68,21 @@
 
                 <!--TextBox and ListBox Patients-->
                 <StackPanel>
-                    <TextBox Width="140"
-                             Height="30"
-                             VerticalContentAlignment="Center"
-                             Margin="5,0,7,0"
-                             Style="{StaticResource TextboxTemplate}"
-                             Tag="Patients"
-                             Background="Transparent"
-                             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                    <Border CornerRadius="10"
+                       Background="#333540"
+                       Width="140"
+                       Height="30">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     VerticalAlignment="Center"
+                                     Padding="5"
+                                     Foreground="White"
+                                     Text="{Binding SearchTextPatient, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </Border>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
                              Background="#2E333A"
                              Foreground="White"
