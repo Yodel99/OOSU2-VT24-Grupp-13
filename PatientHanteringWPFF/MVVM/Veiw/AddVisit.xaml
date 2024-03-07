@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="590">
+    
     <StackPanel>
         <!--Add Doctor Appointment menu panel-->
         <StackPanel Orientation="Horizontal">

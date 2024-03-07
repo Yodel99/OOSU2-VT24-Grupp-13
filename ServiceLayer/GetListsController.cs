@@ -52,7 +52,7 @@ namespace ServiceLayer
             
 
         }
-        public List<NursingStaff> GetNursingStaffs()
+        public IList<NursingStaff> GetNursingStaffs()
         {
 
 

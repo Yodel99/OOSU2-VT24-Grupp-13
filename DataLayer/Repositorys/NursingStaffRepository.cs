@@ -12,7 +12,7 @@ namespace DataLayer
         {
             return Context.Set<NursingStaff>().SingleOrDefault(a => a.StaffNr.Equals(staffNr));
         }
-        public List<NursingStaff> GetAll()
+        public IList<NursingStaff> GetAll()
         {
             var nursingStaffList = Context.Set<NursingStaff>()
                         .Select(ns => new NursingStaff

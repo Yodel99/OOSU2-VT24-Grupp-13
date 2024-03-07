@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
@@ -16,9 +17,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
     {
         GetListsController getListsController;
         private ObservableCollection<Patient> patients = null;
-        private List<NursingStaff> nurses = null;
+        private ObservableCollection<NursingStaff> nurses = null;
         private string _searchText;
-        private ObservableCollection<Patient> filteredPatients; // Separat backing-fält för den filtrerade listan
+        private ObservableCollection<Patient> filteredPatients;
+        private ObservableCollection<NursingStaff> filteredNurses;
 
         public ObservableCollection<Patient> Patients
         {
@@ -40,46 +42,62 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
         }
 
-        public List<NursingStaff> Nurses
+        public ObservableCollection<NursingStaff> Nurses
         {
-            get => nurses;
-            set { nurses = value; }
+            get { return nurses; }
+            set 
+            {
+                nurses = value;
+                OnPropertyChanged(nameof(Nurses));
+            }
+        }
+        public ObservableCollection<NursingStaff> FilteredNurses
+        {
+            get { return filteredNurses; }
+            set
+            {
+                nurses = value;
+                OnPropertyChanged(nameof(FilteredNurses));
+            }
         }
 
         public AddVisitViewModel()
         {
             getListsController = new GetListsController();
             Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
-            FilteredPatients = new ObservableCollection<Patient>(Patients); // Initiera FilteredPatients med samma data som Patients
-            nurses = new List<NursingStaff>();
+            FilteredPatients = new ObservableCollection<Patient>(Patients); 
+            Nurses = new ObservableCollection<NursingStaff>(getListsController.GetNursingStaffs());
+            FilteredNurses = new ObservableCollection<NursingStaff>(Nurses);
             SearchCommand = new RelayCommand(Search);
         }
 
         public string SearchText
         {
-            get => _searchText;
+            get { return _searchText; }
             set
             {
                 _searchText = value;
+                ApplyFilterPatients();
+                ApplyFilterNurses();
                 OnPropertyChanged(nameof(SearchText));
-                ApplyFilter(); // Funktion för att filtrera listan när söktexten ändras
+                
             }
         }
 
         private void Search(object parameter)
         {
-            ApplyFilter();
+            ApplyFilterPatients();
+            ApplyFilterNurses();
         }
 
-        private void ApplyFilter()
+        private void ApplyFilterPatients()
         {
-            if (string.IsNullOrEmpty(SearchText))
+            if (SearchText==null)
             {
                 FilteredPatients = new ObservableCollection<Patient>(Patients);
                 return;
             }
-
-            // Rensa befintliga filtrerade patienter och lägg till nya filtrerade patienter
+            else
             FilteredPatients.Clear();
             foreach (var patient in Patients)
             {
@@ -90,13 +108,32 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
             OnPropertyChanged(nameof(FilteredPatients));
         }
+        private void ApplyFilterNurses()
+        {
+            if (string.IsNullOrEmpty(SearchText))
+            {
+                FilteredNurses = new ObservableCollection<NursingStaff>(Nurses);
+                return;
+            }
 
+            // Rensa befintliga filtrerade sjuksköterskor och lägg till nya filtrerade sjuksköterskor
+            FilteredNurses.Clear();
+            foreach (var nurse in Nurses)
+            {
+                if (nurse.FName.Contains(SearchText) || nurse.EName.Contains(SearchText))
+                {
+                    FilteredNurses.Add(nurse);
+                }
+            }
+            OnPropertyChanged(nameof(FilteredNurses));
+        }
 
         public ICommand SearchCommand { get; private set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
+            MessageBox.Show($"Property {propertyName}");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
