@@ -61,8 +61,14 @@
                              Height="30"
                              VerticalContentAlignment="Center"
                              Margin="5,0,7,0"
-                             Style="{StaticResource TextboxTemplate}" Tag="Patients"
-                             Background="Transparent"/>
+                             Style="{StaticResource TextboxTemplate}"
+                             Tag="Patients"
+                             Background="Transparent"
+                             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
                              Background="#2E333A"
                              Foreground="White"
@@ -71,7 +77,7 @@
                              Width="140"
                              Margin="5,7,7,0"
                              VerticalContentAlignment="Center"
-                             ItemsSource ="{Binding Patients}">
+                             ItemsSource ="{Binding FilteredPatients}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -80,9 +86,6 @@
                                 </WrapPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-
-
-
                     </ListBox>
                 </StackPanel>
                 <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
