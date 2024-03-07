@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace ServiceLayer
 {
     public class CreateDiagnosisController
-    {UnitOfWork unitOfWork = new UnitOfWork();
+    {
+        UnitOfWork unitOfWork = new UnitOfWork();
         public void CreateDiagnosis(Patient selectedpatient, string treatment, string diagnosisDescription)
         {
             var patient = unitOfWork.PatientRepository.GetSpecificPatient(selectedpatient.PatientNr);   

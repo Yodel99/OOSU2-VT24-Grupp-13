@@ -20,8 +20,7 @@ namespace ServiceLayer
 
         public IList<Diagnosis> GetDiagnosis(Patient selectedpatient)
         {
-
-            
+           
                 var diagnos = unitOfWork.DiagnosisRepository.GetAll();
                 List<Diagnosis> patientdiagnosis = new List<Diagnosis>();
                 foreach (Diagnosis diagnos1 in diagnos)
@@ -31,9 +30,7 @@ namespace ServiceLayer
                         patientdiagnosis.Add(diagnos1);
                     }
                 }
-                return patientdiagnosis;
-            
-
+                return patientdiagnosis;           
         }
         public IList<DrugPrescription> GetPrescriptions(Patient selectedpatient)
         {
