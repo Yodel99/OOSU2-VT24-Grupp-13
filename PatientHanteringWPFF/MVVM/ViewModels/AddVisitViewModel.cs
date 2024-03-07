@@ -18,7 +18,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         GetListsController getListsController;
         private ObservableCollection<Patient> patients = null;
         private ObservableCollection<NursingStaff> nurses = null;
-        private string _searchText;
+        private string searchText;
         private ObservableCollection<Patient> filteredPatients;
         private ObservableCollection<NursingStaff> filteredNurses;
 
@@ -73,13 +73,17 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
         public string SearchText
         {
-            get { return _searchText; }
+            get { return searchText; }
             set
             {
-                _searchText = value;
-                ApplyFilterPatients();
-                ApplyFilterNurses();
-                OnPropertyChanged(nameof(SearchText));
+                if (searchText != value)
+                {
+                    searchText = value;
+                    ApplyFilterPatients();
+                    ApplyFilterNurses();
+                    OnPropertyChanged(nameof(SearchText));
+                    
+                }
                 
             }
         }
