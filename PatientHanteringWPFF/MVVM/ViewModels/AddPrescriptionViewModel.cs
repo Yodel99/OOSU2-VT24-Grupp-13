@@ -131,7 +131,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                     MessageBoxResult result = MessageBox.Show("This patient already has an active prescription. Do you want to continue?", "Warning", MessageBoxButton.OKCancel);
                     if (result == MessageBoxResult.Cancel)
                     {
-                        return; // Avbryt metoden om användaren klickar på "Cancel"
+                        return; 
                     }
                 }
 
@@ -141,7 +141,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             else
             {
                 MessageBox.Show("Please fill in every field");
-                return; // Avbryt metoden om något av fälten inte är ifyllt
+                return; 
             }
         }
 
