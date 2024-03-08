@@ -22,6 +22,7 @@
     <None Remove="MVVM\Assets\icons8-medicine-32.png" />
     <None Remove="MVVM\Assets\icons8-patient-32.png" />
     <None Remove="MVVM\Assets\icons8-prescription-32.png" />
+    <None Remove="MVVM\Assets\icons8-search-32.png" />
     <None Remove="MVVM\Assets\img_arrow.png" />
     <None Remove="MVVM\Assets\LogoProgrammering.png" />
     <None Remove="MVVM\Assets\max_def.png" />
@@ -59,6 +60,7 @@
     <Resource Include="MVVM\Assets\icons8-medicine-32.png" />
     <Resource Include="MVVM\Assets\icons8-patient-32.png" />
     <Resource Include="MVVM\Assets\icons8-prescription-32.png" />
+    <Resource Include="MVVM\Assets\icons8-search-32.png" />
     <Resource Include="MVVM\Assets\img_arrow.png" />
     <Resource Include="MVVM\Assets\LogoProgrammering.png" />
     <Resource Include="MVVM\Assets\max_def.png" />
