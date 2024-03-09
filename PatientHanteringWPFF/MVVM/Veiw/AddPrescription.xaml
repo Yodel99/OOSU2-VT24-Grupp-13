@@ -71,9 +71,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <!-- ScrollViewer -->
-            <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <!-- Innehåll här -->
-            </ScrollViewer>
+            <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"> </ScrollViewer>
         </Grid>
     </DockPanel>
 </UserControl>
