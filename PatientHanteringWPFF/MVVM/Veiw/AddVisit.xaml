@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="590">
-    
-    
+
+
     <StackPanel>
         <!--Add Doctor Appointment menu panel-->
         <StackPanel Orientation="Horizontal">
@@ -28,13 +28,17 @@
                     Width="550"
                     Height="250"
                     Margin="20,0,0,0">
-            <WrapPanel>
+            <WrapPanel Width="588">
                 <StackPanel>
                     <!--TextBox and ListBox Nurses-->
+                    <Label Content="Nurses"
+                           FontFamily="Roboto-Light"
+                           Foreground="White"/>
                     <Border CornerRadius="10"
                             Background="#333540"
                              Width="140"
-                             Height="30">
+                             Height="30"
+                            Margin="-8,0,0,0">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
@@ -47,14 +51,17 @@
                         </Grid>
                     </Border>
                     <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
-             Background="#2E333A"
-             Foreground="White"
-             FontFamily="#Roboto-light"
-             Height="175"
-             Width="140"
-             Margin="0,7,7,0"
-             VerticalContentAlignment="Center"
-             ItemsSource ="{Binding FilteredNurses}">
+                             Background="#2E333A"
+                             Foreground="White"
+                             FontFamily="#Roboto-light"
+                             Height="175"
+                             Width="140"
+                             Margin="0,7,7,0"
+                             VerticalContentAlignment="Center"
+                             ItemsSource ="{Binding FilteredNurses}"
+                             SelectedValuePath="StaffNr"
+                             SelectedItem="{Binding NurseSelectedItem, Mode=TwoWay}"
+                             IsEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -68,6 +75,9 @@
 
                 <!--TextBox and ListBox Patients-->
                 <StackPanel>
+                    <Label Content="Patients"
+       FontFamily="Roboto-Light"
+       Foreground="White"/>
                     <Border CornerRadius="10"
                        Background="#333540"
                        Width="140"
@@ -91,7 +101,10 @@
                              Width="140"
                              Margin="5,7,7,0"
                              VerticalContentAlignment="Center"
-                             ItemsSource ="{Binding FilteredPatients}">
+                             ItemsSource="{Binding FilteredPatients}"
+                             SelectedValuePath="PatientNr"
+                             SelectedItem="{Binding PatientSelectedItem, Mode=TwoWay}"
+                             IsEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -101,23 +114,90 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
-                <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
-                <StackPanel>
-                    <DatePicker Style="{StaticResource ModernDateTimePicker}" 
-                                Height="30"
- />
-                </StackPanel>
-                <StackPanel>
-                    <TextBox Width="120"
-                             Height="215"
-                             VerticalAlignment="Top"
-                             Margin="5,0,7,0"
-                             Style="{StaticResource MultilineTextboxTemplate}"
-                             Tag="Appointment Reason.."
-                             Background="Transparent"/>
+
 
                 </StackPanel>
+
+                <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
+                <Border
+                        Width="120"
+                        Height="110"
+                        VerticalAlignment="Top"
+        BorderBrush="#2E333A"
+        BorderThickness="1"
+        CornerRadius="10">
+                    <Grid>
+                        <Border Margin="0,20,0,0"
+                Background="#2E333A"
+                CornerRadius="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- DatePicker -->
+                                <DatePicker SelectedDate="{Binding SelectedDate}" 
+                            Foreground="Black"
+                            Margin="10"/>
+
+                                <!-- Time Selection -->
+                                <StackPanel Orientation="Horizontal"
+                                    Grid.Row="1"
+                            Margin="10">
+                                    <ComboBox ItemsSource="{Binding Hours}" 
+                              SelectedItem="{Binding SelectedHour}"
+                              Background="#2E333A"
+                              Foreground="Black"
+                              Margin="0"
+                              BorderThickness="0"/>
+                                    <TextBlock Text=":" Margin="7,0" Foreground="Black"/>
+                                    <ComboBox ItemsSource="{Binding Minutes}" 
+                              SelectedItem="{Binding SelectedMinute}"
+                              Background="#2E333A"
+                              Foreground="Black"
+                              Margin="0"
+                              BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+
+
+                <StackPanel>
+                    <Label Content="Reason"
+                           Margin="5,0,0,0"
+                           FontFamily="Roboto-Light"
+                           Foreground="White"/>
+                    <Border CornerRadius="10"
+                        Background="#333540"
+                        Width="120"
+                        Height="215"
+                        Margin="10,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="9*"/>
+                                <RowDefinition Height="34*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle StrokeThickness="1" Grid.RowSpan="2"/>
+                            <TextBox Width="120"
+                                 Height="215"
+                                 Margin="0,1,0,0"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Center"
+                                 Padding="5"
+                                 Foreground="White"
+                                 TextWrapping="Wrap"
+                                 Text="{Binding ReasonText, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2"/>
+
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
 
             </WrapPanel>
         </StackPanel>

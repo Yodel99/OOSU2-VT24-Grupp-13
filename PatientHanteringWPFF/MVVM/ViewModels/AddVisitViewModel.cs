@@ -70,6 +70,27 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             FilteredNurses = new ObservableCollection<NursingStaff>(Nurses);
             SearchCommand = new RelayCommand(Search);
         }
+        private Patient _patientSelectedItem;
+        public Patient PatientSelectedItem
+        {
+            get { return _patientSelectedItem; }
+            set
+            {
+                _patientSelectedItem = value;
+                OnPropertyChanged(nameof(PatientSelectedItem));
+            }
+        }
+        private NursingStaff _nurseSelectedItem;
+        public NursingStaff NurseSelectedItem
+        {
+            get { return _nurseSelectedItem; }
+            set
+            {
+                _nurseSelectedItem = value;
+                OnPropertyChanged(nameof(NurseSelectedItem));
+            }
+        }
+
 
         public string SearchTextPatient
         {
@@ -80,7 +101,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 {
                     searchText = value;
                     ApplyFilterPatients();
-                    //ApplyFilterNurses();
                     OnPropertyChanged(nameof(SearchTextPatient));
                     
                 }
@@ -98,6 +118,20 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                     searchTextNurse = value;
                     ApplyFilterNurses();
                     OnPropertyChanged(nameof(SearchTextNurse));
+                }
+            }
+        }
+        private string reasonText;
+        public string ReasonText
+        {
+            get { return reasonText; }
+            set
+            {
+                if (reasonText != value)
+                {
+                    reasonText = value;
+                   
+                    OnPropertyChanged(nameof(reasonText));
                 }
             }
         }
@@ -145,13 +179,40 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
             OnPropertyChanged(nameof(FilteredNurses));
         }
+        private int _selectedHour;
+        public int SelectedHour
+        {
+            get { return _selectedHour; }
+            set
+            {
+                _selectedHour = value;
+                OnPropertyChanged(nameof(SelectedHour));
+            }
+        }
+
+        private int _selectedMinute;
+        public int SelectedMinute
+        {
+            get { return _selectedMinute; }
+            set
+            {
+                _selectedMinute = value;
+                OnPropertyChanged(nameof(SelectedMinute));
+            }
+        }
+
+        public List<int> Hours { get; } = Enumerable.Range(8, 11).SelectMany(h => new[] { h}).ToList();
+        public List<int> Minutes { get; } = new List<int> { 0, 15, 30, 45 };
+
+
+
 
         public ICommand SearchCommand { get; private set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            
+            MessageBox.Show(propertyName);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
