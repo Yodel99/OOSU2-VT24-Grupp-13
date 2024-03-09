@@ -1,4 +1,5 @@
-﻿using PatientHanteringWPFF.Core;
+﻿using PatientHanteringWPF.MVVM.MVVM.ViewModels;
+using PatientHanteringWPFF.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public RelayCommand AddPrescriptionViewCommand { get; set; }
         public RelayCommand PrescribeMedicineViewCommand { get; set; }
         public RelayCommand AddDiagnosisViewCommand { get; set; }
+        public RelayCommand NurseScheduleViewCommand { get; set; }
 
 
 
@@ -30,6 +32,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public AddPrescriptionViewModel AddPrescriptionVm { get;set; }
         public PrescribeMedicineViewModel PrecribeMedicineVm { get; set; }
         public AddDiagnosisViewModel AddDiagnosisVm { get; set; }
+        public NurseScheduleViewModel NurseScheduleVm { get; set; }
 
         private object _currentView;
 
@@ -55,6 +58,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             AddPrescriptionVm = new AddPrescriptionViewModel();
             PrecribeMedicineVm = new PrescribeMedicineViewModel();
             AddDiagnosisVm= new AddDiagnosisViewModel();
+            NurseScheduleVm= new NurseScheduleViewModel();
             
             CurrentVeiw = HomeVm;
 
@@ -93,6 +97,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             AddDiagnosisViewCommand = new RelayCommand(o =>
             {
                 CurrentVeiw = AddDiagnosisVm;
+            });
+            NurseScheduleViewCommand = new RelayCommand(o =>
+            {
+                CurrentVeiw = NurseScheduleVm;
             });
         }
     }
