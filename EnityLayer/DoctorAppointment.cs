@@ -20,6 +20,8 @@ namespace EnityLayer
         public string PatientNr => Patient?.PatientNr;
         public string PatientFNamn => Patient?.FName;
         public string DoctorFname => ResponsibleNurse?.FName;
+        public string DoctorEname => ResponsibleNurse?.EName;
+        public string PatientEname => Patient?.EName;
 
         public DoctorAppointment()
         {

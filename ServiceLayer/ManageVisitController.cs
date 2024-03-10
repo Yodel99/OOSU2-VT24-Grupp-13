@@ -7,17 +7,19 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ServiceLayer
 {
     public class ManageVisitController
     {
         UnitOfWork unitOfWork = new UnitOfWork();
+        GetListsController listsController = new GetListsController();
         
        
         public NursingStaff GetDoctor(string staffNr)
         {
-            NursingStaff nursingStaff = unitOfWork.NursingStaffRepository.GetspecificDoctor(staffNr);
+            NursingStaff nursingStaff = unitOfWork.NursingStaffRepository.GetSpecificDoctor(staffNr);
 
                 if (nursingStaff != null)
                 {
@@ -40,27 +42,44 @@ namespace ServiceLayer
 
             return null;
         }
-    
+
         public void AddVisit(DoctorAppointment visit)
         {
-            
-            
-            var doctor = unitOfWork.NursingStaffRepository.GetspecificDoctor(visit.StaffNr);
+            var existingNurse = unitOfWork.NursingStaffRepository.GetSpecificDoctor(visit.StaffNr);
             var patient = unitOfWork.PatientRepository.GetSpecificPatient(visit.PatientNr);
-                if (doctor != null)
-                {
-                    visit.ResponsibleNurse = doctor;
-                }
-                if (patient != null)
-                {
-                    visit.Patient = patient;
-                }
+
+            if (existingNurse == null)
+            {
+                throw new Exception("Could not find doctor with the given staff number.");
+            }
+
+            if (patient == null)
+            {
+                throw new Exception("Could not find patient with the given patient number.");
+            }
+
+            visit.ResponsibleNurse = existingNurse;
+            visit.Patient = patient;
 
             unitOfWork.DoctorAppointmentRepository.Add(visit);
             unitOfWork.SaveChanges();
-            
         }
-        
+
+        public string GenerateNewVisitNr()
+        {
+            IList<DoctorAppointment> doctorAppointments = listsController.GetVisits();
+
+            var maxVisitNr = doctorAppointments
+                .Where(appt => appt.VisitNr != null && appt.VisitNr.StartsWith("B-"))
+                .Select(appt => int.TryParse(appt.VisitNr.Substring(2), out int num) ? num : 0) 
+                .DefaultIfEmpty(1) 
+                .Max(); 
+
+            
+            return "B-" + (maxVisitNr + 1);
+        }
+
+
         public void RemoveAppointment(string besokNr)
         {
 
@@ -86,10 +105,13 @@ namespace ServiceLayer
         }
         public void ChangeDate(DateTime newDate, DoctorAppointment doctorAppointment)
         {
-            DoctorAppointment appointment = GetVisit(doctorAppointment.VisitNr);
-            appointment.Date = newDate;
-            unitOfWork.SaveChanges();
             
+            var UpdatedoctorAppointment = unitOfWork.DoctorAppointmentRepository.GetSpecificVisit(doctorAppointment.VisitNr);
+            {
+                UpdatedoctorAppointment.Date = newDate;
+            }
+            unitOfWork.SaveChanges();
         }
+
     }
 }

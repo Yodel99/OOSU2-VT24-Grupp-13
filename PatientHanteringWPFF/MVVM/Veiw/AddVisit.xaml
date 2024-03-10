@@ -4,15 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="590">
+             mc:Ignorable="d" d:DesignWidth="590" Height="500">
 
 
-    <StackPanel>
+    <StackPanel Margin="0,0,0,32">
         <!--Add Doctor Appointment menu panel-->
         <StackPanel Orientation="Horizontal">
             <Border Width="369"
-            Height="120">
+            Height="50">
                 <TextBlock Text="Add Doctor Appointment"
                    Foreground="White"
                    FontSize="30"
@@ -26,9 +25,9 @@
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Left"
                     Width="550"
-                    Height="250"
-                    Margin="20,0,0,0">
-            <WrapPanel Width="588">
+                    Height="301"
+                    Margin="5,0,0,0">
+            <WrapPanel Width="588" Height="302">
                 <StackPanel>
                     <!--TextBox and ListBox Nurses-->
                     <Label Content="Nurses"
@@ -118,55 +117,63 @@
 
                 </StackPanel>
 
-                <!--DatePickern som inte är klar Hugger in på den när jag börjat med code behind-->
-                <Border
+                <!--DatePicker and time picker-->
+                <StackPanel>
+                    <Label Content="Date and time"
+                           FontFamily="Roboto-Light"
+                           Foreground="White"/>
+                    <Border
                         Width="120"
                         Height="110"
                         VerticalAlignment="Top"
         BorderBrush="#2E333A"
         BorderThickness="1"
-        CornerRadius="10">
-                    <Grid>
-                        <Border Margin="0,20,0,0"
+        CornerRadius="10"
+                    Margin="0,0,0,0">
+
+                        <Grid>
+                            <Border Margin="0,0,0,0"
                 Background="#2E333A"
                 CornerRadius="10">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <!-- DatePicker -->
-                                <DatePicker SelectedDate="{Binding SelectedDate}" 
-                            Foreground="Black"
-                            Margin="10"/>
+                                    <!-- DatePicker -->
+                                    <DatePicker SelectedDate="{Binding SelectedDate}" 
+                                            Foreground="Black"
+                                            Margin="10"
+                                            />
 
-                                <!-- Time Selection -->
-                                <StackPanel Orientation="Horizontal"
+                                    <!-- Time Selection -->
+                                    <StackPanel Orientation="Horizontal"
                                     Grid.Row="1"
-                            Margin="10">
-                                    <ComboBox ItemsSource="{Binding Hours}" 
+                                    Margin="10">
+                                        <ComboBox ItemsSource="{Binding Hours}" 
                               SelectedItem="{Binding SelectedHour}"
                               Background="#2E333A"
                               Foreground="Black"
                               Margin="0"
                               BorderThickness="0"/>
-                                    <TextBlock Text=":" Margin="7,0" Foreground="Black"/>
-                                    <ComboBox ItemsSource="{Binding Minutes}" 
+                                        <TextBlock Text=":" Margin="7,0" Foreground="Black"/>
+                                        <ComboBox ItemsSource="{Binding Minutes}" 
                               SelectedItem="{Binding SelectedMinute}"
                               Background="#2E333A"
                               Foreground="Black"
                               Margin="0"
                               BorderThickness="0"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </Border>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </StackPanel>
 
 
 
-                <StackPanel>
+                <StackPanel Height="300">
                     <Label Content="Reason"
                            Margin="5,0,0,0"
                            FontFamily="Roboto-Light"
@@ -196,10 +203,23 @@
 
                         </Grid>
                     </Border>
+                    <Border CornerRadius="10" Background="#2E333A" Margin="0,8,0,0">
+                    <Button Height="50"
+                        Width="120"
+                        HorizontalAlignment="Center"
+                        Content="Add Apppointment"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        FontFamily="Roboto-Light"
+                        Command="{Binding CreateVisitCommand}"/>
+                    </Border>
                 </StackPanel>
 
 
             </WrapPanel>
+            
+            
         </StackPanel>
 
     </StackPanel>
