@@ -195,7 +195,8 @@
         </StackPanel>
         <!--Close app-->
         <Button x:Name="Closebtn"
-                Style="{StaticResource CloseBtnStyle}"/>
+                Style="{StaticResource CloseBtnStyle}"
+                Command="{Binding CloseCommand}"/>
         <ContentControl
                         Margin="269,103,15,10"
                         Content="{Binding CurrentVeiw}"/>

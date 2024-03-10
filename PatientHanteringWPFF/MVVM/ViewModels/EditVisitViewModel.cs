@@ -59,10 +59,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             SelectedDate = DateTime.Today;
             ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
             RemoveVisitCommand = new RelayCommand(param => RemoveVisit());
-            HomeViewCommand = new RelayCommand(execute =>
-            {
-                CurrentVeiw = HomeVm;
-            });
+           
         }
         private string searchText;
         public string SearchText
@@ -223,21 +220,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         {
             get { return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0); }
         }
-        public RelayCommand HomeViewCommand { get; set; }
-        public HomeViewModel HomeVm { get; set; }
-        private object _currentView;
-
-        public object CurrentVeiw
-        {
-            get { return _currentView; }
-            set
-            {
-                _currentView = value;
-                OnPropertyChanged();
-            }
-
-        }
-
 
     }
 }

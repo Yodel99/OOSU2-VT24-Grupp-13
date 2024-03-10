@@ -64,6 +64,19 @@ namespace ServiceLayer
             unitOfWork.DoctorAppointmentRepository.Add(visit);
             unitOfWork.SaveChanges();
         }
+        public IList<DoctorAppointment> GetUserSpecificVisits(User user)
+        {
+            IList<DoctorAppointment> doctorAppointmentsUser=unitOfWork.DoctorAppointmentRepository.GetAll();
+            IList<DoctorAppointment> finalList = new List<DoctorAppointment>();
+            foreach (var visit in doctorAppointmentsUser)
+            {
+                if (visit.ResponsibleNurse.StaffNr==user.NursingStaff.StaffNr)
+                {
+                    finalList.Add(visit);
+                }
+            }
+            return finalList;
+        }
 
         public string GenerateNewVisitNr()
         {
