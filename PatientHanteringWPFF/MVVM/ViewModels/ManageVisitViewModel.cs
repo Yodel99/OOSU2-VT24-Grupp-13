@@ -14,6 +14,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class ManageVisitViewModel:ObservableObject
     {
+        #region Initiatiion of objects
         private ObservableCollection<DoctorAppointment> visits = null;
         private ObservableCollection<DoctorAppointment> filteredVisits;
         private ObservableCollection<DoctorAppointment> selectedVisit;
@@ -112,6 +113,8 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             get { return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0); }
         }
         public ICommand ChangeTimeVisitCommand { get; private set; }
+        #endregion
+        #region Constructor
         public ManageVisitViewModel(User user)
         {
             Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits());
@@ -120,8 +123,8 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             SelectedDate = DateTime.Today;
             ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
         }
-       
-        
+        #endregion
+        #region Methods
         private void ShowSelectedVisit()
         {
             SelectedVisit.Clear();
@@ -185,6 +188,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
             ApplyFilterVisits(); // Uppdatera filtrerade listan om det behövs
         }
+        #endregion
     }
 
 }

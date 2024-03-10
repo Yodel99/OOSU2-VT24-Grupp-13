@@ -7,23 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="590">
     <StackPanel>
+        <!--Edit Doctor Apointment Menu-->
         <StackPanel Orientation="Horizontal">
             <Border Width="525"
-        Height="50">
+                    Height="50">
                 <TextBlock Text="Edit Doctor Appointment"
-               Foreground="White"
-               FontSize="30"
-               FontFamily="Roboto-Light"
-               HorizontalAlignment="Left"
-               Margin="15,15,10,0" Width="400"/>
+                           Foreground="White"
+                           FontSize="30"
+                           FontFamily="Roboto-Light"
+                           HorizontalAlignment="Left"
+                           Margin="15,15,10,0" Width="400"/>
             </Border>
         </StackPanel>
-        <WrapPanel Width="588" Height="300">
+        <WrapPanel Width="590"
+                   Height="300">
             <StackPanel Margin="5,0,0,0">
-                <!--TextBox and ListBox Visits-->
+                <!--TextBox Visits-->
                 <Label Content="Appointments"
-           FontFamily="Roboto-Light"
-           Foreground="White"/>
+                       FontFamily="Roboto-Light"
+                       Foreground="White"/>
                 <Border CornerRadius="10"
                         Background="#333540"
                         Width="140"
@@ -33,13 +35,12 @@
                     <Grid>
                         <Rectangle StrokeThickness="1"/>
                         <TextBox Margin="1"
-                     BorderThickness="0"
-                     Background="Transparent"
-                     VerticalAlignment="Center"
-                                 
-                     Padding="5"
-                     Foreground="White"
-                     Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"/>
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 VerticalAlignment="Center"
+                                 Padding="5"
+                                 Foreground="White"
+                                 Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                 </Border>
                 <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
@@ -75,21 +76,18 @@
                        Foreground="White"
                        FontFamily="Roboto-Light"/>
                 <ListBox Style="{StaticResource ListBoxWithBorderRadius}"
-         Background="#2E333A"
-         Foreground="White"
-         FontFamily="#Roboto-light"
-         Height="40"
-         Width="270"
-         Margin="0,0,7,0"
-         VerticalContentAlignment="Center"
-         ItemsSource="{Binding SelectedVisit}"
-                         
-         >
+                         Background="#2E333A"
+                         Foreground="White"
+                         FontFamily="#Roboto-light"
+                         Height="40"
+                         Width="270"
+                         Margin="0,0,7,0"
+                         VerticalContentAlignment="Center"
+                         ItemsSource="{Binding SelectedVisit}">
                     <ListBox.ItemTemplate>
                         <DataTemplate >
                             <WrapPanel>
                                 <TextBlock Text="{Binding Date}" Margin="3,0,0,0"/>
-                           
                                 <TextBlock Text="," Margin="3,0,0,0"/>
                                 <TextBlock Text="{Binding Reason}" Margin="3,0,0,0"/>
                                 <TextBlock Text="," Margin="3,0,0,0"/>
@@ -101,20 +99,18 @@
                 <Label Content="Date and time"
                        FontFamily="Roboto-Light"
                        Foreground="White"/>
-                <Border
-                Width="270"
-                Height="183"
-                VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                BorderBrush="#2E333A"
-                BorderThickness="1"
-                CornerRadius="10"
-            Margin="0,0,0,0">
-
+                <Border Width="270"
+                        Height="183"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        BorderBrush="#2E333A"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="0,0,0,0">
                     <Grid>
                         <Border Margin="0,0,0,0"
-        Background="#2E333A"
-        CornerRadius="10">
+                                Background="#2E333A"
+                                CornerRadius="10">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -124,27 +120,29 @@
                                 <!-- DatePicker -->
                                 <DatePicker Width="120"
                                     SelectedDate="{Binding SelectedDate}" 
-                    Foreground="Black"
-                    Margin="10"/>
+                                    Foreground="Black"
+                                    Margin="10"/>
 
                                 <!-- Time Selection -->
                                 <StackPanel HorizontalAlignment="Center"
-                                    Orientation="Horizontal"
-                            Grid.Row="1"
-                    Margin="10">
+                                            Orientation="Horizontal"
+                                            Grid.Row="1"
+                                            Margin="10">
                                     <ComboBox ItemsSource="{Binding Hours}" 
-                      SelectedItem="{Binding SelectedHour}"
-                      Background="#2E333A"
-                      Foreground="Black"
-                      Margin="0"
-                      BorderThickness="0"/>
-                                    <TextBlock Text=":" Margin="7,0" Foreground="Black"/>
-                                    <ComboBox ItemsSource="{Binding Minutes}" 
-                      SelectedItem="{Binding SelectedMinute}"
-                      Background="#2E333A"
-                      Foreground="Black"
-                      Margin="0"
-                      BorderThickness="0"/>
+                                              SelectedItem="{Binding SelectedHour}"
+                                              Background="#2E333A"
+                                              Foreground="Black"
+                                              Margin="0"
+                                              BorderThickness="0"/>
+                                    <TextBlock Text=":"
+                                               Margin="7,0"
+                                               Foreground="Black"/>
+                                    <ComboBox ItemsSource="{Binding Minutes}"                         
+                                              SelectedItem="{Binding SelectedMinute}"
+                                              Background="#2E333A"
+                                              Foreground="Black"
+                                              Margin="0"
+                                              BorderThickness="0"/>
                                 </StackPanel>
                             </Grid>
                         </Border>

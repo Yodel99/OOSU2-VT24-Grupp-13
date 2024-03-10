@@ -17,11 +17,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class EditVisitViewModel : ObservableObject
     {
-        private ObservableCollection<DoctorAppointment> visits = null;
-        private ObservableCollection<DoctorAppointment> filteredVisits;
-        private ObservableCollection<DoctorAppointment> selectedVisit;
+        #region Initiatiion of objects
         ManageVisitController manageVisitController = new ManageVisitController();
         GetListsController getListsController = new GetListsController();
+        private ObservableCollection<DoctorAppointment> visits = null;
         public ObservableCollection<DoctorAppointment> Visits
         {
             get { return visits; }
@@ -31,7 +30,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged(nameof(Visits));
             }
         }
-
+        private ObservableCollection<DoctorAppointment> filteredVisits;
         public ObservableCollection<DoctorAppointment> FilteredVisits
         {
             get { return filteredVisits; }
@@ -41,6 +40,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged(nameof(FilteredVisits));
             }
         }
+        private ObservableCollection<DoctorAppointment> selectedVisit;
         public ObservableCollection<DoctorAppointment> SelectedVisit
         {
             get { return selectedVisit; }
@@ -50,16 +50,16 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged(nameof(SelectedVisit));
             }
         }
-        public EditVisitViewModel()
+        private DoctorAppointment visitSelectedItem;
+        public DoctorAppointment VisitSelectedItem
         {
-           
-            Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits());
-            selectedVisit = new ObservableCollection<DoctorAppointment>();
-            FilteredVisits = new ObservableCollection<DoctorAppointment>(Visits);
-            SelectedDate = DateTime.Today;
-            ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
-            RemoveVisitCommand = new RelayCommand(param => RemoveVisit());
-           
+            get { return visitSelectedItem; }
+            set
+            {
+                visitSelectedItem = value;
+                ShowSelectedVisit();
+                OnPropertyChanged(nameof(VisitSelectedItem));
+            }
         }
         private string searchText;
         public string SearchText
@@ -77,22 +77,66 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
             }
         }
+        public List<int> Hours { get; } = Enumerable.Range(8, 11).SelectMany(h => new[] { h }).ToList();
+        public List<int> Minutes { get; } = new List<int> { 0, 15, 30, 45 };
+        private DateTime _selectedDate;
+        public DateTime SelectedDate
+        {
+            get { return _selectedDate; }
+            set
+            {
+                _selectedDate = value;
+                OnPropertyChanged(nameof(SelectedDate));
+            }
+        }
+        private int _selectedHour;
+        public int SelectedHour
+        {
+            get { return _selectedHour; }
+            set
+            {
+                _selectedHour = value;
+                OnPropertyChanged(nameof(SelectedHour));
+            }
+        }
+
+        private int _selectedMinute;
+        public int SelectedMinute
+        {
+            get { return _selectedMinute; }
+            set
+            {
+                _selectedMinute = value;
+                OnPropertyChanged(nameof(SelectedMinute));
+            }
+        }
+        public DateTime CombinedDateTime
+        {
+            get { return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0); }
+        }
+        public ICommand ChangeTimeVisitCommand { get; private set; }
+        public ICommand RemoveVisitCommand { get; private set; }
+        #endregion
+        #region Constructor
+        public EditVisitViewModel()
+        {
+           
+            Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits());
+            selectedVisit = new ObservableCollection<DoctorAppointment>();
+            FilteredVisits = new ObservableCollection<DoctorAppointment>(Visits);
+            SelectedDate = DateTime.Today;
+            ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
+            RemoveVisitCommand = new RelayCommand(param => RemoveVisit());
+           
+        }
+        #endregion
+        #region Methods
         private void ShowSelectedVisit()
         {
             SelectedVisit.Clear();
             SelectedVisit.Add(VisitSelectedItem);
         }
-        private DoctorAppointment visitSelectedItem;
-        public DoctorAppointment VisitSelectedItem
-        {
-            get { return visitSelectedItem; }
-            set
-            {
-                visitSelectedItem = value;
-                ShowSelectedVisit();
-                OnPropertyChanged(nameof(VisitSelectedItem));
-            }
-        }
+       
         private void ApplyFilterVisits()
         {
             if (SearchText == null)
@@ -115,8 +159,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
             OnPropertyChanged(nameof(FilteredVisits));
         }
-        public ICommand ChangeTimeVisitCommand { get; private set; }
-        public ICommand RemoveVisitCommand { get; private set; }
+       
         private void RemoveVisit()
         {
             try
@@ -181,45 +224,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
             ApplyFilterVisits(); // Uppdatera filtrerade listan om det behövs
         }
-
-
-        public List<int> Hours { get; } = Enumerable.Range(8, 11).SelectMany(h => new[] { h }).ToList();
-        public List<int> Minutes { get; } = new List<int> { 0, 15, 30, 45 };
-        private DateTime _selectedDate;
-        public DateTime SelectedDate
-        {
-            get { return _selectedDate; }
-            set
-            {
-                _selectedDate = value;
-                OnPropertyChanged(nameof(SelectedDate));
-            }
-        }
-        private int _selectedHour;
-        public int SelectedHour
-        {
-            get { return _selectedHour; }
-            set
-            {
-                _selectedHour = value;
-                OnPropertyChanged(nameof(SelectedHour));
-            }
-        }
-
-        private int _selectedMinute;
-        public int SelectedMinute
-        {
-            get { return _selectedMinute; }
-            set
-            {
-                _selectedMinute = value;
-                OnPropertyChanged(nameof(SelectedMinute));
-            }
-        }
-        public DateTime CombinedDateTime
-        {
-            get { return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0); }
-        }
-
+        #endregion
     }
 }
