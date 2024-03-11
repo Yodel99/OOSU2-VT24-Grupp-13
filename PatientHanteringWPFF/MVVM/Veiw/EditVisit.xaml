@@ -61,7 +61,7 @@
                                 <TextBlock Text="{Binding DoctorFname}" Margin="3,0,0,0"/>
                                 <TextBlock Text="{Binding DoctorEname}" Margin="3,0,0,0"/>
                                 <TextBlock Text="," Margin="3,0,0,0"/>
-                                <TextBlock Text="{Binding PatientFNamn}" Margin="3,0,0,0"/>
+                                <TextBlock Text="{Binding PatientFname}" Margin="3,0,0,0"/>
                                 <TextBlock Text="{Binding PatientEname}" Margin="3,0,0,0"/>
                                 <TextBlock Text="," Margin="3,0,0,0"/>
                                 <TextBlock Text="{Binding VisitNr}" Margin="3,0,0,0"/>
@@ -175,6 +175,18 @@
                         BorderBrush="Transparent"
                         FontFamily="Roboto-Light"
                         Command="{Binding RemoveVisitCommand}"/>
+            </Border>
+            <!--Refresh Button-->
+            <Border CornerRadius="10" Background="#2E333A" Margin="5">
+                <Button Height="50"
+                        Width="130"
+                        HorizontalAlignment="Right"
+                        Content="Refresh"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        FontFamily="Roboto-Light"
+                        Command="{Binding RefreshAllCommand}"/>
             </Border>
         </WrapPanel>
         

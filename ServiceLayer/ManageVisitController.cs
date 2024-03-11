@@ -42,7 +42,6 @@ namespace ServiceLayer
 
             return null;
         }
-
         public void AddVisit(DoctorAppointment visit)
         {
             var existingNurse = unitOfWork.NursingStaffRepository.GetSpecificDoctor(visit.StaffNr);
@@ -70,14 +69,21 @@ namespace ServiceLayer
             IList<DoctorAppointment> finalList = new List<DoctorAppointment>();
             foreach (var visit in doctorAppointmentsUser)
             {
-                if (visit.ResponsibleNurse.StaffNr==user.NursingStaff.StaffNr)
+                if (visit.ResponsibleNurse.StaffNr==user.NursingStaff.StaffNr && visit.AppointmentStatus!="Complete")
                 {
                     finalList.Add(visit);
                 }
             }
             return finalList;
         }
-
+        public void EditAppointmentStatus(DoctorAppointment appointment,string appointmentStatus)
+        {
+            var UpdatedoctorAppointment = unitOfWork.DoctorAppointmentRepository.GetSpecificVisit(appointment.VisitNr);
+            {
+                UpdatedoctorAppointment.AppointmentStatus=appointmentStatus;
+            }
+            unitOfWork.SaveChanges();
+        }
         public string GenerateNewVisitNr()
         {
             IList<DoctorAppointment> doctorAppointments = listsController.GetVisits();

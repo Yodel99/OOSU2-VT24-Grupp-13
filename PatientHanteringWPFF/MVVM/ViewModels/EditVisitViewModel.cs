@@ -116,6 +116,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
         public ICommand ChangeTimeVisitCommand { get; private set; }
         public ICommand RemoveVisitCommand { get; private set; }
+        public ICommand RefreshAllCommand { get; private set; }
         #endregion
         #region Constructor
         public EditVisitViewModel()
@@ -127,7 +128,8 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             SelectedDate = DateTime.Today;
             ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
             RemoveVisitCommand = new RelayCommand(param => RemoveVisit());
-           
+            RefreshAllCommand = new RelayCommand(param => RefreshLists());
+
         }
         #endregion
         #region Methods

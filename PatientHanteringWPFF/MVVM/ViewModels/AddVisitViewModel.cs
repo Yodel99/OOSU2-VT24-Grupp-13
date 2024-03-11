@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
@@ -230,10 +231,12 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             doctorAppointment.Date = CombinedDateTime;
             doctorAppointment.Reason = reasonText;
             doctorAppointment.VisitNr = manageVisitController.GenerateNewVisitNr();
+            doctorAppointment.AppointmentNote = "NoNote";
+            doctorAppointment.AppointmentStatus = "FirstVisit";
             manageVisitController.AddVisit(doctorAppointment);
             
             MessageBox.Show($"Doctor Appointment added\n" +
-                $"{doctorAppointment.PatientFNamn} {doctorAppointment.PatientEname}\n" +
+                $"{doctorAppointment.PatientFname} {doctorAppointment.PatientEname}\n" +
                 $"{doctorAppointment.ResponsibleNurse.FName} {doctorAppointment.ResponsibleNurse.EName}\n" +
                 $"{doctorAppointment.Date}");
         }

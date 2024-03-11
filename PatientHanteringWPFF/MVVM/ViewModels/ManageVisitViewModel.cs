@@ -75,6 +75,22 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
             }
         }
+        private string setDoneText;
+        public string SetDoneText
+        {
+            get { return setDoneText; }
+            set
+            {
+                if (setDoneText != value)
+                {
+                    setDoneText = value;
+                    ApplyFilterVisits();
+                    OnPropertyChanged(nameof(SetDoneText));
+
+                }
+
+            }
+        }
         public List<int> Hours { get; } = Enumerable.Range(8, 11).SelectMany(h => new[] { h }).ToList();
         public List<int> Minutes { get; } = new List<int> { 0, 15, 30, 45 };
         private DateTime _selectedDate;
@@ -113,15 +129,21 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             get { return new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0); }
         }
         public ICommand ChangeTimeVisitCommand { get; private set; }
+        public ICommand RefreshAllCommand { get; private set; }
+        public ICommand SetDoneCommand { get; private set; }
+        public User ActiveUser { get; private set; }
         #endregion
         #region Constructor
         public ManageVisitViewModel(User user)
         {
-            Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits());
+            Visits = new ObservableCollection<DoctorAppointment>((manageVisitController.GetUserSpecificVisits(user)));
             selectedVisit = new ObservableCollection<DoctorAppointment>();
             FilteredVisits = new ObservableCollection<DoctorAppointment>(Visits);
             SelectedDate = DateTime.Today;
             ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
+            RefreshAllCommand = new RelayCommand(param => RefreshLists());
+            SetDoneCommand = new RelayCommand(param => SetAsDone());
+            ActiveUser =user;
         }
         #endregion
         #region Methods
@@ -168,8 +190,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
             try
             {
-
+                SetDoneText = "Revisit";
                 manageVisitController.ChangeDate(newDateTime, VisitSelectedItem);
+                manageVisitController.EditAppointmentStatus(VisitSelectedItem, SetDoneText);
+
                 MessageBox.Show($"A revisit has been scheduled {newDateTime}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 RefreshLists();
             }
@@ -178,11 +202,26 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 MessageBox.Show($"An error occurred while changing the visit time: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void SetAsDone()
+        {
+            SetDoneText = "Complete";
+            if (VisitSelectedItem == null)
+            {
+                MessageBox.Show("Please select a visit to change its time.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                manageVisitController.EditAppointmentStatus(VisitSelectedItem, SetDoneText);
+                MessageBox.Show($"The visit has now been set to done!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                RefreshLists();
+            }
+        }
         private void RefreshLists()
         {
             GetListsController getListsController = new GetListsController();
             Visits.Clear();
-            foreach (var visit in getListsController.GetVisits())
+            foreach (var visit in manageVisitController.GetUserSpecificVisits(ActiveUser))
             {
                 Visits.Add(visit);
             }
