@@ -1,4 +1,7 @@
-﻿using PatientHanteringWPFF.Core;
+﻿using EnityLayer;
+using PatientHanteringWPF.MVVM;
+using PatientHanteringWPF.MVVM.MVVM.ViewModels;
+using PatientHanteringWPFF.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +11,18 @@ using System.Threading.Tasks;
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class MainViewModel : ObservableObject
-    {
+    {     
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+
         public RelayCommand HomeViewCommand { get; set; } 
         public RelayCommand AddVisitViewCommand { get; set; }
         public RelayCommand EditVisitViewCommand { get; set; }

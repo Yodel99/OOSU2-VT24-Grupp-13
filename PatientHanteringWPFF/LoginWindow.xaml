@@ -1,0 +1,28 @@
+﻿<Window x:Class="PatientHanteringWPF.MVVM.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientHanteringWPF.MVVM" xmlns:viewmodels="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
+        mc:Ignorable="d"
+        Title="LogInWindow"
+        Height="350"
+        Width="350"
+        FontSize="14"
+        Background="#2e333A"
+        AllowsTransparency="True"
+        WindowStyle="None">
+    
+    <Border Background="#2e333A" CornerRadius="0" Margin="20">
+        <StackPanel Margin="20,20,20,20">
+            <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center" FontFamily="#Roboto-Light"/>
+            <Separator></Separator>
+            <Label Content="Username" HorizontalAlignment="Center" Margin="0 0" Foreground="White" FontFamily="#Roboto-Light"/>
+            <TextBox x:Name="txtUsername" Grid.Row="0" Margin="0 0 0 10" Text="{Binding LogInID}" ToolTip="Användarnamn" Width="250" HorizontalAlignment="Center"/>
+            <Label Content="Password" Margin="0 0" HorizontalAlignment="Center" Foreground="White" FontFamily="#Roboto-Light"/>
+            <TextBox x:Name="txtPassword" Grid.Row="1" Margin="0 0" Text="{Binding Password}" ToolTip="Lösenord" Width="250" HorizontalAlignment="Center"/>
+            <Button x:Name="btnLogin" Grid.Row="2" Content="Login" FontSize="18" FontFamily="#Roboto-Light" Margin="10 60 10 10" Width="200" HorizontalAlignment="Center" Foreground="White" Background="#545d6a" Command="{Binding LoginCommand}"/>
+            <Button Name="BtnExit" HorizontalAlignment="Center" Content="Exit" Margin="10 0" Background="#545d6a" Foreground="White" FontSize="18" FontFamily="#Roboto-Light" Height="25" Width="200" Command="{Binding ExitCommand}"/>
+        </StackPanel>
+    </Border>
+</Window>

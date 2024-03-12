@@ -1,10 +1,12 @@
 ﻿<Application x:Class="PatientHanteringWPFF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PatientHanteringWPFF"
+             xmlns:local="clr-namespace:PatientHanteringWPFF"            
              xmlns:viewModel="clr-namespace:PatientHanteringWPFF.MVVM.ViewModels"
-             xmlns:view="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
-             StartupUri="MainWindow.xaml">
+             xmlns:vyer="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
+             xmlns:view="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"            
+             StartupUri="LoginWindow.xaml">
+
     <Application.Resources>
         <!--ResourceDictionary-->
         <ResourceDictionary>
@@ -13,23 +15,23 @@
                 <ResourceDictionary Source="TextboxTemplate.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
-            
+
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeVeiw/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel }">
                 <view:AddVisit/>
             </DataTemplate>
-            
-            <DataTemplate DataType="{x:Type viewModel:EditVisitViewModel }">
+
+            <DataTemplate DataType="{x:Type vyer:EditVisitViewModel }">
                 <view:EditVisit/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewModel:ManageVisitViewModel }">
                 <view:ManageVisit/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewModel:AddPatientViewModel }">
                 <view:Add_Patient/>
             </DataTemplate>
@@ -37,7 +39,7 @@
             <DataTemplate DataType="{x:Type viewModel:EditPatientViewModel }">
                 <view:EditPatient/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewModel:AddPrescriptionViewModel }">
                 <view:AddPrescription/>
             </DataTemplate>
@@ -51,5 +53,6 @@
             </DataTemplate>
 
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>
