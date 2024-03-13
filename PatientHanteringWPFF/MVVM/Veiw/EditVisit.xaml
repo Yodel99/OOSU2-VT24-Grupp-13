@@ -51,7 +51,7 @@
                          Width="230"
                          Margin="0,7,7,0"
                          VerticalContentAlignment="Center"
-                         ItemsSource="{Binding FilteredVisits}"
+                         ItemsSource="{Binding FilteredVisits,UpdateSourceTrigger=PropertyChanged}"
                          SelectedValuePath="VisitNr"
                          SelectedItem="{Binding VisitSelectedItem, Mode=TwoWay}"
                           IsEnabled="True">
@@ -83,7 +83,7 @@
                          Width="270"
                          Margin="0,0,7,0"
                          VerticalContentAlignment="Center"
-                         ItemsSource="{Binding SelectedVisit}">
+                         ItemsSource="{Binding SelectedVisit,UpdateSourceTrigger=PropertyChanged}">
                     <ListBox.ItemTemplate>
                         <DataTemplate >
                             <WrapPanel>

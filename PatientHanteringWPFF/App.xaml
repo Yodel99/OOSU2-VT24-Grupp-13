@@ -19,7 +19,7 @@
                 <view:HomeVeiw/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel }">
+            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel}">
                 <view:AddVisit/>
             </DataTemplate>
             

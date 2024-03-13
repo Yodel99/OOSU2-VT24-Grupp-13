@@ -122,6 +122,15 @@ namespace ServiceLayer
                 return null;
             }
         }
+        public void ScheduleRevisit(DateTime newDate, DoctorAppointment doctorAppointment)
+        {
+            var UpdatedoctorAppointment = unitOfWork.DoctorAppointmentRepository.GetSpecificVisit(doctorAppointment.VisitNr);
+            {
+                UpdatedoctorAppointment.Date = newDate;
+                UpdatedoctorAppointment.AppointmentStatus = "Revisit";
+            }
+            unitOfWork.SaveChanges();
+        }
         public void ChangeDate(DateTime newDate, DoctorAppointment doctorAppointment)
         {
             
@@ -131,6 +140,8 @@ namespace ServiceLayer
             }
             unitOfWork.SaveChanges();
         }
+       
+        
 
     }
 }

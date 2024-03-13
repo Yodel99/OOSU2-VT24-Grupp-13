@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
-    internal class ManageVisitViewModel:ObservableObject
+    internal class ManageVisitViewModel : ObservableObject
     {
         #region Initiatiion of objects
         private ObservableCollection<DoctorAppointment> visits = null;
@@ -143,7 +143,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             ChangeTimeVisitCommand = new RelayCommand(param => ChangeTime());
             RefreshAllCommand = new RelayCommand(param => RefreshLists());
             SetDoneCommand = new RelayCommand(param => SetAsDone());
-            ActiveUser =user;
+            ActiveUser = user;
         }
         #endregion
         #region Methods
@@ -190,11 +190,10 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
             try
             {
-                SetDoneText = "Revisit";
-                manageVisitController.ChangeDate(newDateTime, VisitSelectedItem);
-                manageVisitController.EditAppointmentStatus(VisitSelectedItem, SetDoneText);
 
-                MessageBox.Show($"A revisit has been scheduled {newDateTime}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                manageVisitController.ScheduleRevisit(CombinedDateTime, VisitSelectedItem);
+                MessageBox.Show($"Visit time has been successfully changed o {newDateTime}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 RefreshLists();
             }
             catch (Exception ex)
@@ -217,17 +216,23 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 RefreshLists();
             }
         }
+
         private void RefreshLists()
         {
             GetListsController getListsController = new GetListsController();
             Visits.Clear();
-            foreach (var visit in manageVisitController.GetUserSpecificVisits(ActiveUser))
+            foreach (var visit in getListsController.GetVisits().OrderBy(visit => ExtractNumericPart(visit.VisitNr)))
             {
                 Visits.Add(visit);
             }
-            ApplyFilterVisits(); // Uppdatera filtrerade listan om det behövs
+            ApplyFilterVisits();
         }
-        #endregion
+        private int ExtractNumericPart(string str)
+        {
+            
+            string numericPart = new string(str.SkipWhile(c => !char.IsDigit(c)).ToArray());
+            return int.Parse(numericPart);
+        }
     }
-
+    #endregion
 }

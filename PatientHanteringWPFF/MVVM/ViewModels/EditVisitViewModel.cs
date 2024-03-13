@@ -220,11 +220,15 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         {
             GetListsController getListsController = new GetListsController();
             Visits.Clear();
-            foreach (var visit in getListsController.GetVisits())
+            foreach (var visit in getListsController.GetVisits().OrderBy(visit => ExtractNumericPart(visit.VisitNr)))
             {
                 Visits.Add(visit);
             }
-            ApplyFilterVisits(); // Uppdatera filtrerade listan om det behövs
+        }
+        private int ExtractNumericPart(string str)
+        {
+            string numericPart = new string(str.SkipWhile(c => !char.IsDigit(c)).ToArray());
+            return int.Parse(numericPart);
         }
         #endregion
     }
