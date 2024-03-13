@@ -15,9 +15,10 @@ using System.Security;
 
 namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ObservableObject
     {       
         private readonly LogInController loginController;
+
         public LoginViewModel()
         {          
             loginController = new LogInController();
@@ -28,7 +29,7 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
         {
             get { return logInID; }
             set { Set(ref logInID, value); }
-        }
+        }       
 
         private string password;
         public string Password
@@ -36,7 +37,7 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
             get { return password; }
             set { Set(ref password, value); }
         }
-      
+
         private RelayCommand loginCommand;
         public ICommand LoginCommand
         {
@@ -50,12 +51,13 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
         {
             var user = loginController.GetUser(logInID, password);
             if (user != null)
-            {
+            {                
                 MainViewModel mainViewModel = new MainViewModel();
                 mainViewModel.CurrentUser = user;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.DataContext = mainViewModel;
-                mainWindow.Show();             
+                mainWindow.Show();
+                Application.Current.MainWindow.Visibility = Visibility.Collapsed;
             }
             else
             {
