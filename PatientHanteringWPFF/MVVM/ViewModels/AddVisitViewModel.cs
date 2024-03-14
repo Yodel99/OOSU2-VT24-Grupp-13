@@ -235,7 +235,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             doctorAppointment.AppointmentStatus = "FirstVisit";
             manageVisitController.AddVisit(doctorAppointment);
             
-            MessageBox.Show($"Doctor Appointment added\n" +
+            MessageBox.Show($"loggedInStaff Appointment added\n" +
                 $"{doctorAppointment.PatientFname} {doctorAppointment.PatientEname}\n" +
                 $"{doctorAppointment.ResponsibleNurse.FName} {doctorAppointment.ResponsibleNurse.EName}\n" +
                 $"{doctorAppointment.Date}");

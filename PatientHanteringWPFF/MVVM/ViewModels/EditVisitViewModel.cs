@@ -16,6 +16,7 @@ using System.Windows.Input;
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class EditVisitViewModel : ObservableObject
+
     {
         #region Initiatiion of objects
         ManageVisitController manageVisitController = new ManageVisitController();

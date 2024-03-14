@@ -12,12 +12,15 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 {
     public class NurseScheduleViewModel : ObservableObject
     {
-        private GetListsController getListsController;
-        public NurseScheduleViewModel()
+        
+        ManageVisitController manageVisitController= new ManageVisitController();
+        ValidationController validationController = new ValidationController();
+        public User ActiveUser { get; private set; }
+        public NurseScheduleViewModel(User user)
         {
-            getListsController = new GetListsController();
             ShedueleItem = new ObservableCollection<object>();
             DoctorAppointments = new ObservableCollection<DoctorAppointment>();
+            ActiveUser = user;
             LoadData();
         }
 
@@ -47,11 +50,29 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
                 OnPropertyChanged(nameof(ShedueleItem));
             }
         }
+        private NursingStaff loggedInStaff;
+        public NursingStaff LoggedInStaff
+        {
+            get { return loggedInStaff; }
+            set
+            {
+                loggedInStaff = value;
+                
+                OnPropertyChanged(nameof(LoggedInStaff));
+            }
+        }
+        public string FnameAndEname { get; private set; }
 
         public void LoadData()
-        {                    
-            DoctorAppointments = new (getListsController.GetVisits());         
+        {
+            DoctorAppointments.Clear();
+            DoctorAppointments = new (manageVisitController.GetUserSpecificVisits(ActiveUser));
+
+            LoggedInStaff = validationController.GetNursingstaff(ActiveUser);
+            FnameAndEname = ($"{LoggedInStaff.FName} {LoggedInStaff.EName}");
+
         }
+
         #endregion
     }
 }

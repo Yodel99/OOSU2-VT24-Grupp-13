@@ -12,7 +12,7 @@
             <TextBlock Text="Sheduele" Foreground="White" FontFamily="Robot-Light" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,35"/>
             <WrapPanel>
                 <TextBlock Text="This sheduele belongs to:" FontSize="18" Foreground="White" FontFamily="Robot-Light" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,50, 0, 0" />
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Robot-Light" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30, 50, 0,0"/>
+                <TextBlock Text="{Binding FnameAndEname}" FontSize="18" Foreground="White" FontFamily="Robot-Light" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30, 50, 0,0"/>
             </WrapPanel>
         </StackPanel>
 

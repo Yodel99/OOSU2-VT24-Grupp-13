@@ -19,7 +19,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         private ObservableCollection<DoctorAppointment> filteredVisits;
         private ObservableCollection<DoctorAppointment> selectedVisit;
         ManageVisitController manageVisitController = new ManageVisitController();
-        GetListsController getListsController = new GetListsController();
         public ObservableCollection<DoctorAppointment> Visits
         {
             get { return visits; }

@@ -141,12 +141,12 @@
 
                         </MenuItem.Icon>
                     </MenuItem>
-                    <!--Appointment NurseSchedule-->
-                    <MenuItem Header="Nurse Schedule"
+                    <!--Appointment Nurse Schedule-->
+                    <MenuItem Header="My Schedule"
                               Template="{StaticResource Item_Template}"
                               Command="{Binding NurseScheduleViewCommand}">
                         <MenuItem.Icon>
-                            <Image Source="MVVM/Assets/icons8-doctor-32.png"
+                            <Image Source="MVVM/Assets/icons8-schedule-32.png"
                                             Stretch="Fill"/>
 
                         </MenuItem.Icon>

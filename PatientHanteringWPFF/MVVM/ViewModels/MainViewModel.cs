@@ -73,7 +73,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             AddPrescriptionVm = new AddPrescriptionViewModel();
             PrecribeMedicineVm = new PrescribeMedicineViewModel();
             AddDiagnosisVm= new AddDiagnosisViewModel();
-            NurseScheduleVm= new NurseScheduleViewModel();
+            NurseScheduleVm= new NurseScheduleViewModel(user);
             
             CloseCommand = new RelayCommand(param => CloseProgram());
 
