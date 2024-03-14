@@ -19,10 +19,10 @@ namespace EnityLayer
         {
 
         }
-        public NursingStaff(string ssn, string fName, string eName, string email, string staffNr, string specialization) : base(ssn, fName, eName, email)
+        public NursingStaff(string ssn, string fName, string eName, string email, string staffNr, string profession) : base(ssn, fName, eName, email)
         {
             this.StaffNr = staffNr;
-            this.Profession = specialization;
+            this.Profession = profession;
         }
 
         public NursingStaff(string ssn, string fName, string eName, string email, string staffNr, string profession, string specialization) : base(ssn, fName, eName, email)

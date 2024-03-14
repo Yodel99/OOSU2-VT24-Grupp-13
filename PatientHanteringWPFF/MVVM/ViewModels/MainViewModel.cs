@@ -1,10 +1,18 @@
+
+﻿using DataLayer;
+using EnityLayer;
+using ServiceLayer;
+
 ﻿using PatientHanteringWPF.MVVM.MVVM.ViewModels;
 using PatientHanteringWPFF.Core;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
@@ -46,13 +54,20 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
 
         }
+        public ICommand CloseCommand { get; private set; }
+        public void CloseProgram()
+        {
+            Environment.Exit(0);
+        }
 
         public MainViewModel()
         {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            User user = unitOfWork.UserRepository.GetUser("lakare1");
             HomeVm = new HomeViewModel();
             AddVisitVm = new AddVisitViewModel();
             EditVisitVm = new EditVisitViewModel();
-            ManageVisitVm = new ManageVisitViewModel();
+            ManageVisitVm = new ManageVisitViewModel(user);
             AddPatientVm = new AddPatientViewModel();
             EditPatientVm = new EditPatientViewModel();
             AddPrescriptionVm = new AddPrescriptionViewModel();
@@ -60,6 +75,9 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             AddDiagnosisVm= new AddDiagnosisViewModel();
             NurseScheduleVm= new NurseScheduleViewModel();
             
+            CloseCommand = new RelayCommand(param => CloseProgram());
+
+
             CurrentVeiw = HomeVm;
 
             HomeViewCommand = new RelayCommand(execute => 
@@ -98,10 +116,12 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             {
                 CurrentVeiw = AddDiagnosisVm;
             });
+
             NurseScheduleViewCommand = new RelayCommand(o =>
             {
                 CurrentVeiw = NurseScheduleVm;
             });
+
         }
     }
 }

@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Templates.xaml" />
                 <ResourceDictionary Source="TextboxTemplate.xaml"/>
+                
 
             </ResourceDictionary.MergedDictionaries>
             
@@ -20,7 +21,7 @@
                 <view:HomeVeiw/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel }">
+            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel}">
                 <view:AddVisit/>
             </DataTemplate>
             

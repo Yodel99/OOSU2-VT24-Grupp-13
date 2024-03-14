@@ -24,12 +24,10 @@ namespace PatientHanteringWPFF.MVVM.Veiw
     {
         public AddVisit()
         {
+            
             InitializeComponent();
         }
 
-        private void PART_TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+ 
     }
 }
