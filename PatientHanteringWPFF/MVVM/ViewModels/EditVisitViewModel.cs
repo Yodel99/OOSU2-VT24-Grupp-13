@@ -122,7 +122,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public EditVisitViewModel()
         {
            
-            Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits());
+            Visits = new ObservableCollection<DoctorAppointment>(getListsController.GetVisits().OrderBy(visit => ExtractNumericPart(visit.VisitNr)));
             selectedVisit = new ObservableCollection<DoctorAppointment>();
             FilteredVisits = new ObservableCollection<DoctorAppointment>(Visits);
             SelectedDate = DateTime.Today;
@@ -224,6 +224,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             {
                 Visits.Add(visit);
             }
+            ApplyFilterVisits();
         }
         private int ExtractNumericPart(string str)
         {

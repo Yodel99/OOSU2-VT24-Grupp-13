@@ -136,7 +136,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         #region Constructor
         public ManageVisitViewModel(User user)
         {
-            Visits = new ObservableCollection<DoctorAppointment>((manageVisitController.GetUserSpecificVisits(user)));
+            Visits = new ObservableCollection<DoctorAppointment>((manageVisitController.GetUserSpecificVisits(user).OrderBy(visit => ExtractNumericPart(visit.VisitNr))));
             selectedVisit = new ObservableCollection<DoctorAppointment>();
             FilteredVisits = new ObservableCollection<DoctorAppointment>(Visits);
             SelectedDate = DateTime.Today;
@@ -221,7 +221,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         {
             GetListsController getListsController = new GetListsController();
             Visits.Clear();
-            foreach (var visit in getListsController.GetVisits().OrderBy(visit => ExtractNumericPart(visit.VisitNr)))
+            foreach (var visit in manageVisitController.GetUserSpecificVisits(ActiveUser).OrderBy(visit => ExtractNumericPart(visit.VisitNr)))
             {
                 Visits.Add(visit);
             }
