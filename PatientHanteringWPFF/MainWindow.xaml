@@ -141,7 +141,18 @@
 
                         </MenuItem.Icon>
                     </MenuItem>
+                    <!--Appointment NurseSchedule-->
+                    <MenuItem Header="Nurse Schedule"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding NurseScheduleViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-doctor-32.png"
+                                            Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
+                
                 <!--Main menu Prescriptions-->
                 <MenuItem Header="Prescriptions"
                           Template="{StaticResource Menu_SubMenu_Template}">

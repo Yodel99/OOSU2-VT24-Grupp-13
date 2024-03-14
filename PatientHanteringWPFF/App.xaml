@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:PatientHanteringWPFF"
              xmlns:viewModel="clr-namespace:PatientHanteringWPFF.MVVM.ViewModels"
              xmlns:view="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
+             xmlns:viewModel1="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
+             xmlns:view1="clr-namespace:PatientHanteringWPF.MVVM.MVVM.Veiw"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!--ResourceDictionary-->
@@ -49,6 +51,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:AddDiagnosisViewModel }">
                 <view:AddDiagnosis/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel1:NurseScheduleViewModel }">
+                <view1:NurseSchedule/>
             </DataTemplate>
 
         </ResourceDictionary>
