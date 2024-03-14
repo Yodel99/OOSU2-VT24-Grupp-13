@@ -35,7 +35,9 @@
             <TextBox x:Name="txtTelNr" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding TelNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-         
+            <Button Content="Add" Width="100"  Height="30" Margin="10,0,0,5" HorizontalAlignment="Left" Command="{Binding RegisterPatientCommand}"/>
+
+
 
 
 

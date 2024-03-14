@@ -29,23 +29,9 @@ namespace PatientHanteringWPFF.MVVM.Veiw
         {
             InitializeComponent();
 
-            //viewmodel = new AddPatientViewModel();
-
-            //DataContext = viewmodel;
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //string ssn = txtSSN.Text;
-            //string fName = txtFName.Text;
-            //string eName = txtEName.Text;
-            //string email = txtEmail.Text;
-            //string patientNr = txtPatientNr.Text;
-            //string address  = txtAddress.Text;
-            //string telNr = txtTelNr.Text;
-            //viewmodel.AddPatient(ssn, fName, eName, email, patientNr, address, telNr);
-
-        }
+        
     }
 }
