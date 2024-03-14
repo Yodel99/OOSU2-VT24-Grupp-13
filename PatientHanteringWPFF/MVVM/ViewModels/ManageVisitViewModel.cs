@@ -14,7 +14,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class ManageVisitViewModel : ObservableObject
     {
-        #region Initiatiion of objects
+        #region Initiatiion of objectss
         private ObservableCollection<DoctorAppointment> visits = null;
         private ObservableCollection<DoctorAppointment> filteredVisits;
         private ObservableCollection<DoctorAppointment> selectedVisit;
