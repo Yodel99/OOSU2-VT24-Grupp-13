@@ -14,7 +14,7 @@
 
                 <!-- PatientID -->
                 <TextBlock x:Name="txtbPatientID" FontSize="20" FontFamily="Roboto-light" Foreground="GhostWhite" TextDecorations="Underline" Text="PatientID:" Margin="15,15,0,0"/>
-                <ComboBox x:Name="cmbPatientID" HorizontalAlignment="Left" Width="300" Margin="15,5 ,0 ,0" ItemsSource="{Binding Patients}" SelectedItem="{Binding ChosenPatientNr}">
+                <ComboBox x:Name="cmbPatientID" HorizontalAlignment="Left" Width="300" Margin="15,5 ,0 ,0" ItemsSource="{Binding Patients}" SelectedItem="{Binding ChosenPatient}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
@@ -60,18 +60,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="btnRefresh" Content="Refresh list" FontFamily="Roboto-light" HorizontalAlignment="Right" Foreground="White" Margin="10,30,0,0" Width="150" Height="25" Background="DimGray" Command="{Binding RefreshCommand}">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" 
-                                        BorderBrush="{TemplateBinding BorderBrush}" 
-                                        BorderThickness="{TemplateBinding BorderThickness}" 
-                                        CornerRadius="10">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                   
 
                 </WrapPanel>
 

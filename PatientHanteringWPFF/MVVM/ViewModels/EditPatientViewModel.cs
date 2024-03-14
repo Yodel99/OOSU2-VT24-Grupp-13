@@ -21,13 +21,13 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         private GetListsController getListsController;
         private UpdatePatientController updatePatientController;
         private Patient chosenPatientNr;
-        public Patient ChosenPatientNr
+        public Patient ChosenPatient
         {
             get { return chosenPatientNr; }
             set
             {
                 chosenPatientNr = value;
-                OnPropertyChanged(nameof(ChosenPatientNr));
+                OnPropertyChanged(nameof(ChosenPatient));
             }
         }
         
@@ -36,6 +36,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             getListsController = new GetListsController();
             updatePatientController = new UpdatePatientController();   
             Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
+            SaveCommand = new RelayCommand(param => SaveInput());
         }
 
         private string selectedAttribute;
@@ -73,18 +74,9 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public RelayCommand RefreshCommand => new RelayCommand(_execute => RefreshData());
+ 
 
-        private void RefreshData()
-        {
-            //Patients.Clear();
-            //foreach (Patient patient in getListsController.GetPatients())
-            //{
-            //    Patients.Add(patient);
-            //}
-            Patients.Clear();
-            Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
-        }
+   
 
         private ObservableCollection<Patient> patients = null;
         public ObservableCollection<Patient> Patients
@@ -99,16 +91,15 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
 
         #region SaveCommand
-        public RelayCommand SaveCommand => new RelayCommand(_execute => SaveInput(ChosenPatientNr.PatientNr, SelectedAttribute, ChosenInput));
-        private void SaveInput(string chosenPatientNr, string chosenAttribute, string chosenInput)
+        public ICommand SaveCommand { get; private set; }
+  
+        private void SaveInput()
         {
-            Patient patient = new Patient();
-            patient.PatientNr = chosenPatientNr;
-            updatePatientController.UpdatePatientInfo(chosenPatientNr, chosenAttribute, chosenInput);
+            Patient patient = ChosenPatient;
+            updatePatientController.UpdatePatientInfo(patient.PatientNr, SelectedAttribute, ChosenInput);
             
-            RefreshData();
             
-            MessageBox.Show($"Patient: {patient.PatientNr} {chosenAttribute} has been succesfully updated with your chosen input: {ChosenInput}");
+            MessageBox.Show($"Patient: {patient.PatientNr} {SelectedAttribute} has been succesfully updated with your chosen input: {ChosenInput}");
         }
         #endregion
     }
