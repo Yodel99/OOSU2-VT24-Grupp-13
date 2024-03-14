@@ -105,7 +105,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             Patient patient = new Patient();
             patient.PatientNr = chosenPatientNr;
             updatePatientController.UpdatePatientInfo(chosenPatientNr, chosenAttribute, chosenInput);
-
+            
             RefreshData();
             
             MessageBox.Show($"Patient: {patient.PatientNr} {chosenAttribute} has been succesfully updated with your chosen input: {ChosenInput}");
