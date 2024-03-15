@@ -2,153 +2,127 @@
 using PatientHanteringWPFF.Core;
 using ServiceLayer;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
-    public class AddPatientViewModel : ObservableObject
+    public class AddPatientViewModel : INotifyPropertyChanged
     {
-        // ListBox
         private GetListsController getListsController = new GetListsController();
+        private RegisterPatientController registerPatientController = new RegisterPatientController();
 
-        private ObservableCollection<Patient> patients = null;
-        RegisterPatientController RP = new RegisterPatientController();
-
+        private ObservableCollection<Patient> patients;
         public ObservableCollection<Patient> Patients
         {
             get { return patients; }
-            set 
-            { 
+            set
+            {
                 patients = value;
                 OnPropertyChanged(nameof(Patients));
             }
         }
 
-
-
-        //public AddPatientViewModel()
-        //{
-        //    getListsController = new GetListsController();
-        //    Patients = new List<Patient>();
-        //}
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
-        // Textboxes och labels
-        private ObservableCollection<Patient> patientss = new ObservableCollection<Patient>();
-       
-        public ObservableCollection<Patient> Patientss
-        {
-            get => patientss;
-            set { patientss = value; OnPropertyChanged(); }
-
-        }
-       
-
         private string ssn;
         public string SSN
         {
             get => ssn;
-            set { ssn = value; OnPropertyChanged(); }
+            set { ssn = value; OnPropertyChanged(nameof(SSN)); }
         }
 
-        private string fName;
-        public string Fname
+        private string fname;
+        public string FName
         {
-            get => fName;
-            set { fName = value; OnPropertyChanged(); }
+            get => fname;
+            set { fname = value; OnPropertyChanged(nameof(FName)); }
         }
 
-        private string eName;
-        public string Ename
+        private string ename;
+        public string EName
         {
-            get => eName;
-            set { eName = value; OnPropertyChanged(); }
+            get => ename;
+            set { ename = value; OnPropertyChanged(nameof(EName)); }
         }
 
-        private string eMail;
+        private string email;
         public string Email
         {
-            get => eMail;
-            set { eMail = value; OnPropertyChanged(); }
+            get => email;
+            set { email = value; OnPropertyChanged(nameof(Email)); }
         }
 
         private string patientNr;
         public string PatientNr
         {
             get => patientNr;
-            set { patientNr = value; OnPropertyChanged(); }
+            set { patientNr = value; OnPropertyChanged(nameof(PatientNr)); }
         }
 
         private string adress;
-        public string Adress
+        public string Address
         {
             get => adress;
-            set { adress = value; OnPropertyChanged(); }
+            set { adress = value; OnPropertyChanged(nameof(Address)); }
         }
 
         private string telNr;
         public string TelNr
         {
             get => telNr;
-            set { telNr = value; OnPropertyChanged(); }
+            set { telNr = value; OnPropertyChanged(nameof(TelNr)); }
         }
 
+        public ICommand AddPatientCommand { get; private set; }
 
-        // Add kanpp
-
-        //public ObservableCollection<Patient> Patients_
-        //{
-        //    get { return Patients; }
-        //    set
-        //    {
-        //        if (Patients != value )
-        //        {
-        //            Patients = value;
-        //            OnPropertyChanged(nameof(Patients));
-        //        }
-        //    }
-        //}
-
-        public void AddPatient()
+        public AddPatientViewModel()
         {
-            if (PatientNr == null || SSN == null || Fname == null || Ename == null || Email == null || Adress == null || TelNr == null)
+            Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
+            AddPatientCommand = new RelayCommand(param => AddPatient());
+        }
+
+        private void AddPatient()
+        {
+            if (string.IsNullOrEmpty(SSN) || string.IsNullOrEmpty(FName) || string.IsNullOrEmpty(EName) ||
+                string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(PatientNr) || string.IsNullOrEmpty(Address) ||
+            string.IsNullOrEmpty(TelNr))
             {
                 MessageBox.Show("Enter all the attributes");
             }
             else
             {
-                RP.RegisterPatient(SSN, Fname, Ename, Email, PatientNr, Adress, TelNr);
+                var existingPatient = registerPatientController.GetPatient(PatientNr);
+                if (existingPatient != null)
+                {
+                    MessageBox.Show("Patient number already taken");
+                }
+                else
+                {
+                    try
+                    {
+                        registerPatientController.RegisterPatient(SSN, FName, EName, Email, PatientNr, Address, TelNr);
+                        MessageBox.Show("Patient Created");
+                        RefreshList();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while registering the patient: {ex.Message}");
+                    }
+                }
             }
-            
-           
+
         }
-
-
-      
-        public ICommand AddPatientCommand { get; private set; }
-        public AddPatientViewModel()
+        private void RefreshList()
         {
-            
+            Patients.Clear();
             Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
-            AddPatientCommand = new RelayCommand(param => AddPatient());
         }
 
-
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
