@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -17,14 +18,19 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
     public class AddPatientViewModel : ObservableObject
     {
         // ListBox
-        private GetListsController getListsController;
+        private GetListsController getListsController = new GetListsController();
 
-        private List<Patient> patients = null;
+        private ObservableCollection<Patient> patients = null;
+        RegisterPatientController RP = new RegisterPatientController();
 
-        public List<Patient> Patients
+        public ObservableCollection<Patient> Patients
         {
-            get => patients;
-            set { patients = (List<Patient>)getListsController.GetPatients(); }
+            get { return patients; }
+            set 
+            { 
+                patients = value;
+                OnPropertyChanged(nameof(Patients));
+            }
         }
 
 
@@ -44,19 +50,14 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
         // Textboxes och labels
         private ObservableCollection<Patient> patientss = new ObservableCollection<Patient>();
-        private ObservableCollection<Person> people = new ObservableCollection<Person>();
+       
         public ObservableCollection<Patient> Patientss
         {
             get => patientss;
             set { patientss = value; OnPropertyChanged(); }
 
         }
-        public ObservableCollection<Person> People
-        {
-            get => People;
-            set { People = value; OnPropertyChanged(); }
-
-        }
+       
 
         private string ssn;
         public string SSN
@@ -66,28 +67,28 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
 
         private string fName;
-        public string fname
+        public string Fname
         {
             get => fName;
             set { fName = value; OnPropertyChanged(); }
         }
 
         private string eName;
-        public string ename
+        public string Ename
         {
             get => eName;
             set { eName = value; OnPropertyChanged(); }
         }
 
         private string eMail;
-        public string email
+        public string Email
         {
             get => eMail;
             set { eMail = value; OnPropertyChanged(); }
         }
 
         private string patientNr;
-        public string patientnr
+        public string PatientNr
         {
             get => patientNr;
             set { patientNr = value; OnPropertyChanged(); }
@@ -101,7 +102,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         }
 
         private string telNr;
-        public string telnr
+        public string TelNr
         {
             get => telNr;
             set { telNr = value; OnPropertyChanged(); }
@@ -123,33 +124,28 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         //    }
         //}
 
-        public void AddPatient(string ssn, string fName, string eName, string email, string patientNr, string address, string telNr)
+        public void AddPatient()
         {
-            var newPatient = new Patient
+            if (PatientNr == null || SSN == null || Fname == null || Ename == null || Email == null || Adress == null || TelNr == null)
             {
-                SSN = ssn,
-                FName = fName,
-                EName = eName,
-                Email = email,
-                PatientNr = patientNr,
-                Address = address,
-                TelNr = telNr
-            };
-
-            Patients.Add(newPatient);
-
-            ssn = fName = eName = email = patientNr = adress = telNr = string.Empty;
+                MessageBox.Show("Enter all the attributes");
+            }
+            else
+            {
+                RP.RegisterPatient(SSN, Fname, Ename, Email, PatientNr, Adress, TelNr);
+            }
+            
+           
         }
 
-        public RelayCommand RegisterPatientCommand => new RelayCommand(_execute => AddPatient(SSN, fname, ename,email,patientnr, Adress, telnr ));
 
       
-
+        public ICommand AddPatientCommand { get; private set; }
         public AddPatientViewModel()
         {
-            getListsController = new GetListsController();
-            RegisterPatientController RP = new RegisterPatientController();
+            
             Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
+            AddPatientCommand = new RelayCommand(param => AddPatient());
         }
 
 
