@@ -49,7 +49,7 @@ namespace ServiceLayer
             
 
         }
-        public List<NursingStaff> GetNursingStaffs()
+        public IList<NursingStaff> GetNursingStaffs()
         {
 
 
@@ -58,7 +58,7 @@ namespace ServiceLayer
             List<NursingStaff> doctors = new List<NursingStaff>();
             foreach (var nursingStaff in staff)
             {
-                if (nursingStaff.Profession == "Sjuksköterska")
+                if (nursingStaff.Profession == "Sjuksköterska"||nursingStaff.Profession=="Läkare")
                 {
                     doctors.Add(nursingStaff);
                 }

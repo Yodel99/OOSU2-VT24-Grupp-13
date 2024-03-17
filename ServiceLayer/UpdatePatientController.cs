@@ -22,28 +22,23 @@ namespace ServiceLayer
             {
                 if (patient != null) 
                 {
-                    if (chosenAttribute.Equals("personnr"))
-                    {
-                        patient.SSN = chosenInput;
-
-                    }
-                    else if (chosenAttribute.Equals("fnamn"))
+                    if (chosenAttribute.Equals("Firstname"))
                     {
                         patient.FName = chosenInput;
                     }
-                    else if (chosenAttribute.Equals("enamn"))
+                    else if (chosenAttribute.Equals("Lastname"))
                     {
                         patient.EName = chosenInput;
                     }
-                    else if (chosenAttribute.Equals("email"))
+                    else if (chosenAttribute.Equals("Email"))
                     {
                         patient.Email = chosenInput;
                     }
-                    else if (chosenAttribute.Equals("address"))
+                    else if (chosenAttribute.Equals("Address"))
                     {
                         patient.Address = chosenInput;
                     }
-                    else if (chosenAttribute.Equals("telnr"))
+                    else if (chosenAttribute.Equals("Telephone"))
                     {
                         patient.TelNr = chosenInput;
                     }
@@ -53,11 +48,11 @@ namespace ServiceLayer
                     }
                         unitOfWork.SaveChanges();
                         return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                }
+                else
+                {
+                    return false;
+                }
                 
                 
             }

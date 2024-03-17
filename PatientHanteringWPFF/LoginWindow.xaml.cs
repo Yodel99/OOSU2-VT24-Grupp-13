@@ -1,9 +1,6 @@
-﻿using PatientHanteringWPFF.MVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PatientHanteringWPF.MVVM.MVVM.ViewModels;
+using PatientHanteringWPFF.MVVM.ViewModels;
 
-namespace PatientHanteringWPFF.MVVM.Veiw
+namespace PatientHanteringWPF.MVVM
 {
     /// <summary>
-    /// Interaction logic for Add_Patient.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class Add_Patient : UserControl
+    public partial class LoginWindow : Window
     {
-      
-
-        public Add_Patient()
+        public LoginWindow()
         {
             InitializeComponent();
-
-
+            
+            LoginViewModel viewModel = new LoginViewModel();
+           
+            DataContext = viewModel;
         }
-
-        
     }
 }

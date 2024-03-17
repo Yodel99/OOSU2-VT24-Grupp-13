@@ -23,6 +23,7 @@
     <None Remove="MVVM\Assets\icons8-patient-32.png" />
     <None Remove="MVVM\Assets\icons8-prescription-32.png" />
     <None Remove="MVVM\Assets\icons8-search-32.png" />
+    <None Remove="MVVM\Assets\icons8-schedule-32.png" />
     <None Remove="MVVM\Assets\img_arrow.png" />
     <None Remove="MVVM\Assets\LogoProgrammering.png" />
     <None Remove="MVVM\Assets\max_def.png" />
@@ -36,6 +37,10 @@
     <None Remove="MVVM\Veiw\ViewImages\icons8-doctor-appointment-100.png" />
     <None Remove="MVVM\Veiw\ViewImages\icons8-medicine-100.png" />
     <None Remove="MVVM\Veiw\ViewImages\icons8-patient-100.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +66,7 @@
     <Resource Include="MVVM\Assets\icons8-patient-32.png" />
     <Resource Include="MVVM\Assets\icons8-prescription-32.png" />
     <Resource Include="MVVM\Assets\icons8-search-32.png" />
+    <Resource Include="MVVM\Assets\icons8-schedule-32.png" />
     <Resource Include="MVVM\Assets\img_arrow.png" />
     <Resource Include="MVVM\Assets\LogoProgrammering.png" />
     <Resource Include="MVVM\Assets\max_def.png" />

@@ -155,7 +155,18 @@
 
                         </MenuItem.Icon>
                     </MenuItem>
+                    <!--Appointment Nurse Schedule-->
+                    <MenuItem Header="My Schedule"
+                              Template="{StaticResource Item_Template}"
+                              Command="{Binding NurseScheduleViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-schedule-32.png"
+                                            Stretch="Fill"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
+                
                 <!--Main menu Prescriptions-->
                 <MenuItem Header="Prescriptions"
                           Template="{StaticResource Menu_SubMenu_Template}">
@@ -209,7 +220,8 @@
         </StackPanel>
         <!--Close app-->
         <Button x:Name="Closebtn"
-                Style="{StaticResource CloseBtnStyle}"/>
+                Style="{StaticResource CloseBtnStyle}"
+                Command="{Binding CloseCommand}"/>
         <ContentControl
                         Margin="269,103,15,10"
                         Content="{Binding CurrentVeiw}"/>

@@ -1,15 +1,33 @@
+
+using PatientHanteringWPF.MVVM;
+﻿using DataLayer;
+using EnityLayer;
+using ServiceLayer;
 ﻿using PatientHanteringWPF.MVVM.MVVM.ViewModels;
 using PatientHanteringWPFF.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class MainViewModel : ObservableObject
-    {
+    {     
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+
         public RelayCommand HomeViewCommand { get; set; } 
         public RelayCommand AddVisitViewCommand { get; set; }
         public RelayCommand EditVisitViewCommand { get; set; }
@@ -20,6 +38,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public RelayCommand PrescribeMedicineViewCommand { get; set; }
         public RelayCommand AddDiagnosisViewCommand { get; set; }
         public RelayCommand SearchPatientViewCommand { get; set; }
+        public RelayCommand NurseScheduleViewCommand { get; set; }
 
 
 
@@ -33,6 +52,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public PrescribeMedicineViewModel PrecribeMedicineVm { get; set; }
         public AddDiagnosisViewModel AddDiagnosisVm { get; set; }
         public SearchPatientViewModel SearchPatientVm { get; set; }
+        public NurseScheduleViewModel NurseScheduleVm { get; set; }
 
         private object _currentView;
 
@@ -46,20 +66,32 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             }
 
         }
+        public ICommand CloseCommand { get; private set; }
+        public void CloseProgram()
+        {
+            Environment.Exit(0);
+        }
 
         public MainViewModel()
         {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            User user = unitOfWork.UserRepository.GetUser("lakare1");
             HomeVm = new HomeViewModel();
             AddVisitVm = new AddVisitViewModel();
             EditVisitVm = new EditVisitViewModel();
-            ManageVisitVm = new ManageVisitViewModel();
+            ManageVisitVm = new ManageVisitViewModel(user);
             AddPatientVm = new AddPatientViewModel();
             EditPatientVm = new EditPatientViewModel();
             AddPrescriptionVm = new AddPrescriptionViewModel();
             PrecribeMedicineVm = new PrescribeMedicineViewModel();
             AddDiagnosisVm= new AddDiagnosisViewModel();
             SearchPatientVm = new SearchPatientViewModel();
+            NurseScheduleVm= new NurseScheduleViewModel(user);
+
             
+            CloseCommand = new RelayCommand(param => CloseProgram());
+
+
             CurrentVeiw = HomeVm;
 
             HomeViewCommand = new RelayCommand(execute => 
@@ -98,9 +130,15 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             {
                 CurrentVeiw = AddDiagnosisVm;
             });
+
             SearchPatientViewCommand = new RelayCommand(o =>
             {
                 CurrentVeiw = SearchPatientVm;
+            });
+
+            NurseScheduleViewCommand = new RelayCommand(o =>
+            {
+                CurrentVeiw = NurseScheduleVm;
             });
         }
     }

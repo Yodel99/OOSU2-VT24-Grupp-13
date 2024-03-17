@@ -17,17 +17,19 @@ namespace DataLayer
         public DoctorAppointment GetSpecificVisit(string visitNr)
         {
             return Context.Set<DoctorAppointment>()
-                          .Include(appointment => appointment.Patient)
-                          .Include(appointment => appointment.ResponsibleNurse)
-                          .SingleOrDefault(a => a.VisitNr.Equals(visitNr));
+                .Include(p=>p.Patient)
+                .Include(n=>n.ResponsibleNurse)
+                .SingleOrDefault(a => a.VisitNr.Equals(visitNr));
         }
-        public List<DoctorAppointment> GetAll() 
-        {
+        
 
+        public List<DoctorAppointment> GetAll()
+        {
             return Context.Set<DoctorAppointment>()
-                          .Include(appointment => appointment.Patient)
-                          .Include(appointment => appointment.ResponsibleNurse)
-                          .ToList();
+                .Include(p=>p.Patient)
+                .Include(n=>n.ResponsibleNurse)
+                .ToList();
+           
         }
     }
 }
