@@ -24,10 +24,18 @@ namespace PatientHanteringWPF.MVVM
         public LoginWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
             
-            LoginViewModel viewModel = new LoginViewModel();
-           
-            DataContext = viewModel;
+        }
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is ICloseWindow vm)
+            {
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
+            }
         }
     }
 }

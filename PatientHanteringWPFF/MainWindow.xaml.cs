@@ -1,4 +1,5 @@
 ﻿using EnityLayer;
+using PatientHanteringWPFF.MVVM.ViewModels;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -21,7 +22,17 @@ namespace PatientHanteringWPFF
         public MainWindow()
         {
             InitializeComponent();
-            Debug.WriteLine("DataContext in MainWindow constructor: " + DataContext);
+            Loaded += MainWindow_Loaded;
+        }
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ICloseWindow vm)
+            {
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
+            }
         }
     }
 }

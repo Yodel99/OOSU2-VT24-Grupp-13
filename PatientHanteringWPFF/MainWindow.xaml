@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PatientHanteringWPFF"
         xmlns:viewModel="clr-namespace:PatientHanteringWPFF.MVVM.ViewModels"
+        xmlns:viewModel1="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="525"
@@ -12,6 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
+   
 
     <!--// Background Grid//-->
     <Grid Background="#232628">

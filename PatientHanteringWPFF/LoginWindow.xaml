@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PatientHanteringWPF.MVVM" 
         xmlns:test="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
         xmlns:viewmodels="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels" 
-        d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
+        
         mc:Ignorable="d"
         Title="LogInWindow"
         Height="350"
@@ -15,6 +15,9 @@
         Background="#2e333A"
         AllowsTransparency="True"
         WindowStyle="None">
+    <Window.DataContext>
+        <viewmodels:LoginViewModel/>
+    </Window.DataContext>
 
     <Border Background="#2e333A" CornerRadius="0" Margin="20">
         <StackPanel Margin="20,20,20,20">

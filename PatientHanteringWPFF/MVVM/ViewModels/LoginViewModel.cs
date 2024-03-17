@@ -15,9 +15,10 @@ using System.Security;
 
 namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 {
-    public class LoginViewModel : ObservableObject
+    public class LoginViewModel : ObservableObject,ICloseWindow
     {       
         private readonly LogInController loginController;
+        public Action Close { get; set; }
 
         public LoginViewModel()
         {          
@@ -60,11 +61,11 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 
                 mainWindow.Show();
 
-                Application.Current.MainWindow.Close();
+                Close?.Invoke();
             }
             else
             {
-                MessageBox.Show("Fel användarnamn eller lösenord, Försök igen", "Felmeddelande", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wrong username or password, Try again!", "Felmeddelande", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

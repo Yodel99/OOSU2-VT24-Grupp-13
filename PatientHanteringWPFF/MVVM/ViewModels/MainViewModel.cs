@@ -14,7 +14,7 @@ using PatientHanteringWPF.MVVM;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
-    internal class MainViewModel : ObservableObject
+    internal class MainViewModel : ObservableObject, ICloseWindow
     {     
         ValidationController validationController=new ValidationController();
         private User _currentUser;
@@ -79,11 +79,12 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
 
-            
-            
 
-        }
+            Close?.Invoke();
 
+        } 
+        public Action Close { get; set; }
+        
 
 
         public MainViewModel(User user)
@@ -196,5 +197,11 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 }
             });
         }
+        
+    }
+
+    public interface ICloseWindow
+    {
+        Action Close { get; set; }
     }
 }

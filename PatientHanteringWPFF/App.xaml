@@ -61,6 +61,7 @@
                 <view1:NurseSchedule/>
             </DataTemplate>
 
+
         </ResourceDictionary>
 
     </Application.Resources>
