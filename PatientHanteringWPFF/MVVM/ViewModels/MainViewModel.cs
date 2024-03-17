@@ -1,8 +1,5 @@
-
-using PatientHanteringWPF.MVVM;
-﻿using DataLayer;
-using EnityLayer;
 using ServiceLayer;
+using EnityLayer;
 ﻿using PatientHanteringWPF.MVVM.MVVM.ViewModels;
 using PatientHanteringWPFF.Core;
 using System;
@@ -12,11 +9,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
+using PatientHanteringWPF.MVVM;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class MainViewModel : ObservableObject
     {     
+        ValidationController validationController=new ValidationController();
         private User _currentUser;
         public User CurrentUser
         {
@@ -49,7 +49,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public AddPatientViewModel AddPatientVm { get; set; }
         public EditPatientViewModel EditPatientVm { get; set; }
         public AddPrescriptionViewModel AddPrescriptionVm { get;set; }
-        public PrescribeMedicineViewModel PrecribeMedicineVm { get; set; }
         public AddDiagnosisViewModel AddDiagnosisVm { get; set; }
         public SearchPatientViewModel SearchPatientVm { get; set; }
         public NurseScheduleViewModel NurseScheduleVm { get; set; }
@@ -67,28 +66,44 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
 
         }
         public ICommand CloseCommand { get; private set; }
-        public void CloseProgram()
+        private void CloseProgram()
         {
             Environment.Exit(0);
         }
-
-        public MainViewModel()
+        public ICommand LogOutCommand { get; private set; }
+        
+        
+        private void LogOut()
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            User user = unitOfWork.UserRepository.GetUser("lakare1");
+            // Skapa en instans av LoginWindow och Visa den
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            
+            
+
+        }
+
+
+
+        public MainViewModel(User user)
+        {
+           
+            CurrentUser = user;
+           
+
             HomeVm = new HomeViewModel();
             AddVisitVm = new AddVisitViewModel();
             EditVisitVm = new EditVisitViewModel();
-            ManageVisitVm = new ManageVisitViewModel(user);
+            ManageVisitVm = new ManageVisitViewModel(CurrentUser);
             AddPatientVm = new AddPatientViewModel();
             EditPatientVm = new EditPatientViewModel();
             AddPrescriptionVm = new AddPrescriptionViewModel();
-            PrecribeMedicineVm = new PrescribeMedicineViewModel();
             AddDiagnosisVm= new AddDiagnosisViewModel();
             SearchPatientVm = new SearchPatientViewModel();
-            NurseScheduleVm= new NurseScheduleViewModel(user);
+            NurseScheduleVm= new NurseScheduleViewModel(CurrentUser);
 
-            
+            LogOutCommand = new RelayCommand(param => LogOut());
             CloseCommand = new RelayCommand(param => CloseProgram());
 
 
@@ -107,8 +122,15 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 CurrentVeiw = EditVisitVm;
             });
             ManageVisitViewCommand = new RelayCommand(o =>
-            {
-                CurrentVeiw = ManageVisitVm;
+            { if(validationController.AccessCheckNurse(CurrentUser)==true)
+                {
+                    CurrentVeiw = ManageVisitVm;
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             });
             AddPatientViewCommand = new RelayCommand(o =>
             {
@@ -116,29 +138,62 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             });
             EditPatientViewCommand = new RelayCommand(o =>
             {
-                CurrentVeiw = EditPatientVm;
+                if(validationController.AccessCheckNurse(CurrentUser)==true)
+                {
+                    CurrentVeiw = EditPatientVm;
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             });
             AddPrescriptionViewCommand = new RelayCommand(o =>
-            {
-                CurrentVeiw = AddPrescriptionVm;
-            });
-            PrescribeMedicineViewCommand = new RelayCommand(o =>
-            {
-                CurrentVeiw = PrecribeMedicineVm;
+            { if(validationController.AccessCheckDoctor(CurrentUser)==true)
+                {
+                    CurrentVeiw = AddPrescriptionVm;
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
             });
             AddDiagnosisViewCommand = new RelayCommand(o =>
             {
-                CurrentVeiw = AddDiagnosisVm;
-            });
+                if(validationController.AccessCheckDoctor(CurrentUser)==true)
+                {
+                    CurrentVeiw = AddDiagnosisVm;
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
+                }
+
+
+            });
             SearchPatientViewCommand = new RelayCommand(o =>
             {
-                CurrentVeiw = SearchPatientVm;
-            });
+                if(validationController.AccessCheckNurse(CurrentUser)==true)
+                {
+                    CurrentVeiw = SearchPatientVm;
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
+                }
+            });
             NurseScheduleViewCommand = new RelayCommand(o =>
-            {
-                CurrentVeiw = NurseScheduleVm;
+            { if(validationController.AccessCheckNurse(CurrentUser)==true)
+                {
+                    CurrentVeiw = NurseScheduleVm;
+
+                }
+                else
+                {
+                    MessageBox.Show("Not Authorized", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             });
         }
     }

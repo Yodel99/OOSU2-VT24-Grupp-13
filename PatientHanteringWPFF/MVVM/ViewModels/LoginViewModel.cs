@@ -46,24 +46,28 @@ namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
                 return loginCommand ?? (loginCommand = new RelayCommand(Login));
             }
         }
-         
+
         private void Login()
         {
             var user = loginController.GetUser(logInID, password);
             if (user != null)
-            {                
-                MainViewModel mainViewModel = new MainViewModel();
+            {
+                MainViewModel mainViewModel = new MainViewModel(user);
                 mainViewModel.CurrentUser = user;
+
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.DataContext = mainViewModel;
+
                 mainWindow.Show();
-                Application.Current.MainWindow.Visibility = Visibility.Collapsed;
+
+                Application.Current.MainWindow.Close();
             }
             else
             {
                 MessageBox.Show("Fel användarnamn eller lösenord, Försök igen", "Felmeddelande", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         private RelayCommand exitCommand;
         public ICommand ExitCommand

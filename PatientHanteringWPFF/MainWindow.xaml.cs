@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using EnityLayer;
+using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,7 @@ namespace PatientHanteringWPFF
         public MainWindow()
         {
             InitializeComponent();
+            Debug.WriteLine("DataContext in MainWindow constructor: " + DataContext);
         }
     }
 }

@@ -12,9 +12,6 @@
         WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
 
     <!--// Background Grid//-->
     <Grid Background="#232628">
@@ -168,32 +165,14 @@
                 </MenuItem>
                 
                 <!--Main menu Prescriptions-->
-                <MenuItem Header="Prescriptions"
-                          Template="{StaticResource Menu_SubMenu_Template}">
+                <MenuItem Header="Add Prescription"
+                          Template="{StaticResource Menu_Template}"
+                     Command="{Binding AddPrescriptionViewCommand}">
                     <MenuItem.Icon>
                         <Image Source="MVVM/Assets/icons8-medicine-32.png"
                                Stretch="Fill"/>
                     </MenuItem.Icon>
                     <!--Prescription Add-->
-                    <MenuItem Header="Add"
-                              Template="{StaticResource Item_Template}"
-                              Command="{Binding AddPrescriptionViewCommand}">
-                        <MenuItem.Icon>
-                            <Image Source="MVVM/Assets/icons8-add-50.png"
-                                  Stretch="Fill"/>
-                        </MenuItem.Icon>
-
-                    </MenuItem>
-                    <!--Prescription Prescribe-->
-                    <MenuItem Header="Prescribe"
-                              Template="{StaticResource Item_Template}"
-                              Command="{Binding PrescribeMedicineViewCommand}">
-                        <MenuItem.Icon>
-                            <Image Source="MVVM/Assets/icons8-prescription-32.png"
-                                   Stretch="Fill"/>
-
-                        </MenuItem.Icon>
-                    </MenuItem>
                 </MenuItem>
                 <!--Main menu Diagnosis-->
                 <MenuItem Header="Add Diagnosis"
@@ -206,6 +185,7 @@
                 </MenuItem>
                 <!--Main menu Log Out-->
                 <MenuItem Header="Log Out"
+                          Command="{Binding LogOutCommand}"
            Template="{StaticResource Menu_Template}">
 
                     <MenuItem.Icon>
