@@ -1,9 +1,6 @@
-﻿using PatientHanteringWPFF.MVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PatientHanteringWPFF.MVVM.Veiw
+namespace PatientHanteringWPF.MVVM.MVVM.Veiw
 {
     /// <summary>
-    /// Interaction logic for Add_Patient.xaml
+    /// Interaction logic for NurseSchedule.xaml
     /// </summary>
-    public partial class Add_Patient : UserControl
+    public partial class NurseSchedule : UserControl
     {
-      
-
-        public Add_Patient()
+        public NurseSchedule()
         {
             InitializeComponent();
-
-
         }
-
-        
     }
 }

@@ -41,7 +41,7 @@ namespace ServiceLayer
                     return false;
                 }
             }
-        private NursingStaff GetNursingstaff(User activeUser)
+        public NursingStaff GetNursingstaff(User activeUser)
         {
 
 

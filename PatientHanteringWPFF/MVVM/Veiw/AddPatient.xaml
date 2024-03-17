@@ -6,17 +6,71 @@
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Border Width="525"
-        Height="200">
-                <TextBlock Text="Add Patient"
-               Foreground="White"
-               FontSize="30"
-               FontFamily="Roboto-Light"
-               HorizontalAlignment="Left"
-               Margin="15,15,10,0" Width="400"/>
-            </Border>
+
+
+        
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text = "Add New Patient" FontSize="18" FontWeight="Bold" Margin ="0,0,0,10" Foreground="White" FontFamily="Roboto-light"/>
+
+            <Label Content=" SSN:" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtSSN" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding SSN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" First Name:" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtFName" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding FName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" Last Name:" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtEName" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding EName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" Email:" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtEmail" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left"  Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" Patient number:" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtPatientNr" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding PatientNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" Address: " Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtAddress" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left"  Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Content=" Phone number" Foreground="White" FontFamily="Roboto-light"/>
+            <TextBox x:Name="txtTelNr" Width="200" Margin="10,0,0,5" HorizontalAlignment="Left" Text="{Binding TelNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            <Button Content="Add" Width="100"  Height="30" Margin="10,0,0,5" HorizontalAlignment="Left" Command="{Binding AddPatientCommand}"/>
+
+
+
+
+
+
+
         </StackPanel>
-    </StackPanel>
+
+        <ListBox x:Name="listPatients" Width="300" Height="400" Margin="10, 3, 0 ,0" HorizontalAlignment="Right" ItemsSource ="{Binding Patients}" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SSN}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding FName}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding EName}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding Email}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding PatientNr}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding Address}" Margin="0,10,20,0"/>
+                        <TextBlock Text="{Binding TelNr}" Margin="0,10,20,0"/>
+                        </WrapPanel>
+                  </ScrollViewer>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+    </Grid>
+
+  
+
+
+
+
+      
+        
 </UserControl>

@@ -14,7 +14,7 @@ namespace EnityLayer
         public string PatientNr { get; set; }
         public string Address { get; set; }
         public string TelNr { get; set; }
-
+        
 
         public Patient()
         {

@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PatientHanteringWPFF"            
              xmlns:viewModel="clr-namespace:PatientHanteringWPFF.MVVM.ViewModels"
-             xmlns:vyer="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
+
              xmlns:view="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"            
              StartupUri="LoginWindow.xaml">
+
+             xmlns:view="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
+             xmlns:viewModel1="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
+             xmlns:view1="clr-namespace:PatientHanteringWPF.MVVM.MVVM.Veiw"
+             
 
     <Application.Resources>
         <!--ResourceDictionary-->
@@ -13,18 +18,19 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Templates.xaml" />
                 <ResourceDictionary Source="TextboxTemplate.xaml"/>
+                
 
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeVeiw/>
             </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel }">
+          
+            <DataTemplate DataType="{x:Type viewModel:AddVisitViewModel}">
                 <view:AddVisit/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vyer:EditVisitViewModel }">
+            <DataTemplate DataType="{x:Type viewModel:EditVisitViewModel }">
                 <view:EditVisit/>
             </DataTemplate>
 
@@ -50,6 +56,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:AddDiagnosisViewModel }">
                 <view:AddDiagnosis/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel1:NurseScheduleViewModel }">
+                <view1:NurseSchedule/>
             </DataTemplate>
 
         </ResourceDictionary>

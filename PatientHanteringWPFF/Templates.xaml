@@ -434,12 +434,27 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0">
-                        <ItemsPresenter/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
+
+
 
     <Style x:Key="ModernDateTimePicker" TargetType="{x:Type DatePicker}">
         <Setter Property="Foreground" Value="White"/>

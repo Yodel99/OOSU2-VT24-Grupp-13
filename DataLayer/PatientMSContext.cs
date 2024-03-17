@@ -12,11 +12,13 @@ namespace DataLayer
 {
     public class PatientMSContext : DbContext
     {
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=sqlutb2.hb.se,56077;initial catalog=oosu2413;user id=oosu2413;password=GWL374; MultipleActiveResultSets=true;");
             //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Patienthantering;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
+
         }
 
         public DbSet<User> Users { get; set; }
