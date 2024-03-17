@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="PatientHanteringWPF.MVVM.MVVM.Veiw.SearchPatient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PatientHanteringWPF.MVVM.MVVM.Veiw"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <DockPanel>
+        <!--Dockpanel Top-->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Border Width="525" Height="50">
+                <TextBlock Text="Patient history overview"
+            Foreground="White"
+            FontSize="30"
+            FontFamily="Roboto-Light"
+            HorizontalAlignment="Left"
+            Margin="15,15,10,0" Width="400"/>
+            </Border>
+        </StackPanel>
+
+        <!--Dockpanel Left-->
+        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+            <!--  Search  -->
+            <Label Content="Search for patient number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Foreground="White"/>
+            <TextBox Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0"/>
+
+            <!--  Combobox  -->
+            <ComboBox x:Name="cbPatients" Width="150" Margin="30,10,5,10" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            ItemsSource="{Binding FilteredPatients}"
+            SelectedValuePath="PatientNr"
+            SelectedItem="{Binding PatientSelectedItem, Mode=TwoWay}"          
+            IsEnabled="True">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PatientNr}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+
+        <!--Dockpanel right-->
+        <StackPanel DockPanel.Dock="Right">
+
+            <!-- DataGrid för Prescriptions -->
+            <Label Content="Prescriptions history" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White"/>
+            <DockPanel>
+                <DataGrid Height="120" Width="350" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding Prescriptions}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Drugname" Binding="{Binding DrugName}" Width="Auto"/>
+                        <DataGridTextColumn Header="Dosage" Binding="{Binding Dosage}" Width="Auto"/>
+                        <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" Width="Auto"/>
+                        <DataGridTextColumn Header="IssueDate" Binding="{Binding IssueDate}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+
+            <!-- DataGrid för Diagnosis -->
+            <Label Content="Diagnosis history" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Foreground="White"/>
+            <DockPanel>
+                <DataGrid Height="120" Width="350" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding Diagnoses}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Description" Binding="{Binding DiagnosisDescription}" Width="Auto"/>
+                        <DataGridTextColumn Header="Treatment" Binding="{Binding Treatment}" Width="Auto"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+            
+            <!-- ScrollViewer -->
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></ScrollViewer>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </DockPanel>
+   
+</UserControl>

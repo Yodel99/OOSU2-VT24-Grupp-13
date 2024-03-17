@@ -1,3 +1,4 @@
+
 using PatientHanteringWPF.MVVM;
 ﻿using DataLayer;
 using EnityLayer;
@@ -36,6 +37,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public RelayCommand AddPrescriptionViewCommand { get; set; }
         public RelayCommand PrescribeMedicineViewCommand { get; set; }
         public RelayCommand AddDiagnosisViewCommand { get; set; }
+        public RelayCommand SearchPatientViewCommand { get; set; }
         public RelayCommand NurseScheduleViewCommand { get; set; }
 
 
@@ -49,6 +51,7 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         public AddPrescriptionViewModel AddPrescriptionVm { get;set; }
         public PrescribeMedicineViewModel PrecribeMedicineVm { get; set; }
         public AddDiagnosisViewModel AddDiagnosisVm { get; set; }
+        public SearchPatientViewModel SearchPatientVm { get; set; }
         public NurseScheduleViewModel NurseScheduleVm { get; set; }
 
         private object _currentView;
@@ -82,7 +85,9 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             AddPrescriptionVm = new AddPrescriptionViewModel();
             PrecribeMedicineVm = new PrescribeMedicineViewModel();
             AddDiagnosisVm= new AddDiagnosisViewModel();
+            SearchPatientVm = new SearchPatientViewModel();
             NurseScheduleVm= new NurseScheduleViewModel(user);
+
             
             CloseCommand = new RelayCommand(param => CloseProgram());
 
@@ -126,11 +131,15 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 CurrentVeiw = AddDiagnosisVm;
             });
 
+            SearchPatientViewCommand = new RelayCommand(o =>
+            {
+                CurrentVeiw = SearchPatientVm;
+            });
+
             NurseScheduleViewCommand = new RelayCommand(o =>
             {
                 CurrentVeiw = NurseScheduleVm;
             });
-
         }
     }
 }

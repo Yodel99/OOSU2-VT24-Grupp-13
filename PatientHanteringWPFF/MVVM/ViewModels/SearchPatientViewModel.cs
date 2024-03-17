@@ -11,12 +11,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PatientHanteringWPFF.MVVM.ViewModels
+namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 {
-    internal class AddPrescriptionViewModel : ObservableObject
+    internal class SearchPatientViewModel : ObservableObject
     {
         private GetListsController getListsController;
-        private PrescribePrescriptionController prescribePrescriptionController;
 
         private string searchTerm;
         public string SearchTerm
@@ -32,27 +31,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 }
             }
         }
-        private string drugName;
-        public string DrugName
-        {
-            get { return drugName; }
-            set { drugName = value; OnPropertyChanged(nameof(DrugName)); }
-        }
-
-        private string dosage;
-        public string Dosage
-        {
-            get { return dosage; }
-            set { dosage = value; OnPropertyChanged(nameof(Dosage)); }
-        }
-
-        private string reason;
-        public string Reason
-        {
-            get { return reason; }
-            set { reason = value; OnPropertyChanged(nameof(Reason)); }
-        }
-
         private Patient patientSelectedItem = null!;
         public Patient PatientSelectedItem
         {
@@ -61,7 +39,8 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             {
                 patientSelectedItem = value;
                 OnPropertyChanged();
-                UpdatePrescriptions(); 
+                UpdatePrescriptions();
+                UpdateDiagnoses();
             }
         }
 
@@ -87,7 +66,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged(nameof(FilteredPatients));
             }
         }
-
         private ObservableCollection<DrugPrescription> prescriptions;
         public ObservableCollection<DrugPrescription> Prescriptions
         {
@@ -98,17 +76,21 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                 OnPropertyChanged(nameof(Prescriptions));
             }
         }
-
-        public ICommand CreatePrescriptionCommand { get; private set; }
-
-        public AddPrescriptionViewModel()
+        private ObservableCollection<Diagnosis> diagnoses;
+        public ObservableCollection<Diagnosis> Diagnoses
+        {
+            get { return diagnoses; }
+            set
+            {
+                diagnoses = value;
+                OnPropertyChanged(nameof(Diagnoses));
+            }
+        }
+        public SearchPatientViewModel()
         {
             getListsController = new GetListsController();
-            prescribePrescriptionController = new PrescribePrescriptionController();
             Patients = new ObservableCollection<Patient>(getListsController.GetPatients());
-            CreatePrescriptionCommand = new RelayCommand(param => CreatePrescription());
         }
-
         private void FilterPatients()
         {
             if (string.IsNullOrWhiteSpace(SearchTerm))
@@ -121,30 +103,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
                     Patients.Where(patient => patient.PatientNr.ToLower().Contains(SearchTerm.ToLower())));
             }
         }
-
-        private void CreatePrescription()
-        {
-            if (PatientSelectedItem != null && DrugName != null && Dosage != null && Reason != null)
-            {
-                if (Prescriptions.Count > 0)
-                {
-                    MessageBoxResult result = MessageBox.Show("This patient already has an active prescription. Do you want to continue?", "Warning", MessageBoxButton.OKCancel);
-                    if (result == MessageBoxResult.Cancel)
-                    {
-                        return; 
-                    }
-                }
-
-                prescribePrescriptionController.PrescripePrescription(PatientSelectedItem, DrugName, Dosage, Reason);
-                UpdatePrescriptions();
-            }
-            else
-            {
-                MessageBox.Show("Please fill in every field");
-                return; 
-            }
-        }
-
         private void UpdatePrescriptions()
         {
             if (PatientSelectedItem != null)
@@ -155,6 +113,19 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
             else
             {
                 Prescriptions.Clear();
+            }
+        }
+        private void UpdateDiagnoses()
+        {
+
+            if (PatientSelectedItem != null)
+            {
+
+                Diagnoses = new ObservableCollection<Diagnosis>(getListsController.GetDiagnosis(PatientSelectedItem));
+            }
+            else
+            {
+                Diagnoses.Clear();
             }
         }
     }

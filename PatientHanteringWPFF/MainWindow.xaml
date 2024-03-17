@@ -78,6 +78,20 @@
                         <Image Source="MVVM/Assets/icons8-patient-32.png"
                                Stretch="Fill"/>
                     </MenuItem.Icon>
+
+                    <!--Patient Search-->
+                    <MenuItem Header="Search"
+          Template="{StaticResource Item_Template}"
+          Command="{Binding SearchPatientViewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="MVVM/Assets/icons8-search-32.png"
+               Stretch="Fill"/>
+                        </MenuItem.Icon>
+
+
+
+                    </MenuItem>
+
                     <!--Patient Add-->
                     <MenuItem Header="Add"
                               Template="{StaticResource Item_Template}"

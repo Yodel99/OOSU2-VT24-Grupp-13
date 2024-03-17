@@ -6,17 +6,70 @@
              xmlns:local="clr-namespace:PatientHanteringWPFF.MVVM.Veiw"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Border Width="525"
-     Height="200">
+    <DockPanel>
+        
+        <!--  Dockpanel Top  -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Border Width="525" Height="50">
                 <TextBlock Text="Add Diagnosis"
-            Foreground="White"
-            FontSize="30"
-            FontFamily="Roboto-Light"
-            HorizontalAlignment="Left"
-            Margin="15,15,10,0" Width="400"/>
+                Foreground="White"
+                FontSize="30"
+                FontFamily="Roboto-Light"
+                HorizontalAlignment="Left"
+                Margin="15,15,10,0" Width="400"/>
             </Border>
         </StackPanel>
-    </StackPanel>
+        
+        <!--  Dockpanel Left  -->
+        <StackPanel DockPanel.Dock="Left">
+            
+            <!--  Search  -->
+            <Label Content="Search for patient number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Foreground="White"/>
+            <TextBox Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0"/>
+
+            <!--  Combobox  -->
+            <ComboBox x:Name="cbPatients" Width="250" Margin="30,10,5,10" HorizontalAlignment="Left" VerticalAlignment="Top" 
+          ItemsSource="{Binding FilteredPatients}"
+          SelectedValuePath="PatientNr"
+          SelectedItem="{Binding PatientSelectedItem, Mode=TwoWay}"          
+          IsEnabled="True">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PatientNr}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <!--  Text  -->
+            <Label Content="Describe the diagnosis" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Foreground="White"/>
+            <TextBox TextWrapping="Wrap" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Text="{Binding DiagnosisDescription}"/>
+            
+            <Label Content="Describe the treatment plan" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,10,0,0" Foreground="White"/>
+            <TextBox TextWrapping="Wrap" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Text="{Binding TreatmentPlan}"/>
+            
+            <Button Content="Add diagnosis" Command="{Binding CreateDiagnosisCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30" Width="125" Height="30"/>
+        </StackPanel>
+
+        
+            <!--  Dockpanel right  -->
+        <Grid DockPanel.Dock="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  DataGrid  -->
+            <DataGrid Grid.Column="0" Height="300" Width="200" Margin="30,30,30,0" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding Diagnosis}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Description" Binding="{Binding DiagnosisDescription}" Width="Auto"/>
+                    <DataGridTextColumn Header="Treatment" Binding="{Binding Treatment}" Width="Auto"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!-- ScrollViewer -->
+            <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <!-- Innehåll här -->
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
 </UserControl>
