@@ -24,9 +24,9 @@
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center" FontFamily="#Roboto-Light"/>
             <Separator></Separator>
             <Label Content="Username" HorizontalAlignment="Center" Margin="0 0" Foreground="White" FontFamily="#Roboto-Light"/>
-            <TextBox x:Name="txtUsername" Grid.Row="0" Margin="0 0 0 10" Text="{Binding LogInID}" ToolTip="Användarnamn" Width="250" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtUsername" Grid.Row="0" Margin="0 0 0 10" Text="{Binding LogInID}" ToolTip="Username" Width="250" HorizontalAlignment="Center"/>
             <Label Content="Password" Margin="0 0" HorizontalAlignment="Center" Foreground="White" FontFamily="#Roboto-Light"/>
-            <PasswordBox x:Name="txtPassword" Grid.Row="1" Margin="0 0" test:PasswordBoxBindingHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Lösenord" Width="250" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="txtPassword" Grid.Row="1" Margin="0 0" test:PasswordBoxBindingHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Password" Width="250" HorizontalAlignment="Center"/>
             <Button x:Name="btnLogin" Grid.Row="2" Content="Login" FontSize="18" FontFamily="#Roboto-Light" Margin="10 60 10 10" Width="200" HorizontalAlignment="Center" Foreground="White" Background="#545d6a" Command="{Binding LoginCommand}"/>
             <Button Name="BtnExit" HorizontalAlignment="Center" Content="Exit" Margin="10 0" Background="#545d6a" Foreground="White" FontSize="18" FontFamily="#Roboto-Light" Height="25" Width="200" Command="{Binding ExitCommand}"/>
         </StackPanel>
