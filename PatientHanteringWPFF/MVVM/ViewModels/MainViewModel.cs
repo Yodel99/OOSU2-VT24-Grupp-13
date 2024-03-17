@@ -1,3 +1,4 @@
+using PatientHanteringWPF.MVVM;
 ﻿using DataLayer;
 using EnityLayer;
 using ServiceLayer;
@@ -14,7 +15,18 @@ using System.Windows.Input;
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
     internal class MainViewModel : ObservableObject
-    {
+    {     
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+
         public RelayCommand HomeViewCommand { get; set; } 
         public RelayCommand AddVisitViewCommand { get; set; }
         public RelayCommand EditVisitViewCommand { get; set; }
