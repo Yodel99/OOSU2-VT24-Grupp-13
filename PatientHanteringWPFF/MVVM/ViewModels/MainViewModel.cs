@@ -1,11 +1,8 @@
-
 ﻿using DataLayer;
 using EnityLayer;
 using ServiceLayer;
-
 ﻿using PatientHanteringWPF.MVVM.MVVM.ViewModels;
 using PatientHanteringWPFF.Core;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
