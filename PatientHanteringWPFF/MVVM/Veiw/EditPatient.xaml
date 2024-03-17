@@ -14,44 +14,41 @@
 
                 <!-- PatientID -->
                 <TextBlock x:Name="txtbPatientID" FontSize="20" FontFamily="Roboto-light" Foreground="GhostWhite" TextDecorations="Underline" Text="PatientID:" Margin="15,15,0,0"/>
-                <TextBox Name="txtPatientID" Width="250" HorizontalAlignment="Left" Margin="15,0,0,0"/>
+                <ComboBox x:Name="cmbPatientID" HorizontalAlignment="Left" Width="300" Margin="15,5 ,0 ,0" ItemsSource="{Binding Patients}" SelectedItem="{Binding ChosenPatient}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding PatientNr}" Margin="0,0,5,0"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <!-- Attribute -->
-                <TextBlock x:Name="txtbAttribute" FontSize="20" FontFamily="Roboto-light" Foreground="GhostWhite" TextDecorations="Underline" Text="Attribute:" Margin="15,5,0,0"/>
-                <WrapPanel>
-                    <RadioButton x:Name="rbFName" Margin="5,10" GroupName="updateAttribute" Content="First Name" FontSize="15" FontFamily="Roboto-light" Foreground="GhostWhite" IsChecked="True"/>
-                    <RadioButton x:Name="rbLName" Margin="5,10" GroupName="updateAttribute" Content="Last Name" FontSize="15" FontFamily="Roboto-light" Foreground="GhostWhite"/>
-                    <RadioButton x:Name="rbAddress" Margin="5,10" GroupName="updateAttribute" Content="Address" FontSize="15" FontFamily="Roboto-light" Foreground="GhostWhite"/>
-                    <RadioButton x:Name="rbEmail" Margin="5,10" GroupName="updateAttribute" Content="Email" FontSize="15" FontFamily="Roboto-light" Foreground="GhostWhite"/>
-                    <RadioButton x:Name="rbTelNr" Margin="5,10" GroupName="updateAttribute" Content="Telephone" FontSize="15" FontFamily="Roboto-light" Foreground="GhostWhite"/>
-                </WrapPanel>
+                <StackPanel>
+                    <TextBlock x:Name="txtbAttribute" FontSize="20" FontFamily="Roboto-light" Foreground="GhostWhite" TextDecorations="Underline" Text="Attribute:" Margin="15,5,0,0"/>
+                    <ComboBox SelectedValue="{Binding SelectedAttribute}" SelectedValuePath="Content" Width="300" HorizontalAlignment="Left" Margin="15,5,0,0">
+                        <ComboBoxItem Content="Firstname"/>
+                        <ComboBoxItem Content="Lastname"/>
+                        <ComboBoxItem Content="Address"/>
+                        <ComboBoxItem Content="Email"/>
+                        <ComboBoxItem Content="Telephone"/>
+                    </ComboBox>
+                </StackPanel>
 
                 <!-- Input -->
                 <TextBlock x:Name="txtbInput" FontSize="20" FontFamily="Roboto-light:" TextDecorations="Underline" Foreground="GhostWhite" Text="Input:" Margin="15,5,0,0"/>
-                <TextBox Name="txtInput" Width="250" HorizontalAlignment="Left" Margin="15,0,0,0"/>
+                <TextBox Name="txtInput" Width="300" HorizontalAlignment="Left" Margin="15,0,0,0" Text="{Binding ChosenInput}"/>
 
                 <!--  ListBox  -->
-                <ListBox x:Name="lstPatients" Width="300" Height="100" Margin="15, 30, 0 ,0" HorizontalAlignment="Left" ItemsSource ="{Binding Patients}" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <TextBlock Text="{Binding PatientNr}" Margin="0,10,0,0"/>
-                                <TextBlock Text="{Binding FName}" Margin="0,10,0,0"/>
-                                <TextBlock Text="{Binding LName}" Margin="0,10,0,0"/>
-                                <TextBlock Text="{Binding Address}" Margin="0,10,0,0"/>
-                                <TextBlock Text="{Binding TelNr}" Margin="0,10,0,0"/>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-
-
-
+                <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="15,20" Width="500" Height="150">
+                    
+                </DataGrid>
+               
                 <!-- Buttons -->
                 <WrapPanel>
 
-                    <Button x:Name="btnSave" Content="Save" FontFamily="Roboto-light" Foreground="White" Margin="15,75 ,0,0" Width="150" Height="25" Background="DimGray">
+                    <Button x:Name="btnSave" Content="Save" FontFamily="Roboto-light" Foreground="White" Margin="15,30   ,0,0" Width="150" Height="25" Background="DimGray" Command="{Binding SaveCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" 
@@ -63,18 +60,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="btnRefresh" Content="Refresh list" FontFamily="Roboto-light" HorizontalAlignment="Right" Foreground="White" Margin="10,75,0,0" Width="150" Height="25" Background="DimGray">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" 
-                                        BorderBrush="{TemplateBinding BorderBrush}" 
-                                        BorderThickness="{TemplateBinding BorderThickness}" 
-                                        CornerRadius="10">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                   
 
                 </WrapPanel>
 

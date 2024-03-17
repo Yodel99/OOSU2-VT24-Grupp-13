@@ -12,22 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ServiceLayer;
-using EnityLayer;
 
-namespace PatientHanteringWPFF.MVVM.Veiw
+namespace PatientHanteringWPF.MVVM.MVVM.Veiw
 {
     /// <summary>
-    /// Interaction logic for AddVisit.xaml
+    /// Interaction logic for NurseSchedule.xaml
     /// </summary>
-    public partial class AddVisit : UserControl
+    public partial class NurseSchedule : UserControl
     {
-        public AddVisit()
+        public NurseSchedule()
         {
-            
             InitializeComponent();
         }
-
- 
     }
 }

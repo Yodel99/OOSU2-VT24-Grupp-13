@@ -16,10 +16,14 @@ namespace EnityLayer
         public string Reason { get; set; }
         public Patient Patient { get; set; }
         public NursingStaff ResponsibleNurse { get; set; }
+        public string AppointmentNote { get; set; }
+        public string AppointmentStatus { get; set; }
         public string StaffNr => ResponsibleNurse?.StaffNr;
         public string PatientNr => Patient?.PatientNr;
-        public string PatientFNamn => Patient?.FName;
+        public string PatientFname => Patient?.FName;
         public string DoctorFname => ResponsibleNurse?.FName;
+        public string DoctorEname => ResponsibleNurse?.EName;
+        public string PatientEname => Patient?.EName;
 
         public DoctorAppointment()
         {
