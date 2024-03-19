@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using PatientHanteringWPF.MVVM;
+using PatientHanteringWPF.MVVM.CloseWindows;
 
 namespace PatientHanteringWPFF.MVVM.ViewModels
 {
@@ -200,8 +201,6 @@ namespace PatientHanteringWPFF.MVVM.ViewModels
         
     }
 
-    public interface ICloseWindow
-    {
-        Action Close { get; set; }
-    }
+    
+    
 }

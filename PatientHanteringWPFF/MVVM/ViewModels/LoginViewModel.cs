@@ -12,6 +12,7 @@ using GalaSoft.MvvmLight.Messaging;
 using PatientHanteringWPFF;
 using System.Windows;
 using System.Security;
+using PatientHanteringWPF.MVVM.CloseWindows;
 
 namespace PatientHanteringWPF.MVVM.MVVM.ViewModels
 {

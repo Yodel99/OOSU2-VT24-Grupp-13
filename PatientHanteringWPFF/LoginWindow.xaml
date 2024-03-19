@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PatientHanteringWPF.MVVM" 
         xmlns:test="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
-        xmlns:viewmodels="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels" 
-        
+        xmlns:viewmodels="clr-namespace:PatientHanteringWPF.MVVM.MVVM.ViewModels"
+        xmlns:windowCloser="clr-namespace:PatientHanteringWPF.MVVM.CloseWindows"
+        windowCloser:WindowCloser.EnableWindowClosing="True"
         mc:Ignorable="d"
         Title="LogInWindow"
         Height="350"

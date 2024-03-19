@@ -28,8 +28,6 @@ namespace PatientHanteringWPFF.MVVM.Veiw
         public Add_Patient()
         {
             InitializeComponent();
-
-
         }
 
         
